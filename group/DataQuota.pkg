@@ -1,0 +1,48 @@
+; DataQuota.pkg
+;
+; Data Quota for S60 phones.
+; 
+; This program is free software; you can redistribute it and/or
+; modify it under the terms of the GNU General Public License
+; as published by the Free Software Foundation; either version 2
+; of the License, or (at your option) any later version.
+; 
+; This program is distributed in the hope that it will be useful,
+; but WITHOUT ANY WARRANTY; without even the implied warranty of
+; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+; GNU General Public License for more details.
+; 
+; You should have received a copy of the GNU General Public License
+; along with this program; if not, write to the Free Software
+; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+; 
+
+;Language - standard language definitions
+&EN
+
+; standard SIS file header
+#{"Data Quota"},(0x20020B55),0,0,1
+
+;Localised Vendor name
+%{"Vendor-EN"}
+
+;Unique Vendor name
+:"Vendor"
+
+;Supports S60 v 3.0
+[0x101F7961], 0, 0, 0, {"S60ProductID"}
+
+;Files to install
+"..\..\epoc32\release\gcce\udeb\DataQuota.exe" -"!:\sys\bin\DataQuota.exe"
+
+{
+"..\..\epoc32\data\z\resource\apps\DataQuota.rsc"
+} -"!:\resource\apps\DataQuota.rsc"
+
+"..\..\epoc32\data\z\private\10003a3f\import\apps\DataQuota_reg.rsc" -"!:\private\10003a3f\import\apps\DataQuota_reg.rsc"
+"..\..\epoc32\data\z\resource\apps\dataquota_aif.mif" -"!:\resource\apps\dataquota_aif.mif"
+
+;required for application to be covered by backup/restore facility
+"backup_registration.xml"						-"!:\private\20020B55\backup_registration.xml"
+
+; End of file

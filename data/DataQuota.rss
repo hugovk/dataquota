@@ -1,0 +1,106 @@
+/*
+DataQuota.rss
+
+Data Quota for S60 phones.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+//  RESOURCE IDENTIFIER
+NAME DAQO    // 4 letter ID
+
+
+//  INCLUDES
+#include <eikon.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <appinfo.rh>
+#include "DataQuota.hrh"
+#include "Dataquota.loc"
+
+//  RESOURCE DEFINITIONS
+
+// Define the resource file signature, should be empty
+RESOURCE RSS_SIGNATURE
+	{
+	}
+
+RESOURCE TBUF r_default_document_name
+	{
+	buf="DAQO";
+	}
+
+RESOURCE EIK_APP_INFO
+	{
+	menubar = r_dataquota_menubar;
+	cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+	}
+
+RESOURCE MENU_BAR r_dataquota_menubar
+	{
+	titles =
+		{
+		MENU_TITLE { menu_pane = r_dataquota_menu; }
+		};
+	}
+
+// Options menu
+RESOURCE MENU_PANE r_dataquota_menu
+	{
+	items =
+		{
+		// added the new Options menu command here
+		MENU_ITEM
+				{
+				command = EDataQuotaRefresh;
+				txt = STR_dataquota_refresh;
+				},
+		MENU_ITEM
+				{
+				command = EDataQuotaEnterQuota;
+				txt = STR_dataquota_enter_quota;
+				},
+		MENU_ITEM
+				{
+				command = EAknSoftkeyExit;
+				txt = STR_dataquota_exit;
+				}
+		};
+	}
+
+// Resources for messages
+RESOURCE TBUF32 r_dataquota_caption_string { buf=STR_dataquota_caption_string; }
+
+RESOURCE LOCALISABLE_APP_INFO r_dataquota_localisable_app_info
+	{
+	short_caption = STR_dataquota_caption_string;
+	caption_and_icon =
+	CAPTION_AND_ICON_INFO
+		{
+		caption = STR_dataquota_caption_string;
+
+		number_of_icons = 1;
+	   	icon_file = "\\resource\\apps\\Dataquota_aif.mif";
+		};
+	}
+
+RESOURCE TBUF r_dataquota_sent		{buf = STR_dataquota_sent;}
+RESOURCE TBUF r_dataquota_rcvd		{buf = STR_dataquota_rcvd;}
+RESOURCE TBUF r_dataquota_used		{buf = STR_dataquota_used;}
+RESOURCE TBUF r_dataquota_day		{buf = STR_dataquota_day;}
+RESOURCE TBUF r_dataquota_seperator	{buf = STR_dataquota_seperator;}
+RESOURCE TBUF r_dataquota_megabyte	{buf = STR_dataquota_megabyte;}
+
+// End of file
