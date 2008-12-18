@@ -1,0 +1,75 @@
+/*
+DataQuota.mmp
+
+Data Quota for S60 phones.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+TARGET			DataQuota.exe
+TARGETTYPE		exe
+UID				0x100039CE 0x20020B55
+
+SECUREID		0x20020B55
+EPOCSTACKSIZE	0x5000
+
+SOURCEPATH        ..\src
+SOURCE			DataQuota.cpp
+SOURCE			DataQuotaApplication.cpp
+SOURCE			DataQuotaAppView.cpp
+SOURCE			DataQuotaAppUi.cpp
+SOURCE			DataQuotaDocument.cpp
+
+SOURCEPATH		..\data
+
+START RESOURCE	DataQuota.rss
+HEADER
+TARGETPATH		resource\apps
+END //RESOURCE
+
+START RESOURCE	DataQuota_reg.rss
+#ifdef WINSCW
+TARGETPATH		\private\10003a3f\apps
+#else
+TARGETPATH		\private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+
+
+USERINCLUDE		..\inc
+
+SYSTEMINCLUDE	\epoc32\include
+
+LIBRARY			aknskins.lib
+LIBRARY			apparc.lib
+LIBRARY			avkon.lib
+LIBRARY			centralrepository.lib
+LIBRARY			commonengine.lib
+LIBRARY			cone.lib
+LIBRARY			efsrv.lib
+LIBRARY			eikcoctl.lib
+LIBRARY			eikcore.lib
+LIBRARY			eikdlg.lib
+LIBRARY			estor.lib
+LIBRARY			euser.lib
+LIBRARY			gdi.lib
+
+LANG SC
+
+VENDORID	  	  0
+CAPABILITY	NONE
+
+// End of file
