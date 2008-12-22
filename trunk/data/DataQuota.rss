@@ -74,6 +74,11 @@ RESOURCE MENU_PANE r_dataquota_menu
 				},
 		MENU_ITEM
 				{
+				command = EDataQuotaAbout;
+				txt = STR_dataquota_about;
+				},
+		MENU_ITEM
+				{
 				command = EAknSoftkeyExit;
 				txt = STR_dataquota_exit;
 				}
@@ -96,11 +101,43 @@ RESOURCE LOCALISABLE_APP_INFO r_dataquota_localisable_app_info
 		};
 	}
 
+	RESOURCE DIALOG r_dataquota_about_box
+	{
+	flags = EEikDialogFlagNoDrag | EEikDialogFlagCbaButtons | EEikDialogFlagWait;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtPopupHeadingPane;
+			id = EAknMessageQueryHeaderId;
+			control = AVKON_HEADING
+				{
+				headinglayout = R_AVKON_LIST_HEADING_PANE_POPUPS;
+				};
+			},
+		DLG_LINE
+			{
+			type = EAknCtMessageQuery;
+			id = EAknMessageQueryContentId;
+			control = AVKON_MESSAGE_QUERY
+				{
+				message = "";
+				};
+			}
+		};
+	}
+
+
+	
 RESOURCE TBUF r_dataquota_sent		{buf = STR_dataquota_sent;}
 RESOURCE TBUF r_dataquota_rcvd		{buf = STR_dataquota_rcvd;}
 RESOURCE TBUF r_dataquota_used		{buf = STR_dataquota_used;}
 RESOURCE TBUF r_dataquota_day		{buf = STR_dataquota_day;}
 RESOURCE TBUF r_dataquota_seperator	{buf = STR_dataquota_seperator;}
 RESOURCE TBUF r_dataquota_megabyte	{buf = STR_dataquota_megabyte;}
+
+RESOURCE TBUF r_dataquota_about			{buf = STR_dataquota_about;}
+RESOURCE TBUF r_dataquota_about_text	{buf = STR_dataquota_about_text;}
 
 // End of file

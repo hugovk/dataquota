@@ -32,6 +32,8 @@ rls_string STR_dataquota_megabyte " MB"
 
 rls_string STR_dataquota_refresh "Refresh"
 rls_string STR_dataquota_enter_quota "Enter quota"
+rls_string STR_dataquota_about "About"
+rls_string STR_dataquota_about_text "Data Quota "
 rls_string STR_dataquota_exit "Exit"
 
 // End of file
