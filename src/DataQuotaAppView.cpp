@@ -36,7 +36,7 @@ const TInt KDataQuota(20 * KMegabyte);
 const TInt KBarHeight(20);
 
 const TRgb KRgbSent(KRgbBlue);
-const TRgb KRgbRcvd(KRgbGreen);
+const TRgb KRgbRcvd(KRgbDarkGreen);
 const TRgb KRgbNow (KRgbYellow);
 const TRgb KRgbTransparent(0x00, 0x00, 0x00, 0x00);
 
