@@ -38,6 +38,7 @@ const TInt KBarHeight(20);
 const TRgb KRgbSent(KRgbBlue);
 const TRgb KRgbRcvd(KRgbDarkGreen);
 const TRgb KRgbNow (KRgbYellow);
+const TRgb KRgbOver(KRgbRed);
 const TRgb KRgbTransparent(0x00, 0x00, 0x00, 0x00);
 
 _LIT(KSettingsFile, "c:settings.dat");
@@ -153,6 +154,7 @@ void CDataQuotaAppView::DrawRect(const TRect& aRect, const TRgb& aPenColor,
 	CWindowGc& gc = SystemGc();
 	gc.SetDrawMode(CGraphicsContext::EDrawModePEN);
 	gc.SetPenColor(aPenColor);
+	gc.SetPenStyle(CGraphicsContext::ESolidPen);
 	gc.SetBrushColor(aBrushColor);
 	gc.SetBrushStyle(CGraphicsContext::ESolidBrush);
 	gc.DrawRect(aRect);
@@ -176,10 +178,23 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 
 	// Data
 
-	DrawRect(iDataRect,	KRgbBlack,	KRgbWhite);
-	DrawRect(iSentRect,	KRgbSent,	KRgbSent);
-	DrawRect(iRcvdRect, KRgbRcvd,	KRgbRcvd);
-	DrawRect(iDataRect,	KRgbBlack,	KRgbTransparent);
+	DrawRect(iDataRect,	KRgbBlack, KRgbWhite);
+	if (iSentData + iRcvdData < iDataQuota)
+		{
+		DrawRect(iSentRect,	KRgbSent, KRgbSent);
+		DrawRect(iRcvdRect, KRgbRcvd, KRgbRcvd);
+		}
+	else
+		{
+		DrawRect(iSentRect,	KRgbOver, KRgbOver);
+		DrawRect(iRcvdRect, KRgbOver, KRgbOver);
+		}
+	DrawRect(iDataRect,	KRgbBlack, KRgbTransparent);
+
+	gc.SetPenColor(KRgbNow);
+	gc.SetPenStyle(CGraphicsContext::EDottedPen);
+	gc.DrawLine(TPoint(iNowRect.iBr.iX, iDataRect.iTl.iY + 1), 
+				TPoint(iNowRect.iBr.iX, iDataRect.iBr.iY - 1));
 
 	TRealFormat format(5, 2);
 
@@ -200,15 +215,29 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 	TRgb textColour;
     AknsUtils::GetCachedColor(skin, textColour, KAknsIIDQsnTextColors, EAknsCIQsnTextColorsCG6);
 
-	DrawText(sentBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (2 * KBarHeight)), KRgbSent);
-	DrawText(rcvdBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (3 * KBarHeight)), KRgbRcvd);
-	DrawText(usedBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (4 * KBarHeight)), textColour);
+	if (iSentData + iRcvdData < iDataQuota)
+		{
+		DrawText(sentBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (2 * KBarHeight)), KRgbSent);
+		DrawText(rcvdBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (3 * KBarHeight)), KRgbRcvd);
+		DrawText(usedBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (4 * KBarHeight)), textColour);
+		}
+	else
+		{
+		DrawText(sentBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (2 * KBarHeight)), KRgbOver);
+		DrawText(rcvdBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (3 * KBarHeight)), KRgbOver);
+		DrawText(usedBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (4 * KBarHeight)), KRgbOver);
+		}
 
 	// Date
 
 	DrawRect(iDateRect, KRgbBlack,	KRgbWhite);
 	DrawRect(iNowRect,  KRgbNow,	KRgbNow);
 	DrawRect(iDateRect, KRgbBlack,	KRgbTransparent);
+
+	gc.SetPenColor(KRgbRcvd);
+	gc.SetPenStyle(CGraphicsContext::EDottedPen);
+	gc.DrawLine(TPoint(iRcvdRect.iBr.iX, iDateRect.iTl.iY + 1), 
+				TPoint(iRcvdRect.iBr.iX, iDateRect.iBr.iY - 1));
 
 	TBuf<255> nowBuf(*iDayText);
 	nowBuf.AppendNum(iDateTime.Day()+1);
