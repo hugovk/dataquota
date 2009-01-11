@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 
 // UID for the application should match the UID defined in the mmp file
-const TUid KUidDataQuotaApp = {0x20020B55};
+const TUid KUidDataQuotaApp = {0xA000B6EF};
 
 
 CApaDocument* CDataQuotaApplication::CreateDocumentL()
