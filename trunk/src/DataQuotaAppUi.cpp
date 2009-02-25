@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuotaAppView.h"
 #include "DataQuota.hrh"
 
-_LIT(KVersion, "0.1.2");
+_LIT(KVersion, "0.1.3");
 
 void CDataQuotaAppUi::ConstructL()
 	{

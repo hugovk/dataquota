@@ -21,7 +21,7 @@
 &EN
 
 ; standard SIS file header
-#{"Data Quota"},(0xA000B6EF),0,1,2
+#{"Data Quota"},(0xA000B6EF),0,1,3
 
 ;Localised Vendor name
 %{"Data Quota"}
