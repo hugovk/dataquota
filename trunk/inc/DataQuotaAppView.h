@@ -41,6 +41,8 @@ class CDataQuotaAppView : public CCoeControl
 		void UpdateValuesL();
 		TInt DataQuota();
 		void SetDataQuota(TInt aDataQuota);
+		TInt BillingDay();
+		void SetBillingDay(TInt aBillingDay);
 
 	private: // from CCoeControl
 		virtual void SizeChanged();
@@ -68,8 +70,8 @@ class CDataQuotaAppView : public CCoeControl
 					  const TRgb& aBrushColor) const;
 
 		void LoadResourceFileTextL();
-		void LoadQuotaL();
-		void SaveQuotaL();
+		void LoadSettingsL();
+		void SaveSettingsL();
 
 	private:
 
@@ -92,7 +94,9 @@ class CDataQuotaAppView : public CCoeControl
 		TInt iRcvdData;
 
 		TDateTime iDateTime;
-		TInt iDaysThisMonth;
+		TInt iDaysThisPeriod;
+		TInt iBillingDay;
+		TInt iDaysSinceBillingDay;
 
 		TRect iDataRect;
 		TRect iSentRect;
