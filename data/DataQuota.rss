@@ -52,16 +52,15 @@ RESOURCE MENU_BAR r_dataquota_menubar
 	{
 	titles =
 		{
-		MENU_TITLE { menu_pane = r_dataquota_menu; }
+		MENU_TITLE { menu_pane = r_dataquota_menu_pane; }
 		};
 	}
 
 // Options menu
-RESOURCE MENU_PANE r_dataquota_menu
+RESOURCE MENU_PANE r_dataquota_menu_pane
 	{
 	items =
 		{
-		// added the new Options menu command here
 		MENU_ITEM
 				{
 				command = EDataQuotaRefresh;
@@ -69,8 +68,9 @@ RESOURCE MENU_PANE r_dataquota_menu
 				},
 		MENU_ITEM
 				{
-				command = EDataQuotaEnterQuota;
-				txt = STR_dataquota_enter_quota;
+				command = EDataQuotaEdit;
+				txt = STR_dataquota_edit;
+				cascade = r_dataquota_edit_menu_pane;
 				},
 		MENU_ITEM
 				{
@@ -82,6 +82,29 @@ RESOURCE MENU_PANE r_dataquota_menu
 				command = EAknSoftkeyExit;
 				txt = STR_dataquota_exit;
 				}
+		};
+	}
+
+// Edit submenu
+RESOURCE MENU_PANE r_dataquota_edit_menu_pane
+	{
+	items =
+		{
+		MENU_ITEM
+				{
+				command = EDataQuotaEditQuota;
+				txt = STR_dataquota_edit_quota;
+				},
+		MENU_ITEM
+				{
+				command = EDataQuotaEditBillingDay;
+				txt = STR_dataquota_edit_billing_day;
+/*				},
+		MENU_ITEM
+				{
+				command = EDataQuotaEditBillingPeriod;
+				txt = STR_dataquota_edit_billing_period;
+*/				}
 		};
 	}
 

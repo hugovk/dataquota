@@ -74,7 +74,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			}
 			break;
 
-		case EDataQuotaEnterQuota:
+		case EDataQuotaEditQuota:
 			{
 			TInt number(iAppView->DataQuota());
 			CAknNumberQueryDialog* dlg = CAknNumberQueryDialog::NewL(number);
@@ -86,6 +86,54 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			}
 			break;
 
+		case EDataQuotaEditBillingDay:
+			{
+			TInt number(iAppView->BillingDay() + 1);
+			TBool numberValid(EFalse);
+			while (!numberValid)
+				{
+				CAknNumberQueryDialog* dlg = CAknNumberQueryDialog::NewL(number);
+				dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
+				if (dlg->RunLD())
+					{
+					if (number > 0 && number < 32)
+						{
+						iAppView->SetBillingDay(number - 1);
+						numberValid = ETrue;
+						}
+					}
+				else
+					{
+					numberValid = ETrue;
+					}
+				}
+			}
+			break;
+
+/*		case EDataQuotaEditBillingPeriod:
+			{
+			TInt number(iAppView->BillingDay() + 1);
+			TBool numberValid(EFalse);
+			while (!numberValid)
+				{
+				CAknNumberQueryDialog* dlg = CAknNumberQueryDialog::NewL(number);
+				dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
+				if (dlg->RunLD())
+					{
+					if (number > 0 && number < 32)
+						{
+						iAppView->SetBillingDay(number - 1);
+						numberValid = ETrue;
+						}
+					}
+				else
+					{
+					numberValid = ETrue;
+					}
+				}
+			}
+			break;
+*/
 		case EDataQuotaAbout:
 			{
 			// create the header text

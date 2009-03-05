@@ -43,7 +43,6 @@ const TRgb KRgbTransparent(0x00, 0x00, 0x00, 0x00);
 
 _LIT(KSettingsFile, "c:settings.dat");
 
-
 CDataQuotaAppView* CDataQuotaAppView::NewL(const TRect& aRect)
 	{
 	CDataQuotaAppView* self = CDataQuotaAppView::NewLC(aRect);
@@ -63,7 +62,7 @@ CDataQuotaAppView* CDataQuotaAppView::NewLC(const TRect& aRect)
 
 void CDataQuotaAppView::ConstructL(const TRect& aRect)
 	{
-	LoadQuotaL();
+	LoadSettingsL();
 	LoadResourceFileTextL();
 	
 	// Create a window for this application view
@@ -240,9 +239,9 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 				TPoint(iRcvdRect.iBr.iX, iDateRect.iBr.iY - 1));
 
 	TBuf<255> nowBuf(*iDayText);
-	nowBuf.AppendNum(iDateTime.Day()+1);
+	nowBuf.AppendNum(iDaysSinceBillingDay + 1);
 	nowBuf.Append(*iSeperatorText);
-	nowBuf.AppendNum(iDaysThisMonth);
+	nowBuf.AppendNum(iDaysThisPeriod);
 
 	DrawText(nowBuf, TPoint(iDateRect.iTl.iX, iDateRect.iTl.iY + (2 * KBarHeight)), textColour);
 
@@ -297,10 +296,29 @@ if (iRepository)
 	TTime time; // time in microseconds since 0AD nominal Gregorian
 	time.HomeTime(); // set time to home time
 	iDateTime = time.DateTime(); // convert to fields
-	iDaysThisMonth = time.DaysInMonth();
+
+	iDaysSinceBillingDay = 0;
+	TInt billingDay(iBillingDay);
+
+	iDaysThisPeriod = time.DaysInMonth();
+
+	if (billingDay > iDaysThisPeriod)
+		{
+		billingDay = iDaysThisPeriod;
+		}
+
+	if (iDateTime.Day() > billingDay)
+		{
+		iDaysSinceBillingDay = iDateTime.Day() - billingDay;
+		}
+	else if (iDateTime.Day() < billingDay)
+		{
+		iDaysSinceBillingDay = iDateTime.Day() - billingDay + iDaysThisPeriod;
+		}
 
 	iDateRect = TRect(TPoint(KMargin, KDateBarY),	TSize(rectWidth, KBarHeight));
-	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(rectWidth * (iDateTime.Day()+(iDateTime.Hour()/24))/iDaysThisMonth, KBarHeight));
+
+	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(rectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/24))/iDaysThisPeriod, KBarHeight));
 	}
 
 
@@ -332,11 +350,24 @@ TInt CDataQuotaAppView::DataQuota()
 void CDataQuotaAppView::SetDataQuota(TInt aDataQuota)
 	{
 	iDataQuota = aDataQuota * KMegabyte;
-	SaveQuotaL();
+	SaveSettingsL();
 	}
 
 
-void CDataQuotaAppView::LoadQuotaL()
+TInt CDataQuotaAppView::BillingDay()
+	{
+	return iBillingDay;
+	}
+
+
+void CDataQuotaAppView::SetBillingDay(TInt aBillingDay)
+	{
+	iBillingDay = aBillingDay;
+	SaveSettingsL();
+	}
+
+
+void CDataQuotaAppView::LoadSettingsL()
 	{
 	RFile file;
 	CleanupClosePushL(file);
@@ -349,19 +380,21 @@ void CDataQuotaAppView::LoadQuotaL()
 		CleanupClosePushL(readStream);
 
 		iDataQuota = readStream.ReadInt32L();
+		TRAP_IGNORE(iBillingDay = readStream.ReadInt32L());
 
 		CleanupStack::PopAndDestroy(&readStream);
 		}
 	else
 		{
 		iDataQuota = KDataQuota;
+		iBillingDay = 0;
 		}
 
 	CleanupStack::PopAndDestroy(&file);
 	}
 
 
-void CDataQuotaAppView::SaveQuotaL()
+void CDataQuotaAppView::SaveSettingsL()
 	{
 	CCoeEnv::Static()->FsSession().MkDirAll(KSettingsFile);
 
@@ -376,6 +409,7 @@ void CDataQuotaAppView::SaveQuotaL()
 		CleanupClosePushL(writeStream);
 
 		writeStream.WriteInt32L(iDataQuota);
+		writeStream.WriteInt32L(iBillingDay);
 
 		CleanupStack::PopAndDestroy(&writeStream);
 		}
