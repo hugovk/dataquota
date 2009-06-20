@@ -1,0 +1,13 @@
+#summary A summary of changes to Data Quota.
+#labels Phase-Deploy
+
+0.1.4 - Added Turkish.
+
+0.1.3 - Fix for the first part of issue 1 -- edit the billing day (i.e. day zero) in
+case your quota isn't reset on the first of the month.
+
+0.1.2 - Self-signed so you don't need to use Symbian Signed Online.
+
+0.1.1 - Draw dotted lines to show the other bar's position. If you've used more data than the quota allows, draw the data bar and text in red. "Enter quota" -> "Edit quota". 
+
+0.0.1 - First version released.
