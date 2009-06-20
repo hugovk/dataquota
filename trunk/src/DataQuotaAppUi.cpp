@@ -19,16 +19,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 // INCLUDE FILES
-#include <avkon.hrh>
 #include <AknMessageQueryDialog.h>
 #include <AknNoteWrappers.h>
+#include <avkon.hrh>
 #include <DataQuota.rsg>
 
+#include "DataQuota.hrh"
 #include "DataQuotaAppUi.h"
 #include "DataQuotaAppView.h"
-#include "DataQuota.hrh"
 
-_LIT(KVersion, "0.1.3");
+_LIT(KVersion, "0.1.4");
 
 void CDataQuotaAppUi::ConstructL()
 	{

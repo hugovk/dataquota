@@ -67,9 +67,13 @@ LIBRARY			estor.lib
 LIBRARY			euser.lib
 LIBRARY			gdi.lib
 
-LANG SC
+#ifdef WINS
+LANG 01
+#else
+LANG 01 14
+#endif
 
-VENDORID	  	  0
+VENDORID	0
 CAPABILITY	NONE
 
 // End of file
