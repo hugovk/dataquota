@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+0.1.5 - Fixed issue 3: bug with large quota.
+
 0.1.4 - Added Turkish.
 
 0.1.3 - Fix for the first part of issue 1 -- edit the billing day (i.e. day zero) in
