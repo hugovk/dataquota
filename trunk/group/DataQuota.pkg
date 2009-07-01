@@ -17,33 +17,33 @@
 ; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 ; 
 
-;Language - standard language definitions
+; Language - standard language definitions
 &EN, TU
 
-; standard SIS file header
-#{"Data Quota", "Data Quota"}, (0xA000B6EF),0,1,4
+; Standard SIS file header
+#{"Data Quota", "Data Quota"}, (0xA000B6EF),0,1,5
 
-;Localised Vendor name
+; Localised Vendor name
 %{"Data Quota", "Data Quota"}
 
-;Unique Vendor name
+; Unique Vendor name
 :"Data Quota"
 
-;Supports S60 v 3.0
+; Supports S60 v 3.0
 [0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID"}
 
-;Files to install
-"..\..\epoc32\release\gcce\urel\DataQuota.exe" -"!:\sys\bin\DataQuota.exe"
+; Files to install
+"..\..\epoc32\release\gcce\urel\DataQuota.exe" - "!:\sys\bin\DataQuota.exe"
 
 {
 "..\..\epoc32\data\z\resource\apps\DataQuota.r01"
 "..\..\epoc32\data\z\resource\apps\DataQuota.r14"
-} -"!:\resource\apps\DataQuota.rsc"
+} - "!:\resource\apps\DataQuota.rsc"
 
 "..\..\epoc32\data\z\private\10003a3f\import\apps\DataQuota_reg.rsc" -"!:\private\10003a3f\import\apps\DataQuota_reg.rsc"
-"..\..\epoc32\data\z\resource\apps\dataquota_aif.mif" -"!:\resource\apps\dataquota_aif.mif"
+"..\..\epoc32\data\z\resource\apps\dataquota_aif.mif" - "!:\resource\apps\dataquota_aif.mif"
 
-;required for application to be covered by backup/restore facility
-"backup_registration.xml"						-"!:\private\A000B6EF\backup_registration.xml"
+; Required for application to be covered by backup/restore facility
+"backup_registration.xml" - "!:\private\A000B6EF\backup_registration.xml"
 
 ; End of file

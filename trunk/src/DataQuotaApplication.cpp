@@ -19,8 +19,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
 // INCLUDE FILES
-#include "DataQuotaDocument.h"
 #include "DataQuotaApplication.h"
+#include "DataQuotaDocument.h"
 
 
 // UID for the application should match the UID defined in the mmp file
@@ -36,9 +36,9 @@ CApaDocument* CDataQuotaApplication::CreateDocumentL()
 
 
 TUid CDataQuotaApplication::AppDllUid() const
-    {
-    // Return the UID for the DataQuota application
-    return KUidDataQuotaApp;
-    }
+	{
+	// Return the UID for the DataQuota application
+	return KUidDataQuotaApp;
+	}
 
 // End of file

@@ -24,15 +24,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 CDataQuotaDocument* CDataQuotaDocument::NewL(CEikApplication& aApp)
 	{
-	CDataQuotaDocument* self = NewLC(aApp);
+	CDataQuotaDocument* self(NewLC(aApp));
 	CleanupStack::Pop(self);
 	return self;
 	}
 
 CDataQuotaDocument* CDataQuotaDocument::NewLC(CEikApplication& aApp)
 	{
-	CDataQuotaDocument* self = new (ELeave) CDataQuotaDocument(aApp);
-
+	CDataQuotaDocument* self(new (ELeave) CDataQuotaDocument(aApp));
+	
 	CleanupStack::PushL(self);
 	self->ConstructL();
 	return self;

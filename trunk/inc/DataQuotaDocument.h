@@ -30,26 +30,19 @@ class CEikApplication;
 
 // CLASS DECLARATION
 class CDataQuotaDocument : public CAknDocument
-    {
-    public: // Constructors and destructor
+	{
+	public: // Constructors and destructor
+		static CDataQuotaDocument* NewL(CEikApplication& aApp);
+		static CDataQuotaDocument* NewLC(CEikApplication& aApp);
+		virtual ~CDataQuotaDocument();
 
-        static CDataQuotaDocument* NewL(CEikApplication& aApp);
+	public: // Functions from base class
+		CEikAppUi* CreateAppUiL();
 
-        static CDataQuotaDocument* NewLC(CEikApplication& aApp);
-
-        virtual ~CDataQuotaDocument();
-
-    public: // Functions from base class
-
-        CEikAppUi* CreateAppUiL();
-
-    private: // Constructors
-
-        void ConstructL();
-
-        CDataQuotaDocument(CEikApplication& aApp);
-
-    };
+	private: // Constructors
+		void ConstructL();
+		CDataQuotaDocument(CEikApplication& aApp);
+	};
 
 #endif // __DATAQUOTADOCUMENT_H__
 

@@ -28,13 +28,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuotaAppUi.h"
 #include "DataQuotaAppView.h"
 
-_LIT(KVersion, "0.1.4");
+_LIT(KVersion, "0.1.5");
 
 void CDataQuotaAppUi::ConstructL()
 	{
 	// Initialise app UI with standard value
 	BaseConstructL(CAknAppUi::EAknEnableSkin);
-
+	
 	// Create view object
 	iAppView = CDataQuotaAppView::NewL(ClientRect());
 	AddToStackL(iAppView);
@@ -80,9 +80,9 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			CAknNumberQueryDialog* dlg = CAknNumberQueryDialog::NewL(number);
 			dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
 			if (dlg->RunLD())
-			    {
+				{
 				iAppView->SetDataQuota(number);
-			    }
+				}
 			}
 			break;
 
@@ -137,24 +137,22 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 		case EDataQuotaAbout:
 			{
 			// create the header text
-			HBufC* title1 = iEikonEnv->AllocReadResourceLC(R_DATAQUOTA_ABOUT_TEXT);
-			HBufC* title2 = KVersion().AllocLC();
-
-			HBufC* title = HBufC::NewLC(title1->Length() + title2->Length());
+			HBufC* title1(iEikonEnv->AllocReadResourceLC(R_DATAQUOTA_ABOUT_TEXT));
+			HBufC* title2(KVersion().AllocLC());
+			
+			HBufC* title(HBufC::NewLC(title1->Length() + title2->Length()));
 			title->Des().Append(*title1);
 			title->Des().Append(*title2);
-
-
-			CAknMessageQueryDialog* dlg = new(ELeave) CAknMessageQueryDialog();
-
-
+			
+			CAknMessageQueryDialog* dlg(new(ELeave) CAknMessageQueryDialog());
+			
 			// initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
 			dlg->SetMessageTextL(_L("http://code.google.com/p/dataquota/"));
-
+			
 			dlg->RunLD();
-
+			
 			CleanupStack::PopAndDestroy(3); // title, title1, title2
 			}
 			break;
