@@ -27,15 +27,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // CLASS DECLARATION
 
 class CDataQuotaApplication : public CAknApplication
-    {
-    public: // Functions from base class
+	{
+	public: // Functions from base class
+		TUid AppDllUid() const;
 
-        TUid AppDllUid() const;
-
-    protected: // Functions from base class
-
-        CApaDocument* CreateDocumentL();
-    };
+	protected: // Functions from base class
+		CApaDocument* CreateDocumentL();
+	};
 
 #endif // __DATAQUOTAAPPLICATION_H__
 

@@ -74,14 +74,13 @@ class CDataQuotaAppView : public CCoeControl
 		void SaveSettingsL();
 
 	private:
-
-	    // text from resource files
-	    HBufC* iSentText;
-	    HBufC* iRcvdText;
-	    HBufC* iUsedText;
-	    HBufC* iDayText;
-	    HBufC* iSeperatorText;
-	    HBufC* iMegabyteText;
+		// text from resource files
+		HBufC* iSentText;
+		HBufC* iRcvdText;
+		HBufC* iUsedText;
+		HBufC* iDayText;
+		HBufC* iSeperatorText;
+		HBufC* iMegabyteText;
 
 		CRepository*  iRepository;
 		const CFont* iFont;
@@ -104,7 +103,6 @@ class CDataQuotaAppView : public CCoeControl
 
 		TRect iDateRect;
 		TRect iNowRect;
-
 	};
 
 #endif // __DATAQUOTAAPPVIEW_H__

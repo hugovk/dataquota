@@ -120,11 +120,11 @@ RESOURCE LOCALISABLE_APP_INFO r_dataquota_localisable_app_info
 		caption = STR_dataquota_caption_string;
 
 		number_of_icons = 1;
-	   	icon_file = "\\resource\\apps\\Dataquota_aif.mif";
+		icon_file = "\\resource\\apps\\Dataquota_aif.mif";
 		};
 	}
 
-	RESOURCE DIALOG r_dataquota_about_box
+RESOURCE DIALOG r_dataquota_about_box
 	{
 	flags = EEikDialogFlagNoDrag | EEikDialogFlagCbaButtons | EEikDialogFlagWait;
 	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
@@ -152,7 +152,6 @@ RESOURCE LOCALISABLE_APP_INFO r_dataquota_localisable_app_info
 	}
 
 
-	
 RESOURCE TBUF r_dataquota_sent		{buf = STR_dataquota_sent;}
 RESOURCE TBUF r_dataquota_rcvd		{buf = STR_dataquota_rcvd;}
 RESOURCE TBUF r_dataquota_used		{buf = STR_dataquota_used;}
