@@ -383,6 +383,10 @@ void CDataQuotaAppView::LoadSettingsL()
 		CleanupClosePushL(readStream);
 		
 		iDataQuota = readStream.ReadInt32L(); // kilobytes
+		if (iDataQuota < 1)
+			{
+			iDataQuota = 1;
+			}
 		iBillingDay = readStream.ReadInt32L();
 		
 		CleanupStack::PopAndDestroy(&readStream);
