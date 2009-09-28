@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+0.1.6 - Fixed issue 6: Setting quota to zero stops the application working.
+
 0.1.5 - Fixed issue 3: bug with large quota.
 
 0.1.4 - Added Turkish.
