@@ -28,7 +28,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuotaAppUi.h"
 #include "DataQuotaAppView.h"
 
-_LIT(KVersion, "0.1.5");
+_LIT(KVersion, "0.1.6");
+const TInt KMaxQuota(999999);
 
 void CDataQuotaAppUi::ConstructL()
 	{
@@ -77,8 +78,9 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 		case EDataQuotaEditQuota:
 			{
 			TInt number(iAppView->DataQuota());
-			CAknNumberQueryDialog* dlg = CAknNumberQueryDialog::NewL(number);
+			CAknNumberQueryDialog* dlg(CAknNumberQueryDialog::NewL(number));
 			dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
+			dlg->SetMinimumAndMaximum(1, KMaxQuota);
 			if (dlg->RunLD())
 				{
 				iAppView->SetDataQuota(number);
@@ -89,24 +91,13 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 		case EDataQuotaEditBillingDay:
 			{
 			TInt number(iAppView->BillingDay() + 1);
-			TBool numberValid(EFalse);
-			while (!numberValid)
-				{
-				CAknNumberQueryDialog* dlg = CAknNumberQueryDialog::NewL(number);
-				dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
-				if (dlg->RunLD())
+			CAknNumberQueryDialog* dlg(CAknNumberQueryDialog::NewL(number));
+			dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
+			dlg->SetMinimumAndMaximum(1, 31);
+			if (dlg->RunLD())
 					{
-					if (number > 0 && number < 32)
-						{
-						iAppView->SetBillingDay(number - 1);
-						numberValid = ETrue;
-						}
+					iAppView->SetBillingDay(number - 1);
 					}
-				else
-					{
-					numberValid = ETrue;
-					}
-				}
 			}
 			break;
 
