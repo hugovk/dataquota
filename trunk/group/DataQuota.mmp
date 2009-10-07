@@ -25,11 +25,11 @@ UID				0x100039CE 0xA000B6EF
 SECUREID		0xA000B6EF
 EPOCSTACKSIZE	0x5000
 
-SOURCEPATH        ..\src
+SOURCEPATH		..\src
 SOURCE			DataQuota.cpp
 SOURCE			DataQuotaApplication.cpp
-SOURCE			DataQuotaAppView.cpp
 SOURCE			DataQuotaAppUi.cpp
+SOURCE			DataQuotaAppView.cpp
 SOURCE			DataQuotaDocument.cpp
 
 SOURCEPATH		..\data
@@ -70,7 +70,7 @@ LIBRARY			gdi.lib
 #ifdef WINS
 LANG 01
 #else
-LANG 01 14
+LANG 01 14 78
 #endif
 
 VENDORID	0

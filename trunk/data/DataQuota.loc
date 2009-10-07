@@ -33,4 +33,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuota.l14"
 #endif
 
+// Romanian
+#ifdef LANGUAGE_78
+#include "DataQuota.l78"
+#endif
+
 // End of file

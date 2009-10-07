@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuotaAppUi.h"
 #include "DataQuotaAppView.h"
 
-_LIT(KVersion, "0.1.6");
+_LIT(KVersion, "0.1.7");
 const TInt KMaxQuota(999999);
 
 void CDataQuotaAppUi::ConstructL()
@@ -39,6 +39,13 @@ void CDataQuotaAppUi::ConstructL()
 	// Create view object
 	iAppView = CDataQuotaAppView::NewL(ClientRect());
 	AddToStackL(iAppView);
+	
+	// Change the Exit softkey to Refresh
+	HBufC* hideText(CCoeEnv::Static()->AllocReadResourceLC(R_DATAQUOTA_REFRESH));
+	TInt pos(Cba()->PositionById(EAknSoftkeyExit));
+	Cba()->RemoveCommandFromStack(pos, EAknSoftkeyExit);
+	Cba()->SetCommandL(pos, EDataQuotaRefresh, *hideText);
+	CleanupStack::PopAndDestroy(hideText);
 	}
 
 
