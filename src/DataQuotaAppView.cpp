@@ -21,7 +21,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // INCLUDE FILES
 #include <AknsBasicBackgroundControlContext.h>
 #include <AknsDrawUtils.h>
-#include <AknUtils.h> 
+#include <AknUtils.h>
 #include <CoeMain.h>
 #include <DclCRKeys.h>
 #include <s32file.h>

@@ -18,19 +18,19 @@
 ; 
 
 ; Language - standard language definitions
-&EN, TU
+&EN, TU, RO
 
 ; Standard SIS file header
-#{"Data Quota", "Data Quota"}, (0xA000B6EF),0,1,6
+#{"Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),0,1,7
 
 ; Localised Vendor name
-%{"Data Quota", "Data Quota"}
+%{"Data Quota", "Data Quota", "Data Quota"}
 
 ; Unique Vendor name
 :"Data Quota"
 
 ; Supports S60 v 3.0
-[0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID"}
+[0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Files to install
 "..\..\epoc32\release\gcce\urel\DataQuota.exe" - "!:\sys\bin\DataQuota.exe"
@@ -38,6 +38,7 @@
 {
 "..\..\epoc32\data\z\resource\apps\DataQuota.r01"
 "..\..\epoc32\data\z\resource\apps\DataQuota.r14"
+"..\..\epoc32\data\z\resource\apps\DataQuota.r78"
 } - "!:\resource\apps\DataQuota.rsc"
 
 "..\..\epoc32\data\z\private\10003a3f\import\apps\DataQuota_reg.rsc" -"!:\private\10003a3f\import\apps\DataQuota_reg.rsc"

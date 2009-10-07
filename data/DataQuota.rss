@@ -63,11 +63,6 @@ RESOURCE MENU_PANE r_dataquota_menu_pane
 		{
 		MENU_ITEM
 				{
-				command = EDataQuotaRefresh;
-				txt = STR_dataquota_refresh;
-				},
-		MENU_ITEM
-				{
 				command = EDataQuotaEdit;
 				txt = STR_dataquota_edit;
 				cascade = r_dataquota_edit_menu_pane;
@@ -161,5 +156,6 @@ RESOURCE TBUF r_dataquota_megabyte	{buf = STR_dataquota_megabyte;}
 
 RESOURCE TBUF r_dataquota_about			{buf = STR_dataquota_about;}
 RESOURCE TBUF r_dataquota_about_text	{buf = STR_dataquota_about_text;}
+RESOURCE TBUF r_dataquota_refresh		{buf = STR_dataquota_refresh;}
 
 // End of file
