@@ -11,5 +11,6 @@ Thanks very much in advance!
 
 || *Language* || *State* || Subscribe to file changes ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l01 UK English] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l01 Atom] ||
+|| [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l03 German] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l03 Atom] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l78 Romanian] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l78 Atom] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l14 Turkish] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l14 Atom] ||
