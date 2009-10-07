@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuotaAppUi.h"
 #include "DataQuotaAppView.h"
 
-_LIT(KVersion, "0.1.7");
+_LIT(KVersion, "0.1.8");
 const TInt KMaxQuota(999999);
 
 void CDataQuotaAppUi::ConstructL()
@@ -147,7 +147,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			// initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
-			dlg->SetMessageTextL(_L("http://code.google.com/p/dataquota/"));
+			dlg->SetMessageTextL(_L("http://code.google.com/p/dataquota"));
 			
 			dlg->RunLD();
 			
