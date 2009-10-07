@@ -1,0 +1,15 @@
+#summary Translate Data Quota.
+#labels Featured
+
+To update a translation, please copy the contents of the correct file, linked in the table below, and translate the strings in quotes on the right. [http://code.google.com/p/dataquota/issues/entry Create a new issue] and attach the file and we will include it in the next release.
+
+If you want to translate to a language not already in the list below, please do so. You can take any language below as the base language. Again, [http://code.google.com/p/dataquota/issues/entry create a new issue] and attach the file letting us know which language it is and we will include it in the next release.
+
+If possible, please attach the file encoded as "UTF-8 without BOM". We find [http://notepad-plus.sourceforge.net Notepad++] is a very easy application for this.
+
+Thanks very much in advance!
+
+|| *Language* || *State* || Subscribe to file changes ||
+|| [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l01 UK English] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l01 Atom] ||
+|| [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l78 Romanian] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l78 Atom] ||
+|| [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l14 Turkish] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l14 Atom] ||
