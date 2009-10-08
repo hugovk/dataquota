@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+0.1.8 - Added German.
+
 0.1.7 - Added Romanian, and moved Refresh from the Options menu to the right softkey.
 
 0.1.6 - Fixed issue 6: Setting quota to zero stops the application working.
