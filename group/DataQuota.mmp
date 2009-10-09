@@ -25,6 +25,12 @@ UID				0x100039CE 0xA000B6EF
 SECUREID		0xA000B6EF
 EPOCSTACKSIZE	0x5000
 
+#ifdef WINS
+LANG 01
+#else
+LANG 01 03 14 25 76 78
+#endif
+
 SOURCEPATH		..\src
 SOURCE			DataQuota.cpp
 SOURCE			DataQuotaApplication.cpp
@@ -32,21 +38,18 @@ SOURCE			DataQuotaAppUi.cpp
 SOURCE			DataQuotaAppView.cpp
 SOURCE			DataQuotaDocument.cpp
 
-SOURCEPATH		..\data
-
-START RESOURCE	DataQuota.rss
+START RESOURCE	..\data\DataQuota.rss
 HEADER
 TARGETPATH		resource\apps
 END //RESOURCE
 
-START RESOURCE	DataQuota_reg.rss
+START RESOURCE	..\data\DataQuota_reg.rss
 #ifdef WINSCW
 TARGETPATH		\private\10003a3f\apps
 #else
 TARGETPATH		\private\10003a3f\import\apps
 #endif
 END //RESOURCE
-
 
 
 USERINCLUDE		..\inc
@@ -66,12 +69,6 @@ LIBRARY			eikdlg.lib
 LIBRARY			estor.lib
 LIBRARY			euser.lib
 LIBRARY			gdi.lib
-
-#ifdef WINS
-LANG 01
-#else
-LANG 01 03 14 78
-#endif
 
 VENDORID	0
 CAPABILITY	NONE
