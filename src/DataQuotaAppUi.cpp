@@ -28,7 +28,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuotaAppUi.h"
 #include "DataQuotaAppView.h"
 
-_LIT(KVersion, "0.1.9");
+_LIT(KVersion, "0.1.10");
 const TInt KMaxQuota(999999);
 
 void CDataQuotaAppUi::ConstructL()
