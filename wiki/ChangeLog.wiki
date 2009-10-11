@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+0.1.10 - Added Slovak, and put the date and verison in the navipane.
+
 0.1.10 - Added Spanish.
 
 0.1.9 - Added Brazilian Portuguese and Czech.
