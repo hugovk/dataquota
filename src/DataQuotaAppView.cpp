@@ -21,9 +21,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // INCLUDE FILES
 #include <AknsBasicBackgroundControlContext.h>
 #include <AknsDrawUtils.h>
+#include <AknNaviDe.h>
+#include <AknNaviLabel.h>
 #include <AknUtils.h>
 #include <CoeMain.h>
 #include <DclCRKeys.h>
+#include <EikSPane.h>
 #include <s32file.h>
 #include <StringLoader.h>
 
@@ -79,6 +82,14 @@ void CDataQuotaAppView::ConstructL(const TRect& aRect)
 
 	iRepository = CRepository::NewL(KCRUidDCLLogs);
 
+	iNaviContainer = static_cast<CAknNavigationControlContainer*>(iEikonEnv
+							->AppUiFactory()->StatusPane()
+							->ControlL(TUid::Uid(EEikStatusPaneUidNavi)));
+	iNaviLabelDecorator = iNaviContainer->CreateNavigationLabelL();
+	iNaviContainer->PushL(*iNaviLabelDecorator);
+	
+	DoChangePaneTextL();
+
 	// Activate the window, which makes it ready to be drawn
 	ActivateL();
 	UpdateValuesL();
@@ -107,6 +118,9 @@ CDataQuotaAppView::~CDataQuotaAppView()
 	delete iDayText;
 	delete iSeperatorText;
 	delete iMegabyteText;
+
+	iNaviContainer->Pop(iNaviLabelDecorator);
+	delete iNaviLabelDecorator;
 	}
 
 void CDataQuotaAppView::LoadResourceFileTextL()
@@ -162,8 +176,8 @@ void CDataQuotaAppView::DrawRect(const TRect& aRect, const TRgb& aPenColor,
 
 void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 	{
-	// note that the whole screen is drawn everytime, so aRect-parameter
-	// is ignored
+	// Note that the whole screen is drawn everytime, 
+	// so aRect-parameter is ignored
 
 	// Get the standard graphics context
 	CWindowGc& gc(SystemGc());
@@ -449,6 +463,24 @@ void CDataQuotaAppView::SaveSettingsL()
 		}
 	
 	CleanupStack::PopAndDestroy(&file);
+	}
+
+void CDataQuotaAppView::DoChangePaneTextL() const
+	{
+	TBuf<255> stateText;
+	
+	TTime time;
+	time.HomeTime(); // set time to home time
+	_LIT(KFormatTxt,"%/0%1%/1%2%/2%3%/3");
+	time.FormatL(stateText, KFormatTxt); 
+	
+	stateText.Append(_L(" - "));
+	stateText.Append(KVersion);
+	
+	static_cast<CAknNaviLabel*>(iNaviLabelDecorator->DecoratedControl())->
+														SetTextL(stateText);
+	iNaviContainer->Pop();
+	iNaviContainer->PushL(*iNaviLabelDecorator);
 	}
 
 // End of file
