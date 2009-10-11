@@ -21,9 +21,16 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #ifndef __DATAQUOTAAPPVIEW_H__
 #define __DATAQUOTAAPPVIEW_H__
 
+// CONSTANTS
+_LIT(KVersion, "0.1.11");
+
 // INCLUDES
 #include <centralrepository.h>
 #include <coecntrl.h>
+
+// FORWARD DECLARATIONS
+class CAknNavigationControlContainer;
+class CAknNavigationDecorator;
 
 // CLASS DECLARATION
 class CDataQuotaAppView : public CCoeControl
@@ -73,6 +80,8 @@ class CDataQuotaAppView : public CCoeControl
 		void LoadSettingsL();
 		void SaveSettingsL();
 
+		void DoChangePaneTextL() const;
+
 	private:
 		// text from resource files
 		HBufC* iSentText;
@@ -103,6 +112,9 @@ class CDataQuotaAppView : public CCoeControl
 
 		TRect iDateRect;
 		TRect iNowRect;
+
+		CAknNavigationControlContainer *iNaviContainer;
+		CAknNavigationDecorator* iNaviLabelDecorator;
 	};
 
 #endif // __DATAQUOTAAPPVIEW_H__
