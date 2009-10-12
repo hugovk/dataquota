@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __DATAQUOTAAPPVIEW_H__
 
 // CONSTANTS
-_LIT(KVersion, "0.1.11");
+_LIT(KVersion, "1.0.12");
 
 // INCLUDES
 #include <centralrepository.h>
