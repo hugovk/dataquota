@@ -38,6 +38,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuota.l04"
 #endif
 
+// Swedish
+#ifdef LANGUAGE_06
+#include "DataQuota.l06"
+#endif
+
 // Turkish
 #ifdef LANGUAGE_14
 #include "DataQuota.l14"
@@ -51,6 +56,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // Slovak
 #ifdef LANGUAGE_26
 #include "DataQuota.l26"
+#endif
+
+// Chinese (People's Republic of China)
+#ifdef LANGUAGE_31
+#include "DataQuota.l31"
 #endif
 
 // Brazilian Portuguese
