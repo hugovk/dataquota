@@ -23,12 +23,14 @@ NAME DAQO    // 4 letter ID
 
 
 //  INCLUDES
-#include <eikon.rh>
+#include <appinfo.rh>
 #include <avkon.rh>
 #include <avkon.rsg>
-#include <appinfo.rh>
+#include <eikon.rh>
 #include "DataQuota.hrh"
 #include "Dataquota.loc"
+
+CHARACTER_SET UTF8
 
 //  RESOURCE DEFINITIONS
 

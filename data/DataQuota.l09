@@ -1,5 +1,5 @@
 /*
-DataQuota.l04 - Spanish
+DataQuota.l09 - Finnish
 
 Data Quota for S60 phones.
 
@@ -22,20 +22,20 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 rls_string STR_dataquota_caption_string "Data Quota"
 
-rls_string STR_dataquota_sent "Enviado: "
-rls_string STR_dataquota_rcvd "Recibido: "
-rls_string STR_dataquota_used "Uso total: "
-rls_string STR_dataquota_day "Día: "
+rls_string STR_dataquota_sent "Lähetetty: "
+rls_string STR_dataquota_rcvd "Saapunut: "
+rls_string STR_dataquota_used "Kokonaiskulutus: "
+rls_string STR_dataquota_day "Päivä: "
 rls_string STR_dataquota_seperator " / "
-rls_string STR_dataquota_megabyte " MB"
+rls_string STR_dataquota_megabyte " Mt"
 
-rls_string STR_dataquota_refresh "Actualizar"
-rls_string STR_dataquota_edit "Editar"
-rls_string STR_dataquota_edit_quota "Límite"
-rls_string STR_dataquota_edit_billing_day "Día de facturación"
-//rls_string STR_dataquota_edit_billing_period "Período de facturación"
-rls_string STR_dataquota_about "Acerca de"
+rls_string STR_dataquota_refresh "Päivitä"
+rls_string STR_dataquota_edit "Muokkaa"
+rls_string STR_dataquota_edit_quota "Kiintiö"
+rls_string STR_dataquota_edit_billing_day "Laskutuspäivä"
+//rls_string STR_dataquota_edit_billing_period "Laskutuskausi"
+rls_string STR_dataquota_about "Tietoja sovelluksesta"
 rls_string STR_dataquota_about_text "Data Quota "
-rls_string STR_dataquota_exit "Salir"
+rls_string STR_dataquota_exit "Poistu"
 
 // End of file

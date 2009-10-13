@@ -21,7 +21,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 // LOCALISATION STRINGS
 
 rls_string STR_dataquota_caption_string "Data Quota"
-rls_string STR_dataquota_short_caption_string "Data Quota"
 
 rls_string STR_dataquota_sent "Skickat: "
 rls_string STR_dataquota_rcvd "Mottaget: "

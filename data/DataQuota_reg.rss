@@ -22,6 +22,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <appinfo.rh>
 #include <Dataquota.rsg>
 
+CHARACTER_SET UTF8
+
 UID2 KUidAppRegistrationResourceFile
 UID3 0xA000B6EF
 
