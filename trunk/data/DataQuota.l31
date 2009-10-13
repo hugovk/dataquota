@@ -18,10 +18,9 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 */
 
-//  LOCALISATION STRINGS
+// LOCALISATION STRINGS
 
 rls_string STR_dataquota_caption_string "数据配额"
-rls_string STR_dataquota_short_caption_string "数据配额"
 
 rls_string STR_dataquota_sent "已发出: "
 rls_string STR_dataquota_rcvd "已接收: "
@@ -36,7 +35,7 @@ rls_string STR_dataquota_edit_quota "流量上限"
 rls_string STR_dataquota_edit_billing_day "结算日期"
 //rls_string STR_dataquota_edit_billing_period "Billing period"
 rls_string STR_dataquota_about "关于"
-rls_string STR_dataquota_about_text "Data Quota"
+rls_string STR_dataquota_about_text "Data Quota "
 rls_string STR_dataquota_exit "退出"
 
 // End of file

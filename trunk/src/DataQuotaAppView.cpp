@@ -467,15 +467,16 @@ void CDataQuotaAppView::SaveSettingsL()
 
 void CDataQuotaAppView::DoChangePaneTextL() const
 	{
-	TBuf<255> stateText;
+	TBuf<255> dateText;
 	
 	TTime time;
 	time.HomeTime(); // set time to home time
-	_LIT(KFormatTxt,"%/0%1%/1%2%/2%3%/3");
-	time.FormatL(stateText, KFormatTxt); 
+	_LIT(KDateFormat, "%/0%1%/1%2%/2%3%/3");
+	time.FormatL(dateText, KDateFormat); 
 	
+	TBuf<255> stateText(KVersion);
 	stateText.Append(_L(" - "));
-	stateText.Append(KVersion);
+	stateText.Append(dateText);
 	
 	static_cast<CAknNaviLabel*>(iNaviLabelDecorator->DecoratedControl())->
 														SetTextL(stateText);
