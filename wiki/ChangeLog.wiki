@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+1.14(0) Added Finnish, and fixed non-Latin character encoding (issue 14)
+
 1.00(12) - Added Swedish and Chinese PRC.
 
 0.1.11 - Added Slovak, and put the date and verison in the navipane.
