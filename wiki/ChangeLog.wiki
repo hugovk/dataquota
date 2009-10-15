@@ -1,7 +1,9 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
-1.14(0) Added Finnish, and fixed non-Latin character encoding (issue 14)
+1.15(0) Added Serbian, and http://twitter.com/DataQuota to the About box.
+
+1.14(0) Added Finnish, and fixed non-Latin character encoding (issue 14).
 
 1.00(12) - Added Swedish and Chinese PRC.
 
