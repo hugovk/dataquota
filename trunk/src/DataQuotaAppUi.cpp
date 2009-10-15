@@ -133,7 +133,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 */
 		case EDataQuotaAbout:
 			{
-			// create the header text
+			// Create the header text
 			HBufC* title1(iEikonEnv->AllocReadResourceLC(R_DATAQUOTA_ABOUT_TEXT));
 			HBufC* title2(KVersion().AllocLC());
 			
@@ -143,10 +143,10 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			
 			CAknMessageQueryDialog* dlg(new(ELeave) CAknMessageQueryDialog());
 			
-			// initialise the dialog
+			// Initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
-			dlg->SetMessageTextL(_L("http://code.google.com/p/dataquota"));
+			dlg->SetMessageTextL(_L("code.google.com/p/dataquota\ntwitter.com/DataQuota"));
 			
 			dlg->RunLD();
 			
