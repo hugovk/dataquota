@@ -284,19 +284,19 @@ void CDataQuotaAppView::UpdateValuesL()
 	iSentData = 0100 * KKilobyte;
 	iRcvdData = 2400 * KKilobyte;
 #else
-if (iRepository)
-	{
-	TBuf<50> bytes;
-	User::LeaveIfError(iRepository->Get(KLogsGPRSSentCounter, bytes));
-	TLex lex(bytes);
-	User::LeaveIfError(lex.Val(iSentData));
-	iSentData /= KKilobyte; // Convert bytes to kilobytes
-	
-	User::LeaveIfError(iRepository->Get(KLogsGPRSReceivedCounter, bytes));
-	lex = bytes;
-	User::LeaveIfError(lex.Val(iRcvdData));
-	iRcvdData /= KKilobyte; // Convert bytes to kilobytes
-	}
+	if (iRepository)
+		{
+		TBuf<50> bytes;
+		User::LeaveIfError(iRepository->Get(KLogsGPRSSentCounter, bytes));
+		TLex lex(bytes);
+		User::LeaveIfError(lex.Val(iSentData));
+		iSentData /= KKilobyte; // Convert bytes to kilobytes
+		
+		User::LeaveIfError(iRepository->Get(KLogsGPRSReceivedCounter, bytes));
+		lex = bytes;
+		User::LeaveIfError(lex.Val(iRcvdData));
+		iRcvdData /= KKilobyte; // Convert bytes to kilobytes
+		}
 #endif
 
 	// MB are too small, bytes are too big, KB are just right

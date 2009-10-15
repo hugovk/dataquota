@@ -78,4 +78,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuota.l78"
 #endif
 
+// Serbian
+#ifdef LANGUAGE_79
+#include "DataQuota.l79"
+#endif
+
 // End of file
