@@ -20,15 +20,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
 // INCLUDE FILES
 #include <AknMessageQueryDialog.h>
-#include <AknNoteWrappers.h>
-#include <avkon.hrh>
 #include <DataQuota.rsg>
 
 #include "DataQuota.hrh"
 #include "DataQuotaAppUi.h"
 #include "DataQuotaAppView.h"
-
-const TInt KMaxQuota(999999);
 
 void CDataQuotaAppUi::ConstructL()
 	{
@@ -83,26 +79,29 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 
 		case EDataQuotaEditQuota:
 			{
+			const TInt KMaxQuota(999999);
 			TInt number(iAppView->DataQuota());
 			CAknNumberQueryDialog* dlg(CAknNumberQueryDialog::NewL(number));
 			dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
 			dlg->SetMinimumAndMaximum(1, KMaxQuota);
 			if (dlg->RunLD())
 				{
-				iAppView->SetDataQuota(number);
+				iAppView->SetDataQuotaL(number);
 				}
 			}
 			break;
 
 		case EDataQuotaEditBillingDay:
 			{
+			const TInt KMinBillingDay(1);
+			const TInt KMaxBillingDay(31);
 			TInt number(iAppView->BillingDay() + 1);
 			CAknNumberQueryDialog* dlg(CAknNumberQueryDialog::NewL(number));
 			dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
-			dlg->SetMinimumAndMaximum(1, 31);
+			dlg->SetMinimumAndMaximum(KMinBillingDay, KMaxBillingDay);
 			if (dlg->RunLD())
 					{
-					iAppView->SetBillingDay(number - 1);
+					iAppView->SetBillingDayL(number - 1);
 					}
 			}
 			break;
@@ -146,7 +145,8 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			// Initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
-			dlg->SetMessageTextL(_L("code.google.com/p/dataquota\ntwitter.com/DataQuota"));
+			_LIT(KMessage, "code.google.com/p/dataquota\ntwitter.com/DataQuota");
+			dlg->SetMessageTextL(KMessage);
 			
 			dlg->RunLD();
 			

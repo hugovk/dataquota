@@ -1,0 +1,41 @@
+/*
+DataQuota.l16 - Russian
+
+Data Quota for S60 phones.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+//  LOCALISATION STRINGS
+
+rls_string STR_dataquota_caption_string "Data Quota"
+
+rls_string STR_dataquota_sent "Передано: "
+rls_string STR_dataquota_rcvd "Принято: "
+rls_string STR_dataquota_used "Общий: "
+rls_string STR_dataquota_day "День: "
+rls_string STR_dataquota_seperator " / "
+rls_string STR_dataquota_megabyte " MB"
+
+rls_string STR_dataquota_refresh "Обновить"
+rls_string STR_dataquota_edit "Изменить"
+rls_string STR_dataquota_edit_quota "Лимит"
+rls_string STR_dataquota_edit_billing_day "Расчетный день"
+//rls_string STR_dataquota_edit_billing_period "Расчетный период"
+rls_string STR_dataquota_about "О программе"
+rls_string STR_dataquota_about_text "Data Quota "
+rls_string STR_dataquota_exit "Выход"
+
+// End of file
