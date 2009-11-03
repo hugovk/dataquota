@@ -17,7 +17,9 @@ Thanks very much in advance!
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l09 Finnish] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l09 Atom] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l03 German] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l03 Atom] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l17 Hungarian] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l17 Atom] ||
+|| [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l05 Italian] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l05 Atom] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l78 Romanian] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l78 Atom] ||
+|| [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l16 Russian] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l16 Atom] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l79 Serbian] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l79 Atom] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l26 Slovak] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l26 Atom] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l04 Spanish] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l04 Atom] ||
