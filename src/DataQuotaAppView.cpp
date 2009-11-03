@@ -24,7 +24,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include <AknNaviDe.h>
 #include <AknNaviLabel.h>
 #include <AknUtils.h>
-#include <CoeMain.h>
+#include <centralrepository.h>
 #include <DclCRKeys.h>
 #include <EikSPane.h>
 #include <s32file.h>
@@ -36,6 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 const TInt KKilobyte(1024);
 const TInt KDataQuota(20 * KKilobyte);
 const TInt KBarHeight(20);
+const TInt KMaxChars(255);
 
 const TRgb KRgbSent(KRgbBlue);
 const TRgb KRgbRcvd(KRgbDarkGreen);
@@ -106,7 +107,7 @@ CDataQuotaAppView::~CDataQuotaAppView()
 	{
 	delete iBackground;
 
-	if(iRepository)
+	if (iRepository)
 		{
 		delete iRepository;
 		iRepository = NULL;
@@ -140,8 +141,6 @@ void CDataQuotaAppView::DrawText(const TDesC& aText, const TPoint& aPoint,
 	CWindowGc& gc(SystemGc());
 	gc.SetDrawMode(CGraphicsContext::EDrawModePEN);
 	gc.SetPenColor(aPenColor);
-	gc.SetBrushColor(TRgb(255, 255, 255, 0));
-	gc.SetBrushStyle(CGraphicsContext::ENullBrush);
 	gc.DrawText(aText, aPoint);
 	}
 
@@ -154,8 +153,6 @@ void CDataQuotaAppView::DrawText(const TDesC& aText, const TRect& aRect,
 	CWindowGc& gc(SystemGc());
 	gc.SetDrawMode(CGraphicsContext::EDrawModePEN);
 	gc.SetPenColor(aPenColor);
-	gc.SetBrushColor(TRgb(255, 255, 255, 0));
-	gc.SetBrushStyle(CGraphicsContext::ENullBrush);
 	gc.DrawText(aText, aRect, aRect.Height() - iFont->DescentInPixels() - 1, 
 				aTextAlign, aOffset);
 	}
@@ -191,15 +188,15 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 
 	// Data
 
-	DrawRect(iDataRect,	KRgbBlack, KRgbWhite);
+	DrawRect(iDataRect, KRgbBlack, KRgbWhite);
 	if (iSentData + iRcvdData < iDataQuota)
 		{
-		DrawRect(iSentRect,	KRgbSent, KRgbSent);
+		DrawRect(iSentRect, KRgbSent, KRgbSent);
 		DrawRect(iRcvdRect, KRgbRcvd, KRgbRcvd);
 		}
 	else
 		{
-		DrawRect(iSentRect,	KRgbOver, KRgbOver);
+		DrawRect(iSentRect, KRgbOver, KRgbOver);
 		DrawRect(iRcvdRect, KRgbOver, KRgbOver);
 		}
 	DrawRect(iDataRect,	KRgbBlack, KRgbTransparent);
@@ -212,15 +209,15 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 	 // "XXX,XXX.XX", 999,999.99 MB = 976.56249 GB
 	TRealFormat format(10, 2);
 
-	TBuf<255> sentBuf(*iSentText);
+	TBuf<KMaxChars> sentBuf(*iSentText);
 	sentBuf.AppendNum(iSentData / (TReal)KKilobyte, format);
 	sentBuf.Append(*iMegabyteText);
 
-	TBuf<255> rcvdBuf(*iRcvdText);
+	TBuf<KMaxChars> rcvdBuf(*iRcvdText);
 	rcvdBuf.AppendNum(iRcvdData / (TReal)KKilobyte, format);
 	rcvdBuf.Append(*iMegabyteText);
 
-	TBuf<255> usedBuf(*iUsedText);
+	TBuf<KMaxChars> usedBuf(*iUsedText);
 	usedBuf.AppendNum((iSentData + iRcvdData) / (TReal)KKilobyte, format);
 	usedBuf.Append(*iSeperatorText);
 	usedBuf.AppendNum(iDataQuota / (TReal)KKilobyte, format);
@@ -244,16 +241,16 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 
 	// Date
 
-	DrawRect(iDateRect, KRgbBlack,	KRgbWhite);
-	DrawRect(iNowRect,  KRgbNow,	KRgbNow);
-	DrawRect(iDateRect, KRgbBlack,	KRgbTransparent);
+	DrawRect(iDateRect, KRgbBlack, KRgbWhite);
+	DrawRect(iNowRect,  KRgbNow,   KRgbNow);
+	DrawRect(iDateRect, KRgbBlack, KRgbTransparent);
 
 	gc.SetPenColor(KRgbRcvd);
 	gc.SetPenStyle(CGraphicsContext::EDottedPen);
 	gc.DrawLine(TPoint(iRcvdRect.iBr.iX, iDateRect.iTl.iY + 1), 
 				TPoint(iRcvdRect.iBr.iX, iDateRect.iBr.iY - 1));
 
-	TBuf<255> nowBuf(*iDayText);
+	TBuf<KMaxChars> nowBuf(*iDayText);
 	nowBuf.AppendNum(iDaysSinceBillingDay + 1);
 	nowBuf.Append(*iSeperatorText);
 	nowBuf.AppendNum(iDaysThisPeriod);
@@ -281,12 +278,15 @@ void CDataQuotaAppView::UpdateValuesL()
 	// Data
 
 #ifdef __WINS__
-	iSentData = 0100 * KKilobyte;
-	iRcvdData = 2400 * KKilobyte;
+	const TInt KSentData(0100);
+	const TInt KRcvdData(0100);
+	iSentData = KSentData * KKilobyte;
+	iRcvdData = KRcvdData * KKilobyte;
 #else
 	if (iRepository)
 		{
-		TBuf<50> bytes;
+		const TInt KSize(50);
+		TBuf<KSize> bytes;
 		User::LeaveIfError(iRepository->Get(KLogsGPRSSentCounter, bytes));
 		TLex lex(bytes);
 		User::LeaveIfError(lex.Val(iSentData));
@@ -329,9 +329,9 @@ void CDataQuotaAppView::UpdateValuesL()
 		iDaysSinceBillingDay = iDateTime.Day() - billingDay + iDaysThisPeriod;
 		}
 	
+	const TInt KHoursInDay(24);
 	iDateRect = TRect(TPoint(KMargin, KDateBarY),	TSize(rectWidth, KBarHeight));
-	
-	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(rectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/24))/iDaysThisPeriod, KBarHeight));
+	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(rectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/KHoursInDay))/iDaysThisPeriod, KBarHeight));
 	}
 
 
@@ -360,7 +360,7 @@ TInt CDataQuotaAppView::DataQuota()
 	}
 
 
-void CDataQuotaAppView::SetDataQuota(TInt aDataQuota)
+void CDataQuotaAppView::SetDataQuotaL(TInt aDataQuota)
 	{
 	iDataQuota = aDataQuota * KKilobyte;
 	SaveSettingsL();
@@ -373,7 +373,7 @@ TInt CDataQuotaAppView::BillingDay()
 	}
 
 
-void CDataQuotaAppView::SetBillingDay(TInt aBillingDay)
+void CDataQuotaAppView::SetBillingDayL(TInt aBillingDay)
 	{
 	iBillingDay = aBillingDay;
 	SaveSettingsL();
@@ -467,15 +467,16 @@ void CDataQuotaAppView::SaveSettingsL()
 
 void CDataQuotaAppView::DoChangePaneTextL() const
 	{
-	TBuf<255> dateText;
+	TBuf<KMaxChars> dateText;
 	
 	TTime time;
 	time.HomeTime(); // set time to home time
 	_LIT(KDateFormat, "%/0%1%/1%2%/2%3%/3");
 	time.FormatL(dateText, KDateFormat); 
 	
-	TBuf<255> stateText(KVersion);
-	stateText.Append(_L(" - "));
+	TBuf<KMaxChars> stateText(KVersion);
+	_LIT(KSpace, " - ");
+	stateText.Append(KSpace);
 	stateText.Append(dateText);
 	
 	static_cast<CAknNaviLabel*>(iNaviLabelDecorator->DecoratedControl())->

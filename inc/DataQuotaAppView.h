@@ -22,15 +22,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __DATAQUOTAAPPVIEW_H__
 
 // CONSTANTS
-_LIT(KVersion, "1.16(0)");
-
-// INCLUDES
-#include <centralrepository.h>
-#include <coecntrl.h>
+_LIT(KVersion, "1.17(0)");
 
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
 class CAknNavigationDecorator;
+class CRepository;
 
 // CLASS DECLARATION
 class CDataQuotaAppView : public CCoeControl
@@ -47,9 +44,9 @@ class CDataQuotaAppView : public CCoeControl
 	public: // New methods
 		void UpdateValuesL();
 		TInt DataQuota();
-		void SetDataQuota(TInt aDataQuota);
+		void SetDataQuotaL(TInt aDataQuota);
 		TInt BillingDay();
-		void SetBillingDay(TInt aBillingDay);
+		void SetBillingDayL(TInt aBillingDay);
 
 	private: // from CCoeControl
 		virtual void SizeChanged();
@@ -61,7 +58,7 @@ class CDataQuotaAppView : public CCoeControl
 		void ConstructL(const TRect& aRect);
 		CDataQuotaAppView();
 
-	// Drawing helper methods
+		// Drawing helper methods
 		void DrawText(const TDesC& aText, 
 					  const TPoint& aPoint, 
 					  const TRgb& aPenColor) const;
