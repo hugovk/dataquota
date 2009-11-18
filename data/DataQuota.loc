@@ -28,6 +28,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuota.l01"
 #endif
 
+// French
+#ifdef LANGUAGE_02
+#include "DataQuota.l02"
+#endif
+
 // German
 #ifdef LANGUAGE_03
 #include "DataQuota.l03"
