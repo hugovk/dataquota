@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+1.19 - Added French.
+
 1.18 - Russian and Turkish fixed.
 
 1.17(0) - Added Italian and Russian.
