@@ -18,28 +18,29 @@
 ; 
 
 ; Language - standard language definitions
-&EN, GE, SP, IT, SW, FI, TU, RU, HU, CS, SK, ZH, BP, RO, SR
+&EN, FR, GE, SP, IT, SW, FI, TU, RU, HU, CS, SK, ZH, BP, RO, SR
 
 ; Standard SIS file header
-#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),1,18,0
+#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),1,19,0
 
 ; Localised Vendor name
-%{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
+%{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
 
 ; Unique Vendor name
 :"Data Quota"
 
 ; Supports S60 v 3.0
-[0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+[0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Supports S60 release 5.0
-[0x1028315F], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+[0x1028315F], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Files to install
 "..\..\epoc32\release\gcce\urel\DataQuota.exe" - "!:\sys\bin\DataQuota.exe"
 
 {
 "..\..\epoc32\data\z\resource\apps\DataQuota.r01"
+"..\..\epoc32\data\z\resource\apps\DataQuota.r02"
 "..\..\epoc32\data\z\resource\apps\DataQuota.r03"
 "..\..\epoc32\data\z\resource\apps\DataQuota.r04"
 "..\..\epoc32\data\z\resource\apps\DataQuota.r05"
