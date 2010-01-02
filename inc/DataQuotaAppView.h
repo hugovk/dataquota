@@ -22,7 +22,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #define __DATAQUOTAAPPVIEW_H__
 
 // CONSTANTS
-_LIT(KVersion, "1.20");
+_LIT(KVersion, "1.21");
 
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
