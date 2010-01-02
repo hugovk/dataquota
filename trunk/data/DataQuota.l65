@@ -1,0 +1,41 @@
+/*
+DataQuota.l65 - Korean
+
+Data Quota for S60 phones.
+
+This program is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+*/
+
+//  LOCALISATION STRINGS
+
+rls_string STR_dataquota_caption_string "Data Quota"
+
+rls_string STR_dataquota_sent "보냄: "
+rls_string STR_dataquota_rcvd "받음: "
+rls_string STR_dataquota_used "전체 사용량: "
+rls_string STR_dataquota_day "날짜: "
+rls_string STR_dataquota_seperator " / "
+rls_string STR_dataquota_megabyte " MB"
+
+rls_string STR_dataquota_refresh "새로고침"
+rls_string STR_dataquota_edit "고치기"
+rls_string STR_dataquota_edit_quota "최대 사용량"
+rls_string STR_dataquota_edit_billing_day "요금 정산일"
+//rls_string STR_dataquota_edit_billing_period "Billing period"
+rls_string STR_dataquota_about "이 프로그램은..."
+rls_string STR_dataquota_about_text "Data Quota "
+rls_string STR_dataquota_exit "끝내기"
+
+// End of file
