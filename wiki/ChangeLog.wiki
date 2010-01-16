@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+1.22 - Updated the certificate used for self-signing. The previous was only valid for one year and expired on 11th January 2010. The new one is valid for 10 years and expires 14th January 2020.
+
 1.21 - Added Korean.
 
 1.20 - Added Greek.
