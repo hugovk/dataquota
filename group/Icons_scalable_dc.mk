@@ -44,7 +44,7 @@ CLEANLIB : do_nothing
 
 RESOURCE :
 	mifconv $(ICONTARGETFILENAME) \
-		/c32 $(ICONDIR)\qgn_menu_dataquota.svg
+		/X /c32 $(ICONDIR)\qgn_menu_dataquota.svg
 
 FREEZE : do_nothing
 
