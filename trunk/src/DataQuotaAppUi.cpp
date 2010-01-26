@@ -145,7 +145,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			// Initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
-			_LIT(KMessage, "code.google.com/p/dataquota\ntwitter.com/DataQuota");
+			_LIT(KMessage, "Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
 			dlg->SetMessageTextL(KMessage);
 			
 			dlg->RunLD();
