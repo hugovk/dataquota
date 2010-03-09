@@ -83,6 +83,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 #include "DataQuota.l26"
 #endif
 
+// Polish
+#ifdef LANGUAGE_27
+#include "DataQuota.l27"
+#endif
+
 // Chinese (People's Republic of China)
 #ifdef LANGUAGE_31
 #include "DataQuota.l31"
