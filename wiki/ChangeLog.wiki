@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+1.24 - Added Polish and updated Italian.
+
 1.23 - Fixed missing application icon on S60 3rd Edition devices (e.g. Nokia E62, E70, N71). Verified with E70 using RDA. The application is built using an S60 3.2 SDK, and S60 3.0 devices can't read the compressed MIF files it builds. The fix is to include the /X switch for mifconv. This is a known issue for the 3.1 SDK that affects this subsequent SDK:
 http://wiki.forum.nokia.com/index.php/KIS000531_-_Compatibility_problem_with_binary-encoded_SVG_images
 
