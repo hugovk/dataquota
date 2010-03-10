@@ -5,6 +5,8 @@ To update a translation, please copy the contents of the correct file, linked in
 
 If you want to translate to a language not already in the list below, please do so. You can take any language below as the base language. Please [http://code.google.com/p/dataquota/issues/entry create a new issue] and attach the file letting us know which language it is and we will include it in the next release.
 
+Please add a copyright line at the top with the year and your name.
+
 If possible, please attach the file encoded as "UTF-8 without BOM". We find [http://notepad-plus.sourceforge.net Notepad++] is a very easy application for this.
 
 Thanks very much in advance!
