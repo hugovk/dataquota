@@ -1,6 +1,8 @@
 ; DataQuota.pkg
 ;
 ; Data Quota for S60 phones.
+; http://code.google.com/p/dataquota/
+; Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
 ; 
 ; This program is free software; you can redistribute it and/or
 ; modify it under the terms of the GNU General Public License
@@ -18,22 +20,22 @@
 ; 
 
 ; Language - standard language definitions
-&EN, FR, GE, SP, IT, SW, FI, TU, RU, HU, CS, SK, PL, ZH, EL, KO, BP, RO, SR
+&EN, FR, GE, SP, IT, SW, FI, TU, RU, HU, CS, SK, PL, ZH, EL, KO, BP, RO, SR, UK
 
 ; Standard SIS file header
-#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),1,24,0
+#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),1,25,0
 
 ; Localised Vendor name
-%{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
+%{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
 
 ; Unique Vendor name
 :"Data Quota"
 
 ; Supports S60 v 3.0
-[0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+[0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Supports S60 release 5.0
-[0x1028315F], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+[0x1028315F], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Files to install
 "..\..\epoc32\release\gcce\urel\DataQuota.exe" - "!:\sys\bin\DataQuota.exe"
@@ -58,6 +60,7 @@
 "..\..\epoc32\data\z\resource\apps\DataQuota.r76"
 "..\..\epoc32\data\z\resource\apps\DataQuota.r78"
 "..\..\epoc32\data\z\resource\apps\DataQuota.r79"
+"..\..\epoc32\data\z\resource\apps\DataQuota.r93"
 } - "!:\resource\apps\DataQuota.rsc"
 
 "..\..\epoc32\data\z\private\10003a3f\import\apps\DataQuota_reg.rsc" -"!:\private\10003a3f\import\apps\DataQuota_reg.rsc"
