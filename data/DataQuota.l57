@@ -1,11 +1,10 @@
 /*
-DataQuota.l27 - Polish
+DataQuota.l57 - Hebrew
 
 Data Quota for S60 phones.
 http://code.google.com/p/dataquota/
 Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
-Copyright (C) 2010  jarek571
-Copyright (C) 2010  misiooooooo
+Copyright (C) 2010  Guy Oliver
 
 This file is part of Data Quota.
 
@@ -25,22 +24,22 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 
 //  LOCALISATION STRINGS
 
-rls_string STR_dataquota_caption_string "Data Quota"
+rls_string STR_dataquota_caption_string "מכסת מידע"
 
-rls_string STR_dataquota_sent "Wysłane: "
-rls_string STR_dataquota_rcvd "Odebrane: "
-rls_string STR_dataquota_used "Zużycie całkowite: "
-rls_string STR_dataquota_day "Dzień: "
+rls_string STR_dataquota_sent "נשלח: "
+rls_string STR_dataquota_rcvd "התקבל: "
+rls_string STR_dataquota_used "סה"כ בשימוש: "
+rls_string STR_dataquota_day "יום: "
 rls_string STR_dataquota_seperator " / "
 rls_string STR_dataquota_megabyte " MB"
 
-rls_string STR_dataquota_refresh "Odśwież"
-rls_string STR_dataquota_edit "Edytuj"
-rls_string STR_dataquota_edit_quota "Limit"
-rls_string STR_dataquota_edit_billing_day "Dzień końca cyklu"
-//rls_string STR_dataquota_edit_billing_period "Billing period"
-rls_string STR_dataquota_about "O programie"
-rls_string STR_dataquota_about_text "Data Quota "
-rls_string STR_dataquota_exit "Zakończ"
+rls_string STR_dataquota_refresh "עדכן"
+rls_string STR_dataquota_edit "ערוך"
+rls_string STR_dataquota_edit_quota "מכסה"
+rls_string STR_dataquota_edit_billing_day "יום חיוב חשבון"
+//rls_string STR_dataquota_edit_billing_period "תקופת חשבון"
+rls_string STR_dataquota_about "אודותינו"
+rls_string STR_dataquota_about_text "מכסת מידע "
+rls_string STR_dataquota_exit "יציאה"
 
 // End of file
