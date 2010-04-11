@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+1.26 - Added Hebrew and updated Polish.
+
 1.25 - Added Ukrainian.
 
 1.24 - Added Polish and updated Italian.
