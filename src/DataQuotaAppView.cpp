@@ -289,13 +289,14 @@ void CDataQuotaAppView::UpdateValuesL()
 		TBuf<KSize> bytes;
 		User::LeaveIfError(iRepository->Get(KLogsGPRSSentCounter, bytes));
 		TLex lex(bytes);
-		User::LeaveIfError(lex.Val(iSentData));
-		iSentData /= KKilobyte; // Convert bytes to kilobytes
+		TInt64 integer;
+		User::LeaveIfError(lex.Val(integer));
+		iSentData = integer / KKilobyte; // Convert bytes to kilobytes
 		
 		User::LeaveIfError(iRepository->Get(KLogsGPRSReceivedCounter, bytes));
 		lex = bytes;
-		User::LeaveIfError(lex.Val(iRcvdData));
-		iRcvdData /= KKilobyte; // Convert bytes to kilobytes
+		User::LeaveIfError(lex.Val(integer));
+		iRcvdData = integer / KKilobyte; // Convert bytes to kilobytes
 		}
 #endif
 
