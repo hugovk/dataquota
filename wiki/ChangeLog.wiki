@@ -1,6 +1,10 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+1.28 - Fixed an overflow error caused when more than 2GB of data has been sent or received.
+
+1.27 - Added Estonian.
+
 1.26 - Added Hebrew and updated Polish.
 
 1.25 - Added Ukrainian.
