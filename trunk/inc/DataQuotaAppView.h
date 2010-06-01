@@ -23,7 +23,7 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #define __DATAQUOTAAPPVIEW_H__
 
 // CONSTANTS
-_LIT(KVersion, "1.28");
+_LIT(KVersion, "1.29");
 
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
@@ -88,6 +88,7 @@ class CDataQuotaAppView : public CCoeControl
 		HBufC* iDayText;
 		HBufC* iSeperatorText;
 		HBufC* iMegabyteText;
+		HBufC* iGigabyteText;
 
 		CRepository*  iRepository;
 		const CFont* iFont;
