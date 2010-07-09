@@ -1,21 +1,22 @@
 /*
-DataQuotaAppView.cpp
-
 Data Quota for S60 phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
 
-This program is free software; you can redistribute it and/or
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2
 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
+Data Quota is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // INCLUDE FILES
@@ -37,6 +38,9 @@ const TInt KKilobyte(1024);
 const TInt KDataQuota(20 * KKilobyte);
 const TInt KBarHeight(20);
 const TInt KMaxChars(255);
+const TInt KHoursInDay(24);
+const TInt KMargin(10);
+const TInt KBufSize(50);
 
 const TRgb KRgbSent(KRgbBlue);
 const TRgb KRgbRcvd(KRgbDarkGreen);
@@ -90,7 +94,7 @@ void CDataQuotaAppView::ConstructL(const TRect& aRect)
 	iNaviContainer->PushL(*iNaviLabelDecorator);
 	
 	DoChangePaneTextL();
-
+	
 	// Activate the window, which makes it ready to be drawn
 	ActivateL();
 	UpdateValuesL();
@@ -199,6 +203,7 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 		DrawRect(iSentRect, KRgbOver, KRgbOver);
 		DrawRect(iRcvdRect, KRgbOver, KRgbOver);
 		}
+	
 	DrawRect(iDataRect,	KRgbBlack, KRgbTransparent);
 
 	gc.SetPenColor(KRgbNow);
@@ -269,11 +274,9 @@ void CDataQuotaAppView::SizeChanged()
 
 void CDataQuotaAppView::UpdateValuesL()
 	{
-	const TInt KMargin(10);
 	const TInt KDataBarY(Size().iHeight*1/4 - KBarHeight);
 	const TInt KDateBarY(Size().iHeight*3/4 - KBarHeight);
-	
-	TInt rectWidth(Size().iWidth - (2 * KMargin));
+	const TInt KRectWidth(Size().iWidth - (2 * KMargin));
 
 	// Data
 
@@ -285,8 +288,7 @@ void CDataQuotaAppView::UpdateValuesL()
 #else
 	if (iRepository)
 		{
-		const TInt KSize(50);
-		TBuf<KSize> bytes;
+		TBuf<KBufSize> bytes;
 		User::LeaveIfError(iRepository->Get(KLogsGPRSSentCounter, bytes));
 		TLex lex(bytes);
 		TInt64 integer;
@@ -301,9 +303,9 @@ void CDataQuotaAppView::UpdateValuesL()
 #endif
 
 	// MB are too small, bytes are too big, KB are just right
-	iDataRect = TRect(TPoint(KMargin, KDataBarY),			TSize(rectWidth, KBarHeight));
-	iSentRect = TRect(TPoint(KMargin, KDataBarY),			TSize(rectWidth * iSentData/iDataQuota, KBarHeight));
-	iRcvdRect = TRect(TPoint(iSentRect.iBr.iX, KDataBarY),	TSize(rectWidth * iRcvdData/iDataQuota, KBarHeight));
+	iDataRect = TRect(TPoint(KMargin, KDataBarY),			TSize(KRectWidth, KBarHeight));
+	iSentRect = TRect(TPoint(KMargin, KDataBarY),			TSize(KRectWidth * iSentData/iDataQuota, KBarHeight));
+	iRcvdRect = TRect(TPoint(iSentRect.iBr.iX, KDataBarY),	TSize(KRectWidth * iRcvdData/iDataQuota, KBarHeight));
 
 	// Date
 
@@ -330,9 +332,8 @@ void CDataQuotaAppView::UpdateValuesL()
 		iDaysSinceBillingDay = iDateTime.Day() - billingDay + iDaysThisPeriod;
 		}
 	
-	const TInt KHoursInDay(24);
-	iDateRect = TRect(TPoint(KMargin, KDateBarY),	TSize(rectWidth, KBarHeight));
-	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(rectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/KHoursInDay))/iDaysThisPeriod, KBarHeight));
+	iDateRect = TRect(TPoint(KMargin, KDateBarY),	TSize(KRectWidth, KBarHeight));
+	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(KRectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/KHoursInDay))/iDaysThisPeriod, KBarHeight));
 	}
 
 

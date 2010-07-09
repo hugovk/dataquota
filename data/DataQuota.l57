@@ -28,7 +28,7 @@ rls_string STR_dataquota_caption_string "מכסת מידע"
 
 rls_string STR_dataquota_sent "נשלח: "
 rls_string STR_dataquota_rcvd "התקבל: "
-rls_string STR_dataquota_used "סה"כ בשימוש: "
+rls_string STR_dataquota_used "סה\"כ בשימוש: "
 rls_string STR_dataquota_day "יום: "
 rls_string STR_dataquota_seperator " / "
 rls_string STR_dataquota_megabyte " MB"

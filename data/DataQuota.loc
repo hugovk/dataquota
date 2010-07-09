@@ -109,6 +109,11 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include "DataQuota.l54"
 #endif
 
+// Hebrew
+#ifdef LANGUAGE_57
+#include "DataQuota.l57"
+#endif
+
 // Korean
 #ifdef LANGUAGE_65
 #include "DataQuota.l65"
