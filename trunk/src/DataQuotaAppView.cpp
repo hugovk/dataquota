@@ -267,7 +267,7 @@ void CDataQuotaAppView::UpdateValuesL()
 	{
 	const TInt KDataBarY(Size().iHeight*1/4 - KBarHeight);
 	const TInt KDateBarY(Size().iHeight*3/4 - KBarHeight);
-	const TInt KRectWidth(Size().iWidth - (2 * KMargin));
+	iRectWidth = Size().iWidth - (2 * KMargin);
 
 	// Data
 
@@ -294,9 +294,9 @@ void CDataQuotaAppView::UpdateValuesL()
 #endif
 
 	// MB are too small, bytes are too big, KB are just right
-	iDataRect = TRect(TPoint(KMargin, KDataBarY),			TSize(KRectWidth, KBarHeight));
-	iSentRect = TRect(TPoint(KMargin, KDataBarY),			TSize(KRectWidth * iSentData/iDataQuota, KBarHeight));
-	iRcvdRect = TRect(TPoint(iSentRect.iBr.iX, KDataBarY),	TSize(KRectWidth * iRcvdData/iDataQuota, KBarHeight));
+	iDataRect = TRect(TPoint(KMargin, KDataBarY),			TSize(iRectWidth, KBarHeight));
+	iSentRect = TRect(TPoint(KMargin, KDataBarY),			TSize(iRectWidth * iSentData/iDataQuota, KBarHeight));
+	iRcvdRect = TRect(TPoint(iSentRect.iBr.iX, KDataBarY),	TSize(iRectWidth * iRcvdData/iDataQuota, KBarHeight));
 
 	// Date
 
@@ -323,8 +323,8 @@ void CDataQuotaAppView::UpdateValuesL()
 		iDaysSinceBillingDay = iDateTime.Day() - billingDay + iDaysThisPeriod;
 		}
 	
-	iDateRect = TRect(TPoint(KMargin, KDateBarY),	TSize(KRectWidth, KBarHeight));
-	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(KRectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/KHoursInDay))/iDaysThisPeriod, KBarHeight));
+	iDateRect = TRect(TPoint(KMargin, KDateBarY),	TSize(iRectWidth, KBarHeight));
+	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(iRectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/KHoursInDay))/iDaysThisPeriod, KBarHeight));
 	}
 
 

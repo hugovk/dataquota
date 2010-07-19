@@ -105,6 +105,7 @@ class CDataQuotaAppView : public CCoeControl
 
 		TRect iDateRect;
 		TRect iNowRect;
+		TInt iRectWidth;
 
 		CAknNavigationControlContainer *iNaviContainer;
 		CAknNavigationDecorator* iNaviLabelDecorator;
