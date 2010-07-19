@@ -23,7 +23,7 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #define __DATAQUOTAAPPVIEW_H__
 
 // CONSTANTS
-_LIT(KVersion, "1.29");
+_LIT(KVersion, "1.30");
 
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
@@ -61,14 +61,8 @@ class CDataQuotaAppView : public CCoeControl
 
 		// Drawing helper methods
 		void DrawText(const TDesC& aText, 
-					  const TPoint& aPoint, 
+					  const TInt& aY, 
 					  const TRgb& aPenColor) const;
-
-		void DrawText(const TDesC& aText, 
-					  const TRect& aRect, 
-					  const TRgb& aPenColor, 
-					  CGraphicsContext::TTextAlign aTextAlign, 
-					  TInt aOffset) const;
 
 		void DrawRect(const TRect& aRect, 
 					  const TRgb& aPenColor, 
