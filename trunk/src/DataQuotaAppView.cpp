@@ -139,26 +139,17 @@ void CDataQuotaAppView::LoadResourceFileTextL()
 	}
 
 
-void CDataQuotaAppView::DrawText(const TDesC& aText, const TPoint& aPoint, 
+void CDataQuotaAppView::DrawText(const TDesC& aText, const TInt& aY, 
 								 const TRgb& aPenColor) const
 	{
 	CWindowGc& gc(SystemGc());
 	gc.SetDrawMode(CGraphicsContext::EDrawModePEN);
 	gc.SetPenColor(aPenColor);
-	gc.DrawText(aText, aPoint);
-	}
-
-
-void CDataQuotaAppView::DrawText(const TDesC& aText, const TRect& aRect, 
-								 const TRgb& aPenColor, 
-								CGraphicsContext::TTextAlign aTextAlign, 
-								TInt aOffset) const
-	{
-	CWindowGc& gc(SystemGc());
-	gc.SetDrawMode(CGraphicsContext::EDrawModePEN);
-	gc.SetPenColor(aPenColor);
-	gc.DrawText(aText, aRect, aRect.Height() - iFont->DescentInPixels() - 1, 
-				aTextAlign, aOffset);
+	
+	TBidiText* bidi(TBidiText::NewL(aText, 1));
+	bidi->WrapText(iRectWidth, *iFont, NULL);
+	bidi->DrawText(gc, TPoint(KMargin, aY));
+	delete bidi;
 	}
 
 
@@ -233,15 +224,15 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 
 	if (iSentData + iRcvdData < iDataQuota)
 		{
-		DrawText(sentBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (2 * KBarHeight)), KRgbSent);
-		DrawText(rcvdBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (3 * KBarHeight)), KRgbRcvd);
-		DrawText(usedBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (4 * KBarHeight)), textColour);
+		DrawText(sentBuf, iDataRect.iTl.iY + (2 * KBarHeight), KRgbSent);
+		DrawText(rcvdBuf, iDataRect.iTl.iY + (3 * KBarHeight), KRgbRcvd);
+		DrawText(usedBuf, iDataRect.iTl.iY + (4 * KBarHeight), textColour);
 		}
 	else
 		{
-		DrawText(sentBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (2 * KBarHeight)), KRgbOver);
-		DrawText(rcvdBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (3 * KBarHeight)), KRgbOver);
-		DrawText(usedBuf, TPoint(iDataRect.iTl.iX, iDataRect.iTl.iY + (4 * KBarHeight)), KRgbOver);
+		DrawText(sentBuf, iDataRect.iTl.iY + (2 * KBarHeight), KRgbOver);
+		DrawText(rcvdBuf, iDataRect.iTl.iY + (3 * KBarHeight), KRgbOver);
+		DrawText(usedBuf, iDataRect.iTl.iY + (4 * KBarHeight), KRgbOver);
 		}
 
 	// Date
@@ -260,7 +251,7 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 	nowBuf.Append(*iSeperatorText);
 	nowBuf.AppendNum(iDaysThisPeriod);
 
-	DrawText(nowBuf, TPoint(iDateRect.iTl.iX, iDateRect.iTl.iY + (2 * KBarHeight)), textColour);
+	DrawText(nowBuf, iDateRect.iTl.iY + (2 * KBarHeight), textColour);
 
 	gc.DiscardFont();
 	}
