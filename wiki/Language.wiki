@@ -13,6 +13,7 @@ Thanks very much in advance!
 
 || *Language* || *State* || Subscribe to file changes || Send update ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l01 UK English] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l01 Atom] || N/A ||
+|| [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l106 Azerbaijani (Latin alphabet)] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l106 Atom] || [http://code.google.com/p/dataquota/issues/detail?id=38 Send update] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l76 Brazilian Portuguese] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l76 Atom] || [http://code.google.com/p/dataquota/issues/entry Send update] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l31 Chinese PRC] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l31 Atom] || [http://code.google.com/p/dataquota/issues/entry Send update] ||
 || [http://dataquota.googlecode.com/svn/trunk/data/DataQuota.l25 Czech] || <font color="green">Complete</font> || [http://code.google.com/feeds/p/dataquota/svnchanges/basic?path=/trunk/data/DataQuota.l25 Atom] || [http://code.google.com/p/dataquota/issues/entry Send update] ||
