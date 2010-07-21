@@ -144,6 +144,11 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include "DataQuota.l93"
 #endif
 
+// Azerbaijani (Latin alphabet)
+#ifdef LANGUAGE_106
+#include "DataQuota.l106"
+#endif
+
 // German Saxonian accent
 #ifdef LANGUAGE_952
 #include "DataQuota.l952"
