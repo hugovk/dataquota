@@ -1,7 +1,7 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
-1.31 (21st July 2010) - Added Azerbaijani.
+1.31 (21st July 2010) - Added Azerbaijani (choose "unknown language").
 
 1.30 (19th July 2010) - Added Hebrew properly this time, and display it right-to-left.
 
