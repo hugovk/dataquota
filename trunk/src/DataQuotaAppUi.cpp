@@ -37,11 +37,11 @@ void CDataQuotaAppUi::ConstructL()
 	AddToStackL(iAppView);
 	
 	// Change the Exit softkey to Refresh
-	HBufC* hideText(CCoeEnv::Static()->AllocReadResourceLC(R_DATAQUOTA_REFRESH));
+	HBufC* refreshText(CCoeEnv::Static()->AllocReadResourceLC(R_DATAQUOTA_REFRESH));
 	TInt pos(Cba()->PositionById(EAknSoftkeyExit));
 	Cba()->RemoveCommandFromStack(pos, EAknSoftkeyExit);
-	Cba()->SetCommandL(pos, EDataQuotaRefresh, *hideText);
-	CleanupStack::PopAndDestroy(hideText);
+	Cba()->SetCommandL(pos, EDataQuotaRefresh, *refreshText);
+	CleanupStack::PopAndDestroy(refreshText);
 	}
 
 
@@ -88,6 +88,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			if (dlg->RunLD())
 				{
 				iAppView->SetDataQuotaL(number);
+				HandleCommandL(EDataQuotaRefresh);
 				}
 			}
 			break;
@@ -103,6 +104,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			if (dlg->RunLD())
 					{
 					iAppView->SetBillingDayL(number - 1);
+					HandleCommandL(EDataQuotaRefresh);
 					}
 			}
 			break;
@@ -146,7 +148,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			// Initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
-			_LIT(KMessage, "Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
+			_LIT(KMessage, "(c) 2008, 2009, 2010 Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
 			dlg->SetMessageTextL(KMessage);
 			
 			dlg->RunLD();
@@ -163,7 +165,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 
 void CDataQuotaAppUi::HandleResourceChangeL(TInt aType)
 	{
-	// base-class call also
+	// Also call base class
 	CAknAppUi::HandleResourceChangeL(aType);
 	if (aType == KEikDynamicLayoutVariantSwitch)
 		{
@@ -180,8 +182,7 @@ void CDataQuotaAppUi::HandleForegroundEventL(TBool aForeground)
 	CAknAppUi::HandleForegroundEventL(aForeground);
 	if (aForeground)
 		{
-		iAppView->UpdateValuesL();
-		iAppView->DrawNow();
+		HandleCommandL(EDataQuotaRefresh);
 		}
 	}
 

@@ -20,11 +20,12 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 // INCLUDE FILES
-#include <AknsBasicBackgroundControlContext.h>
-#include <AknsDrawUtils.h>
+#include <AknAppUi.h>
 #include <AknNaviDe.h>
 #include <AknNaviLabel.h>
 #include <AknUtils.h>
+#include <AknsBasicBackgroundControlContext.h>
+#include <AknsDrawUtils.h>
 #include <centralrepository.h>
 #include <DclCRKeys.h>
 #include <EikSPane.h>
@@ -32,12 +33,13 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include <StringLoader.h>
 
 #include <DataQuota.rsg>
+#include "DataQuota.hrh"
 #include "DataQuotaAppView.h"
 
 const TInt KKilobyte(1024);
 const TInt KDataQuota(20 * KKilobyte);
 const TInt KBarHeight(20);
-const TInt KMaxChars(255);
+const TInt KMaxChars(256);
 const TInt KHoursInDay(24);
 const TInt KMargin(10);
 const TInt KBufSize(50);
@@ -458,6 +460,7 @@ void CDataQuotaAppView::SaveSettingsL()
 	CleanupStack::PopAndDestroy(&file);
 	}
 
+
 void CDataQuotaAppView::DoChangePaneTextL() const
 	{
 	TBuf<KMaxChars> dateText;
@@ -476,6 +479,43 @@ void CDataQuotaAppView::DoChangePaneTextL() const
 														SetTextL(stateText);
 	iNaviContainer->Pop();
 	iNaviContainer->PushL(*iNaviLabelDecorator);
+	}
+
+void CDataQuotaAppView::HandlePointerEventL(const TPointerEvent& aPointerEvent)
+	{
+	// Check if they have touched any of the buttons.
+	// If so, issue a command.
+	
+	TInt command(EDataQuotaRefresh);
+
+	if (aPointerEvent.iType == TPointerEvent::EButton1Down ||
+		aPointerEvent.iType == TPointerEvent::EButton1Up)
+		{
+		if (aPointerEvent.iType == TPointerEvent::EButton1Down)
+			{
+			iLastTouchPosition = aPointerEvent.iPosition;
+			}
+		
+		if (iDataRect.Contains(aPointerEvent.iPosition) &&
+			iDataRect.Contains(iLastTouchPosition))
+			{
+			command = EDataQuotaEditQuota;
+			}
+		else if (iDateRect.Contains(aPointerEvent.iPosition) &&
+				 iDateRect.Contains(iLastTouchPosition))
+			{
+			command = EDataQuotaEditBillingDay;
+			}
+		}
+
+	if (aPointerEvent.iType == TPointerEvent::EButton1Up)
+		{
+		iAvkonAppUi->HandleCommandL(command);
+		}
+	
+	CCoeControl::HandlePointerEventL(aPointerEvent);
+	UpdateValuesL();
+	DrawDeferred();
 	}
 
 // End of file

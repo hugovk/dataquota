@@ -23,7 +23,7 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #define __DATAQUOTAAPPVIEW_H__
 
 // CONSTANTS
-_LIT(KVersion, "1.31");
+_LIT(KVersion, "1.32");
 
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
@@ -54,6 +54,7 @@ class CDataQuotaAppView : public CCoeControl
 		TTypeUid::Ptr MopSupplyObject(TTypeUid aId);
 		TKeyResponse OfferKeyEventL(const TKeyEvent& aKeyEvent, 
 									TEventCode aType);
+		void HandlePointerEventL(const TPointerEvent& aPointerEvent);
 
 	private: // Constructors
 		void ConstructL(const TRect& aRect);
@@ -109,6 +110,7 @@ class CDataQuotaAppView : public CCoeControl
 
 		CAknNavigationControlContainer *iNaviContainer;
 		CAknNavigationDecorator* iNaviLabelDecorator;
+		TPoint iLastTouchPosition;
 	};
 
 #endif // __DATAQUOTAAPPVIEW_H__
