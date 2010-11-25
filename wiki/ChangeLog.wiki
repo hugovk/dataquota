@@ -1,6 +1,12 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+1.32 (25th November 2010) - 
+ * Added US English, though it's just reusing UK English at the moment.
+ * Added support for Symbian^3 devices.
+ * Added touch support: if you press the data or date bars, it will let you enter a new value; touch elsewhere to refresh.
+ * Fixed a touch screen bug: redraw after editing the values from the options menu.
+
 1.31 (21st July 2010) - Added Azerbaijani (choose "unknown language").
 
 1.30 (19th July 2010) - Added Hebrew properly this time, and display it right-to-left.
