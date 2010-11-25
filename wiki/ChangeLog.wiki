@@ -1,6 +1,8 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+1.33 (25th November 2010) - Added Latvian.
+
 1.32 (25th November 2010) - 
  * Added US English, though it's just reusing UK English at the moment.
  * Added support for Symbian^3 devices.
