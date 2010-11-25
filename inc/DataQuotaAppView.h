@@ -23,7 +23,7 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #define __DATAQUOTAAPPVIEW_H__
 
 // CONSTANTS
-_LIT(KVersion, "1.32");
+_LIT(KVersion, "1.33");
 
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
