@@ -1,0 +1,45 @@
+/*
+DataQuota.l67 - Latvian
+
+Data Quota for S60 phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
+Copyright (C) 2010 Inga Muste aka TokRa of Valsts.Lv
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+//  LOCALISATION STRINGS
+
+rls_string STR_dataquota_caption_string "Data Quota"
+
+rls_string STR_dataquota_sent "Nosūtīts: "
+rls_string STR_dataquota_rcvd "Saņemts: "
+rls_string STR_dataquota_used "Kopā: "
+rls_string STR_dataquota_day "Diena: "
+rls_string STR_dataquota_seperator " / "
+rls_string STR_dataquota_megabyte " MB"
+
+rls_string STR_dataquota_refresh "Atjaunot"
+rls_string STR_dataquota_edit "Mainīt"
+rls_string STR_dataquota_edit_quota "Limits"
+rls_string STR_dataquota_edit_billing_day "Norēķinu diena"
+//rls_string STR_dataquota_edit_billing_period "Norēķinu periods"
+rls_string STR_dataquota_about "Par programmu"
+rls_string STR_dataquota_about_text "Data Quota "
+rls_string STR_dataquota_exit "Beigt darbu"
+
+// End of file
