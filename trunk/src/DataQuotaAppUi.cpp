@@ -21,6 +21,7 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 
 // INCLUDE FILES
 #include <AknMessageQueryDialog.h>
+#include <BrowserLauncher.h>
 #include <DataQuota.rsg>
 
 #include "DataQuota.hrh"
@@ -59,12 +60,13 @@ CDataQuotaAppUi::~CDataQuotaAppUi()
 		delete iAppView;
 		iAppView = NULL;
 		}
+	delete iBrowserLauncher;
 	}
 
 
 void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 	{
-	switch(aCommand)
+	switch (aCommand)
 		{
 		case EEikCmdExit:
 		case EAknSoftkeyExit:
@@ -133,6 +135,25 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			}
 			break;
 */
+		case EDataQuotaHelp:
+			{
+			// Create the header text
+			HBufC* title(iEikonEnv->AllocReadResourceLC(R_DATAQUOTA_HELP));
+			HBufC* help(iEikonEnv->AllocReadResourceLC(R_DATAQUOTA_HELP_TEXT));
+			
+			CAknMessageQueryDialog* dlg(new(ELeave) CAknMessageQueryDialog());
+			
+			// Initialise the dialog
+			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
+			dlg->QueryHeading()->SetTextL(*title);
+			dlg->SetMessageTextL(*help);
+			
+			dlg->RunLD();
+			
+			CleanupStack::PopAndDestroy(2, title); // title, help
+			}
+			break;
+
 		case EDataQuotaAbout:
 			{
 			// Create the header text
@@ -153,7 +174,44 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			
 			dlg->RunLD();
 			
-			CleanupStack::PopAndDestroy(3); // title, title1, title2
+			CleanupStack::PopAndDestroy(3, title1); // title1, title2, title
+			}
+			break;
+
+		case EDataQuotaMoreAppsPodOClock:	// intentional fall-through
+		case EDataQuotaMoreAppsMobbler:		// intentional fall-through
+		case EDataQuotaMoreAppsSugarSync:	// intentional fall-through
+			{
+			TBuf<256> url;
+			switch (aCommand)
+				{
+				case EDataQuotaMoreAppsPodOClock:
+					{
+					_LIT(KUrl, "http://code.google.com/p/podoclock/");
+					url.Copy(KUrl);
+					}
+					break;
+				case EDataQuotaMoreAppsMobbler:
+					{
+					_LIT(KUrl, "http://code.google.com/p/mobbler/");
+					url.Copy(KUrl);
+					}
+					break;
+				case EDataQuotaMoreAppsSugarSync:
+					{
+					_LIT(KUrl, "https://www.sugarsync.com/referral?rf=eoovtb627jrd7");
+					url.Copy(KUrl);
+					}
+					break;
+				default:
+					break;
+				}
+			
+			if (!iBrowserLauncher)
+				{
+				iBrowserLauncher = CBrowserLauncher::NewL();
+				}
+			iBrowserLauncher->LaunchBrowserEmbeddedL(url);
 			}
 			break;
 
@@ -165,7 +223,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 
 void CDataQuotaAppUi::HandleResourceChangeL(TInt aType)
 	{
-	// Also call base class
+	// Also call the base class
 	CAknAppUi::HandleResourceChangeL(aType);
 	if (aType == KEikDynamicLayoutVariantSwitch)
 		{
