@@ -52,7 +52,6 @@ TARGETPATH		\private\10003a3f\import\apps
 #endif
 END //RESOURCE
 
-
 USERINCLUDE		..\inc
 
 SYSTEMINCLUDE	\epoc32\include
@@ -60,6 +59,7 @@ SYSTEMINCLUDE	\epoc32\include
 LIBRARY			aknskins.lib
 LIBRARY			apparc.lib
 LIBRARY			avkon.lib
+LIBRARY			browserlauncher.lib
 LIBRARY			centralrepository.lib
 LIBRARY			commonengine.lib
 LIBRARY			cone.lib

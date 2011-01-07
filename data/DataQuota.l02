@@ -1,31 +1,35 @@
 /*
-DataQuota.l02 - French by Thierry Destinobles
+DataQuota.l02 - French
 
 Data Quota for S60 phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
+Copyright (C) 2009  Thierry Destinobles
+Copyright (C) 2011  Jean Blanchard
 
-This program is free software; you can redistribute it and/or
+Data Quota is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2
 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
+Data Quota is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+
 */
 
 //  LOCALISATION STRINGS
 
 rls_string STR_dataquota_caption_string "Data Quota"
 
-rls_string STR_dataquota_sent "Envoyé: "
-rls_string STR_dataquota_rcvd "Reçu: "
-rls_string STR_dataquota_used "Total: "
-rls_string STR_dataquota_day "Jour: "
+rls_string STR_dataquota_sent "Envoyé : "
+rls_string STR_dataquota_rcvd "Reçu : "
+rls_string STR_dataquota_used "Total : "
+rls_string STR_dataquota_day "Jour : "
 rls_string STR_dataquota_seperator " / "
 rls_string STR_dataquota_megabyte " Mo"
 
@@ -33,9 +37,16 @@ rls_string STR_dataquota_refresh "Mettre à jour"
 rls_string STR_dataquota_edit "Modifier"
 rls_string STR_dataquota_edit_quota "Quota"
 rls_string STR_dataquota_edit_billing_day "Jour de facture"
-//rls_string STR_dataquota_edit_billing_period "Période de facture"
-rls_string STR_dataquota_about "A propos"
+//rls_string STR_dataquota_edit_billing_period "Période de facturation"
+rls_string STR_dataquota_about "À propos"
 rls_string STR_dataquota_about_text "Data Quota "
 rls_string STR_dataquota_exit "Quitter"
+
+rls_string STR_dataquota_help "Help"
+rls_string STR_dataquota_help_text "Simply shows how much of your packet data quota you've used so far this month.\n\nIf you have a pre-determined quota from your operator of how much packet data you can use in a month, it's a pain to first find the Logs application, open the packet data counter, then try and work out how much data you have left from the amount used so far.\n\nData Quota shows two simple bars: one showing how much of the data for this month you have used; and one showing how much of the month has elapsed. This lets you tell at a glance if you've been using data up too fast or two slow, so you can be more frugal or let rip!\n\nOn the first of each month (or whenever your quota resets on billing day), clear the packet data counter. For example: Tools -> Log -> Packet data -> Options -> Clear counters."
+rls_string STR_dataquota_more_apps "More apps"
+rls_string STR_dataquota_podoclock "Pod O'Clock"
+rls_string STR_dataquota_mobbler "Mobbler"
+rls_string STR_dataquota_sugarsync "SugarSync"
 
 // End of file
