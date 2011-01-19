@@ -1,7 +1,7 @@
 /*
-Data Quota for S60 phones.
+Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -28,6 +28,7 @@ _LIT(KVersion, "1.34");
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
 class CAknNavigationDecorator;
+class CDataQuotaTouchFeedbackInterface;
 class CRepository;
 
 // CLASS DECLARATION
@@ -111,6 +112,8 @@ class CDataQuotaAppView : public CCoeControl
 		CAknNavigationControlContainer *iNaviContainer;
 		CAknNavigationDecorator* iNaviLabelDecorator;
 		TPoint iLastTouchPosition;
+		CDataQuotaTouchFeedbackInterface* iFeedback;
+		TUid iDtorIdKey;
 	};
 
 #endif // __DATAQUOTAAPPVIEW_H__

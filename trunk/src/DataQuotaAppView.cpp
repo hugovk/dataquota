@@ -1,7 +1,7 @@
 /*
-Data Quota for S60 phones.
+Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -32,6 +32,11 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include <s32file.h>
 #include <StringLoader.h>
 
+#ifdef __S60_50__
+#include <DataQuota/DataQuotaTouchFeedbackInterface.h>
+#include <touchfeedback.h>
+#endif
+
 #include <DataQuota.rsg>
 #include "DataQuota.hrh"
 #include "DataQuotaAppView.h"
@@ -49,6 +54,7 @@ const TRgb KRgbRcvd(KRgbDarkGreen);
 const TRgb KRgbNow (KRgbYellow);
 const TRgb KRgbOver(KRgbRed);
 const TRgb KRgbTransparent(0x00, 0x00, 0x00, 0x00);
+const TUid KTouchFeedbackImplUid = {0xA89FD5B4};
 
 _LIT(KOldSettingsFile, "c:settings.dat");
 _LIT(KNewSettingsFile, "c:settings2.dat");
@@ -72,6 +78,10 @@ CDataQuotaAppView* CDataQuotaAppView::NewLC(const TRect& aRect)
 
 void CDataQuotaAppView::ConstructL(const TRect& aRect)
 	{
+#ifdef __S60_50__
+	TRAP_IGNORE(iFeedback = static_cast<CDataQuotaTouchFeedbackInterface*>(REComSession::CreateImplementationL(KTouchFeedbackImplUid, iDtorIdKey)));
+#endif
+
 	LoadSettingsL();
 	LoadResourceFileTextL();
 	
@@ -128,6 +138,13 @@ CDataQuotaAppView::~CDataQuotaAppView()
 
 	iNaviContainer->Pop(iNaviLabelDecorator);
 	delete iNaviLabelDecorator;
+#ifdef __S60_50__
+	if (iFeedback)
+		{
+		delete iFeedback;
+		REComSession::DestroyedImplementation(iDtorIdKey);
+		}
+#endif
 	}
 
 void CDataQuotaAppView::LoadResourceFileTextL()
@@ -506,6 +523,13 @@ void CDataQuotaAppView::HandlePointerEventL(const TPointerEvent& aPointerEvent)
 			{
 			command = EDataQuotaEditBillingDay;
 			}
+		}
+
+	if (command != EDataQuotaRefresh && iFeedback)
+		{
+#ifdef __S60_50__
+		iFeedback->InstantFeedback(ETouchFeedbackBasic);
+#endif
 		}
 
 	if (aPointerEvent.iType == TPointerEvent::EButton1Up)
