@@ -1,8 +1,8 @@
 ; DataQuota.pkg
 ;
-; Data Quota for S60 phones.
+; Data Quota for Symbian phones.
 ; http://code.google.com/p/dataquota/
-; Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
+; Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 ; 
 ; This program is free software; you can redistribute it and/or
 ; modify it under the terms of the GNU General Public License
@@ -76,6 +76,10 @@
 
 "..\..\..\epoc32\data\z\private\10003a3f\import\apps\DataQuota_reg.r01" -"!:\private\10003a3f\import\apps\DataQuota_reg.r01"
 "..\..\..\epoc32\data\z\resource\apps\dataquota_aif.mif" - "!:\resource\apps\dataquota_aif.mif"
+
+; Symbian^X touch feedback
+"..\..\..\epoc32\release\gcce\urel\dataquotatouchfeedback.dll"-"!:\sys\bin\dataquotatouchfeedback.dll"
+"..\..\..\epoc32\data\z\resource\plugins\dataquotatouchfeedback.rsc"-"!:\resource\plugins\dataquotatouchfeedback.rsc"
 
 ; Required for application to be covered by backup/restore facility
 "backup_registration.xml" - "!:\private\A000B6EF\backup_registration.xml"
