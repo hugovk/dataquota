@@ -5,6 +5,7 @@ Data Quota for S60 phones.
 http://code.google.com/p/dataquota/
 Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 Copyright (C) 2009  faq4mobiles.de
+Copyright (c) 2011  Reho
 
 This file is part of Data Quota.
 
@@ -28,7 +29,7 @@ rls_string STR_dataquota_caption_string "Data Quota"
 
 rls_string STR_dataquota_sent "Gesendet: "
 rls_string STR_dataquota_rcvd "Empfangen: "
-rls_string STR_dataquota_used "Gesamt verbraucht: "
+rls_string STR_dataquota_used "Gesamtverbrauch: "
 rls_string STR_dataquota_day "Tag: "
 rls_string STR_dataquota_seperator " / "
 rls_string STR_dataquota_megabyte " MB"
@@ -42,9 +43,9 @@ rls_string STR_dataquota_about "Über"
 rls_string STR_dataquota_about_text "Data Quota "
 rls_string STR_dataquota_exit "Beenden"
 
-rls_string STR_dataquota_help "Help"
-rls_string STR_dataquota_help_text "Simply shows how much of your packet data quota you've used so far this month.\n\nIf you have a pre-determined quota from your operator of how much packet data you can use in a month, it's a pain to first find the Logs application, open the packet data counter, then try and work out how much data you have left from the amount used so far.\n\nData Quota shows two simple bars: one showing how much of the data for this month you have used; and one showing how much of the month has elapsed. This lets you tell at a glance if you've been using data up too fast or two slow, so you can be more frugal or let rip!\n\nOn the first of each month (or whenever your quota resets on billing day), clear the packet data counter. For example: Tools -> Log -> Packet data -> Options -> Clear counters."
-rls_string STR_dataquota_more_apps "More apps"
+rls_string STR_dataquota_help "Hilfe"
+rls_string STR_dataquota_help_text "Zeigt einfach an, wieviel von Ihrem Daten-Kontingent Sie bisher in diesem Monat schon verbraucht haben.\n\nWenn Sie von Ihrem Netz-Betreiber eine vorherbestimmte Menge an Daten, die Sie in einem Monat verbrauchen können, geordert haben, ist es sehr umständlich, zuerst die richtige Log-App zu finden, den Datenzähler zu öffnen und dann zu versuchen herauszufinden, welche Menge an Daten Sie zu diesem Zeitpunkt von der Gesamtmenge noch übrig haben.\n\nData Quota zeigt zwei einfache Balken an: einer zeigt, wieviel von den Daten Sie in diesem Monat schon verbraucht haben und einer zeigt, wieviele Tage des Monats bereits vorüber sind. Das gibt Ihnen eine Vorstellung davon, ob Sie Ihre Datenmenge zu schnell oder zu langsam verbraucht haben, so dass Sie bremsen oder Gas geben können!\n\nAm Ersten jeden Monats (oder an welchem Abrechnungstag auch immer Ihr Daten-Kontingent zurückgesetzt wird), löschen Sie den Datenzähler. Zum Beispiel: Menü -> Programme -> System -> Protokoll -> Datenzähler -> Optionen -> Zähler löschen."
+rls_string STR_dataquota_more_apps "Weitere apps"
 rls_string STR_dataquota_podoclock "Pod O'Clock"
 rls_string STR_dataquota_mobbler "Mobbler"
 rls_string STR_dataquota_sugarsync "SugarSync"
