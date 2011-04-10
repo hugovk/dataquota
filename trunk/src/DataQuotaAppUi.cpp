@@ -1,7 +1,7 @@
 /*
 Data Quota for S60 phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
+Copyright (C) 2008, 2009, 2011  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -169,7 +169,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			// Initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
-			_LIT(KMessage, "(c) 2008-2010 Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
+			_LIT(KMessage, "(c) 2008-2011 Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
 			dlg->SetMessageTextL(KMessage);
 			
 			dlg->RunLD();
