@@ -23,7 +23,7 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #define __DATAQUOTAAPPVIEW_H__
 
 // CONSTANTS
-_LIT(KVersion, "1.35");
+_LIT(KVersion, "1.36");
 
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
@@ -34,6 +34,12 @@ class CRepository;
 // CLASS DECLARATION
 class CDataQuotaAppView : public CCoeControl
 	{
+	public:
+		enum TQuotaType
+			{
+			EDaily,
+			EMonthly
+			};
 
 	public: // New methods
 		static CDataQuotaAppView* NewL(const TRect& aRect);
@@ -49,6 +55,7 @@ class CDataQuotaAppView : public CCoeControl
 		void SetDataQuotaL(TInt aDataQuota);
 		TInt BillingDay();
 		void SetBillingDayL(TInt aBillingDay);
+		void SetQuotaTypeL(TQuotaType aQuotaType);
 
 	private: // from CCoeControl
 		virtual void SizeChanged();
@@ -57,6 +64,9 @@ class CDataQuotaAppView : public CCoeControl
 									TEventCode aType);
 		void HandlePointerEventL(const TPointerEvent& aPointerEvent);
 
+	// private: // from CAknView
+		// void DynInitMenuPaneL(TInt aResourceId, CEikMenuPane* aMenuPane);
+	
 	private: // Constructors
 		void ConstructL(const TRect& aRect);
 		CDataQuotaAppView();
@@ -81,6 +91,7 @@ class CDataQuotaAppView : public CCoeControl
 		HBufC* iSentText;
 		HBufC* iRcvdText;
 		HBufC* iUsedText;
+		HBufC* iHourText;
 		HBufC* iDayText;
 		HBufC* iSeperatorText;
 		HBufC* iMegabyteText;
@@ -100,6 +111,7 @@ class CDataQuotaAppView : public CCoeControl
 		TInt iDaysThisPeriod;
 		TInt iBillingDay;
 		TInt iDaysSinceBillingDay;
+		TQuotaType iQuotaType;
 
 		TRect iDataRect;
 		TRect iSentRect;

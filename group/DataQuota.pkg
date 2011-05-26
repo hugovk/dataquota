@@ -23,7 +23,7 @@
 &EN, FR, GE, SP, IT, SW, FI, AM, TU, RU, HU, DU, CS, SK, PL, ZH, ET, EL, HE, KO, LV, LT, BP, RO, SR, UK, 106
 
 ; Standard SIS file header
-#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),1,35,0
+#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),1,36,0
 
 ; Localised Vendor name
 %{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
@@ -80,6 +80,8 @@
 ; Symbian^X touch feedback
 "..\..\..\epoc32\release\gcce\urel\dataquotatouchfeedback.dll"-"!:\sys\bin\dataquotatouchfeedback.dll"
 "..\..\..\epoc32\data\z\resource\plugins\dataquotatouchfeedback.rsc"-"!:\resource\plugins\dataquotatouchfeedback.rsc"
+
+"changelog.txt"-"", FILETEXT, TEXTCONTINUE
 
 ; Required for application to be covered by backup/restore facility
 "backup_registration.xml" - "!:\private\A000B6EF\backup_registration.xml"

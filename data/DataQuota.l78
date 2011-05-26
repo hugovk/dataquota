@@ -1,7 +1,7 @@
 /*
 DataQuota.l78 - Romanian
 
-Data Quota for S60 phones.
+Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
 Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 Copyright (C) 2009  Cătălin ?
@@ -49,4 +49,6 @@ rls_string STR_dataquota_podoclock "Pod O'Clock"
 rls_string STR_dataquota_mobbler "Mobbler"
 rls_string STR_dataquota_sugarsync "SugarSync"
 
-// End of file
+rls_string STR_dataquota_hour "Hour: "
+rls_string STR_dataquota_edit_daily_quota "Daily quota"
+rls_string STR_dataquota_edit_monthly_quota "Monthly quota"

@@ -45,6 +45,7 @@ const TInt KKilobyte(1024);
 const TInt KDataQuota(20 * KKilobyte);
 const TInt KBarHeight(20);
 const TInt KMaxChars(256);
+const TInt KMinutesInHour(60);
 const TInt KHoursInDay(24);
 const TInt KMargin(10);
 const TInt KBufSize(50);
@@ -132,6 +133,7 @@ CDataQuotaAppView::~CDataQuotaAppView()
 	delete iSentText;
 	delete iRcvdText;
 	delete iUsedText;
+	delete iHourText;
 	delete iDayText;
 	delete iSeperatorText;
 	delete iMegabyteText;
@@ -152,6 +154,7 @@ void CDataQuotaAppView::LoadResourceFileTextL()
 	iSentText 		= StringLoader::LoadL(R_DATAQUOTA_SENT);
 	iRcvdText 		= StringLoader::LoadL(R_DATAQUOTA_RCVD);
 	iUsedText 		= StringLoader::LoadL(R_DATAQUOTA_USED);
+	iHourText 		= StringLoader::LoadL(R_DATAQUOTA_HOUR);
 	iDayText 		= StringLoader::LoadL(R_DATAQUOTA_DAY);
 	iSeperatorText	= StringLoader::LoadL(R_DATAQUOTA_SEPERATOR);
 	iMegabyteText	= StringLoader::LoadL(R_DATAQUOTA_MEGABYTE);
@@ -265,10 +268,22 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 	gc.DrawLine(TPoint(iRcvdRect.iBr.iX, iDateRect.iTl.iY + 1), 
 				TPoint(iRcvdRect.iBr.iX, iDateRect.iBr.iY - 1));
 
-	TBuf<KMaxChars> nowBuf(*iDayText);
-	nowBuf.AppendNum(iDaysSinceBillingDay + 1);
-	nowBuf.Append(*iSeperatorText);
-	nowBuf.AppendNum(iDaysThisPeriod);
+	TBuf<KMaxChars> nowBuf;
+	if (EDaily == iQuotaType)
+		{
+		nowBuf.Copy(*iHourText);
+		nowBuf.AppendNum(iDateTime.Hour());
+		nowBuf.Append(*iSeperatorText);
+		nowBuf.AppendNum(KHoursInDay);
+		}
+	else // monthly
+		{
+		nowBuf.Copy(*iDayText);
+		nowBuf.AppendNum(iDaysSinceBillingDay + 1);
+		nowBuf.Append(*iSeperatorText);
+		nowBuf.AppendNum(iDaysThisPeriod);
+		}
+
 
 	DrawText(nowBuf, iDateRect.iTl.iY + (2 * KBarHeight), textColour);
 
@@ -323,33 +338,47 @@ void CDataQuotaAppView::UpdateValuesL()
 	time.HomeTime(); // set time to home time
 	iDateTime = time.DateTime(); // convert to fields
 	
-	iDaysSinceBillingDay = 0;
-	TInt billingDay(iBillingDay);
-	
-	iDaysThisPeriod = time.DaysInMonth();
-	
-	if (billingDay > iDaysThisPeriod)
+	switch (iQuotaType)
 		{
-		billingDay = iDaysThisPeriod;
+		case EDaily:
+			iNowRect = TRect(TPoint(KMargin, KDateBarY), 
+							 TSize(iRectWidth * (iDateTime.Hour() + (iDateTime.Minute()/KMinutesInHour))/KHoursInDay, 
+								   KBarHeight));
+			break;
+
+		case EMonthly:	// intentional fall-through
+		default:		// intentional fall-through
+			{
+			iDaysSinceBillingDay = 0;
+			TInt billingDay(iBillingDay);
+			
+			iDaysThisPeriod = time.DaysInMonth();
+			
+			if (billingDay > iDaysThisPeriod)
+				{
+				billingDay = iDaysThisPeriod;
+				}
+			
+			if (iDateTime.Day() > billingDay)
+				{
+				iDaysSinceBillingDay = iDateTime.Day() - billingDay;
+				}
+			else if (iDateTime.Day() < billingDay)
+				{
+				iDaysSinceBillingDay = iDateTime.Day() - billingDay + iDaysThisPeriod;
+				}
+			
+			iNowRect = TRect(TPoint(KMargin, KDateBarY), TSize(iRectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/KHoursInDay))/iDaysThisPeriod, KBarHeight));
+			}
+			break;
 		}
-	
-	if (iDateTime.Day() > billingDay)
-		{
-		iDaysSinceBillingDay = iDateTime.Day() - billingDay;
-		}
-	else if (iDateTime.Day() < billingDay)
-		{
-		iDaysSinceBillingDay = iDateTime.Day() - billingDay + iDaysThisPeriod;
-		}
-	
-	iDateRect = TRect(TPoint(KMargin, KDateBarY),	TSize(iRectWidth, KBarHeight));
-	iNowRect  = TRect(TPoint(KMargin, KDateBarY),	TSize(iRectWidth * (iDaysSinceBillingDay+(iDateTime.Hour()/KHoursInDay))/iDaysThisPeriod, KBarHeight));
+	iDateRect = TRect(TPoint(KMargin, KDateBarY), TSize(iRectWidth, KBarHeight));
 	}
 
 
 TTypeUid::Ptr CDataQuotaAppView::MopSupplyObject(TTypeUid aId)
 	{
-	if(aId.iUid == MAknsControlContext::ETypeId && iBackground)
+	if (aId.iUid == MAknsControlContext::ETypeId && iBackground)
 		{
 		return MAknsControlContext::SupplyMopObject(aId, iBackground);
 		}
@@ -392,10 +421,18 @@ void CDataQuotaAppView::SetBillingDayL(TInt aBillingDay)
 	}
 
 
+void CDataQuotaAppView::SetQuotaTypeL(TQuotaType aQuotaType)
+	{
+	iQuotaType = aQuotaType;
+	SaveSettingsL();
+	}
+
+
 void CDataQuotaAppView::LoadSettingsL()
 	{
 	iDataQuota = KDataQuota;
 	iBillingDay = 0;
+	iQuotaType = EDaily;
 	
 	// First check if there's a new settings file that uses megabytes
 	RFile newFile;
@@ -414,6 +451,9 @@ void CDataQuotaAppView::LoadSettingsL()
 			iDataQuota = 1;
 			}
 		iBillingDay = readStream.ReadInt32L();
+		
+		// Trap new things that aren't there in older versions
+		TRAP_IGNORE(iQuotaType = (TQuotaType)readStream.ReadInt32L());
 		
 		CleanupStack::PopAndDestroy(&readStream);
 		}
@@ -470,6 +510,7 @@ void CDataQuotaAppView::SaveSettingsL()
 		
 		writeStream.WriteInt32L(iDataQuota);
 		writeStream.WriteInt32L(iBillingDay);
+		writeStream.WriteInt32L(iQuotaType);
 		
 		CleanupStack::PopAndDestroy(&writeStream);
 		}
@@ -541,5 +582,21 @@ void CDataQuotaAppView::HandlePointerEventL(const TPointerEvent& aPointerEvent)
 	UpdateValuesL();
 	DrawDeferred();
 	}
+
+/* void CDataQuotaAppView::DynInitMenuPaneL(TInt aResourceId, CEikMenuPane* aMenuPane)
+	{
+	if (R_DATAQUOTA_EDIT_MENU_PANE == aResourceId)
+		{
+		TBool dailyQuota(EDaily == iQuotaType);
+		// Hide if daily:
+		aMenuPane->SetItemDimmed(EDataQuotaEditDailyQuota, dailyQuota);
+		// Hide if monthly:
+		aMenuPane->SetItemDimmed(EDataQuotaEditMonthlyQuota, !dailyQuota);
+		aMenuPane->SetItemDimmed(EDataQuotaEditBillingDay, !dailyQuota);
+		}
+	
+	// Third edition only due to an S60 5th edition bug (issue 364)
+//	aMenuPane->EnableMarqueeL(!iMobblerStatusControl->IsFifthEdition());
+	} */
 
 // End of file
