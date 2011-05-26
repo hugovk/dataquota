@@ -1,5 +1,5 @@
 /*
-Data Quota for S60 phones.
+Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
 Copyright (C) 2008, 2009, 2011  Hugo van Kemenade
 
@@ -109,6 +109,16 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 					HandleCommandL(EDataQuotaRefresh);
 					}
 			}
+			break;
+
+		case EDataQuotaEditDailyQuota:
+			iAppView->SetQuotaTypeL(CDataQuotaAppView::EDaily);
+			HandleCommandL(EDataQuotaRefresh);
+			break;
+
+		case EDataQuotaEditMonthlyQuota:
+			iAppView->SetQuotaTypeL(CDataQuotaAppView::EMonthly);
+			HandleCommandL(EDataQuotaRefresh);
 			break;
 
 /*		case EDataQuotaEditBillingPeriod:

@@ -1,7 +1,7 @@
 /*
-Data Quota for S60 phones.
+Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -108,6 +108,16 @@ RESOURCE MENU_PANE r_dataquota_edit_menu_pane
 			{
 			command = EDataQuotaEditBillingDay;
 			txt = STR_dataquota_edit_billing_day;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaEditDailyQuota;
+			txt = STR_dataquota_edit_daily_quota;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaEditMonthlyQuota;
+			txt = STR_dataquota_edit_monthly_quota;
 /*			},
 		MENU_ITEM
 			{
@@ -187,6 +197,7 @@ RESOURCE DIALOG r_dataquota_about_box
 RESOURCE TBUF r_dataquota_sent		{buf = STR_dataquota_sent;}
 RESOURCE TBUF r_dataquota_rcvd		{buf = STR_dataquota_rcvd;}
 RESOURCE TBUF r_dataquota_used		{buf = STR_dataquota_used;}
+RESOURCE TBUF r_dataquota_hour		{buf = STR_dataquota_hour;}
 RESOURCE TBUF r_dataquota_day		{buf = STR_dataquota_day;}
 RESOURCE TBUF r_dataquota_seperator	{buf = STR_dataquota_seperator;}
 RESOURCE TBUF r_dataquota_megabyte	{buf = STR_dataquota_megabyte;}
