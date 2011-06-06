@@ -51,5 +51,5 @@ rls_string STR_dataquota_mobbler "Mobbler"
 rls_string STR_dataquota_sugarsync "SugarSync"
 
 rls_string STR_dataquota_hour "Hour: "
-rls_string STR_dataquota_edit_daily_quota "Daily quota"
-rls_string STR_dataquota_edit_monthly_quota "Monthly quota"
+rls_string STR_dataquota_edit_daily_quota "Use daily quota"
+rls_string STR_dataquota_edit_monthly_quota "Use monthly quota"
