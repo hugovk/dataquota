@@ -80,7 +80,10 @@ CDataQuotaAppView* CDataQuotaAppView::NewLC(const TRect& aRect)
 void CDataQuotaAppView::ConstructL(const TRect& aRect)
 	{
 #ifdef __S60_50__
-	TRAP_IGNORE(iFeedback = static_cast<CDataQuotaTouchFeedbackInterface*>(REComSession::CreateImplementationL(KTouchFeedbackImplUid, iDtorIdKey)));
+	TRAP_IGNORE(iFeedback = 
+		static_cast<CDataQuotaTouchFeedbackInterface*>(
+			REComSession::CreateImplementationL(
+				KTouchFeedbackImplUid, iDtorIdKey)));
 #endif
 
 	LoadSettingsL();
@@ -272,11 +275,11 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 	if (EDaily == iQuotaType)
 		{
 		nowBuf.Copy(*iHourText);
-		nowBuf.AppendNum(iDateTime.Hour());
+		nowBuf.AppendNum(iDateTime.Hour() + 1);
 		nowBuf.Append(*iSeperatorText);
 		nowBuf.AppendNum(KHoursInDay);
 		}
-	else // monthly
+	else // EMonthly
 		{
 		nowBuf.Copy(*iDayText);
 		nowBuf.AppendNum(iDaysSinceBillingDay + 1);
@@ -559,7 +562,8 @@ void CDataQuotaAppView::HandlePointerEventL(const TPointerEvent& aPointerEvent)
 			{
 			command = EDataQuotaEditQuota;
 			}
-		else if (iDateRect.Contains(aPointerEvent.iPosition) &&
+		else if (EMonthly == iQuotaType && 
+				 iDateRect.Contains(aPointerEvent.iPosition) &&
 				 iDateRect.Contains(iLastTouchPosition))
 			{
 			command = EDataQuotaEditBillingDay;
