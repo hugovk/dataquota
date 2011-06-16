@@ -1,1 +1,5 @@
-abld target gcce urel
+::time/t
+timer /nologo
+abld target gcce urel %1 %2 %3 %4
+timer /nologo /s
+::time/t

@@ -1,7 +1,7 @@
 /*
-Data Quota for S60 phones.
+Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2010  Hugo van Kemenade
+Copyright (C) 2010, 2011  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -46,18 +46,30 @@ permission notice:
 
 RESOURCE REGISTRY_INFO theInfo
 	{
+#ifdef __OVI_SIGNED__
+	dll_uid = 0x200427F7;
+#else
 	dll_uid = 0xA89FD5B2;
+#endif
 	
 	interfaces = 
 		{
 		INTERFACE_INFO
 			{
+#ifdef __OVI_SIGNED__
+			interface_uid = 0x200427F8;
+#else
 			interface_uid = 0xA89FD5B3;
+#endif
 			implementations = 
 				{
 				IMPLEMENTATION_INFO
 					{
+#ifdef __OVI_SIGNED__
+					implementation_uid = 0x200427F9;
+#else
 					implementation_uid = 0xA89FD5B4;
+#endif
 					version_no = 1;
 					display_name = "Data Quota Touch Feedback";
 					default_data = "";
