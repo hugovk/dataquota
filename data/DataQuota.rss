@@ -70,6 +70,14 @@ RESOURCE MENU_PANE r_dataquota_menu_pane
 			txt = STR_dataquota_edit;
 			cascade = r_dataquota_edit_menu_pane;
 			},
+#ifdef __OVI_SIGNED__
+		// Resetting the phone's logs only supported with WriteDeviceData
+		MENU_ITEM
+			{
+			command = EDataQuotaResetQuota;
+			txt = STR_dataquota_reset_quota;
+			},
+#endif
 		MENU_ITEM
 			{
 			command = EDataQuotaHelp;
@@ -162,7 +170,11 @@ RESOURCE LOCALISABLE_APP_INFO r_dataquota_localisable_app_info
 		caption = STR_dataquota_caption_string;
 
 		number_of_icons = 1;
+#ifdef __OVI_SIGNED__
+		icon_file = "\\resource\\apps\\Dataquota_aif_0x200427F6.mif";
+#else
 		icon_file = "\\resource\\apps\\Dataquota_aif.mif";
+#endif
 		};
 	}
 
@@ -194,6 +206,27 @@ RESOURCE DIALOG r_dataquota_about_box
 	}
 
 
+RESOURCE DIALOG r_dataquota_yes_no_query_dialog
+	{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_YES_NO;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EDataQuotaQuery;
+
+			control = AVKON_CONFIRMATION_QUERY
+				{
+				layout = EConfirmationQueryLayout;
+				animation = R_QGN_NOTE_QUERY_ANIM;
+				};
+			}
+		};
+	}
+
+
 RESOURCE TBUF r_dataquota_sent		{buf = STR_dataquota_sent;}
 RESOURCE TBUF r_dataquota_rcvd		{buf = STR_dataquota_rcvd;}
 RESOURCE TBUF r_dataquota_used		{buf = STR_dataquota_used;}
@@ -204,8 +237,10 @@ RESOURCE TBUF r_dataquota_megabyte	{buf = STR_dataquota_megabyte;}
 
 RESOURCE TBUF r_dataquota_help			{buf = STR_dataquota_help;}
 RESOURCE TBUF r_dataquota_help_text		{buf = STR_dataquota_help_text;}
-//RESOURCE TBUF r_dataquota_about			{buf = STR_dataquota_about;}
+//RESOURCE TBUF r_dataquota_about		{buf = STR_dataquota_about;}
 RESOURCE TBUF r_dataquota_about_text	{buf = STR_dataquota_about_text;}
 RESOURCE TBUF r_dataquota_refresh		{buf = STR_dataquota_refresh;}
+
+RESOURCE TBUF r_dataquota_reset_quota_confirmation	{buf = STR_dataquota_reset_quota_confirmation;}
 
 // End of file

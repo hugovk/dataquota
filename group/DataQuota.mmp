@@ -19,9 +19,32 @@ You should have received a copy of the GNU General Public License
 along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 */
 
+#include "DataQuota.mmh" 
+
+/* Data Quota UIDs
+
+Unprotected - Ovi Signed - Purpose
+
+ 0xA000B6EF - 0x200427F6 - DataQuota.exe
+ 0xA89FD5B2 - 0x200427F7 - touch feedback dll
+ 0xA89FD5B3 - 0x200427F8 - touch feedback interface
+ 0xA89FD5B4 - 0x200427F9 - touch feedback implementation
+*/
+
+#ifdef OVI_SIGNED
+
+TARGET			DataQuota_0x200427F6.exe
+TARGETTYPE		exe
+UID				0x100039CE 0x200427F6
+
+#else
+
 TARGET			DataQuota.exe
 TARGETTYPE		exe
 UID				0x100039CE 0xA000B6EF
+
+#endif
+
 EPOCSTACKSIZE	0x5000
 
 #ifdef WINS
@@ -39,10 +62,20 @@ SOURCE			DataQuotaDocument.cpp
 
 START RESOURCE	..\data\DataQuota.rss
 HEADER
+#ifdef OVI_SIGNED
+TARGET DataQuota_0x200427F6
+#else
+TARGET DataQuota
+#endif
 TARGETPATH		resource\apps
 END //RESOURCE
 
 START RESOURCE	..\data\DataQuota_reg.rss
+#ifdef OVI_SIGNED
+TARGET DataQuota_reg_0x200427F6
+#else
+TARGET DataQuota_reg
+#endif
 #ifdef WINSCW
 TARGETPATH		\private\10003a3f\apps
 #else
@@ -71,6 +104,10 @@ LIBRARY			euser.lib
 LIBRARY			gdi.lib
 
 VENDORID	0
+#ifdef OVI_SIGNED
+CAPABILITY	WriteDeviceData
+#else
 CAPABILITY	NONE
+#endif
 
 // End of file

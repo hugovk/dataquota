@@ -22,9 +22,9 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 // INCLUDE FILES
 #include <AknMessageQueryDialog.h>
 #include <BrowserLauncher.h>
-#include <DataQuota.rsg>
 
 #include "DataQuota.hrh"
+#include "DataQuota.rsg.h"
 #include "DataQuotaAppUi.h"
 #include "DataQuotaAppView.h"
 
@@ -145,6 +145,20 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 			}
 			break;
 */
+		case EDataQuotaResetQuota:
+			{
+			CAknQueryDialog* dlg(CAknQueryDialog::NewL());
+			HBufC* text(iEikonEnv->AllocReadResourceLC(
+				R_DATAQUOTA_RESET_QUOTA_CONFIRMATION));
+			if (dlg->ExecuteLD(R_DATAQUOTA_YES_NO_QUERY_DIALOG, *text))
+				{
+				iAppView->ResetQuota();
+				HandleCommandL(EDataQuotaRefresh);
+				}
+			CleanupStack::PopAndDestroy(text);
+			}
+			break;
+
 		case EDataQuotaHelp:
 			{
 			// Create the header text

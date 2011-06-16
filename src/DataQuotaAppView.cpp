@@ -37,8 +37,8 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include <touchfeedback.h>
 #endif
 
-#include <DataQuota.rsg>
 #include "DataQuota.hrh"
+#include "DataQuota.rsg.h"
 #include "DataQuotaAppView.h"
 
 const TInt KKilobyte(1024);
@@ -55,7 +55,11 @@ const TRgb KRgbRcvd(KRgbDarkGreen);
 const TRgb KRgbNow (KRgbYellow);
 const TRgb KRgbOver(KRgbRed);
 const TRgb KRgbTransparent(0x00, 0x00, 0x00, 0x00);
+#ifdef __OVI_SIGNED__
+const TUid KTouchFeedbackImplUid = {0x200427F9};
+#else
 const TUid KTouchFeedbackImplUid = {0xA89FD5B4};
+#endif 
 
 _LIT(KOldSettingsFile, "c:settings.dat");
 _LIT(KNewSettingsFile, "c:settings2.dat");
@@ -126,13 +130,7 @@ CDataQuotaAppView::CDataQuotaAppView()
 CDataQuotaAppView::~CDataQuotaAppView()
 	{
 	delete iBackground;
-
-	if (iRepository)
-		{
-		delete iRepository;
-		iRepository = NULL;
-		}
-
+	delete iRepository;
 	delete iSentText;
 	delete iRcvdText;
 	delete iUsedText;
@@ -379,6 +377,15 @@ void CDataQuotaAppView::UpdateValuesL()
 	}
 
 
+void CDataQuotaAppView::ResetQuota()
+	{
+	TBuf<KBufSize> zeroBytes;
+	zeroBytes.AppendNum(0);
+	iRepository->Set(KLogsGPRSSentCounter, zeroBytes);
+	iRepository->Set(KLogsGPRSReceivedCounter, zeroBytes);
+	}
+
+
 TTypeUid::Ptr CDataQuotaAppView::MopSupplyObject(TTypeUid aId)
 	{
 	if (aId.iUid == MAknsControlContext::ETypeId && iBackground)
@@ -435,7 +442,7 @@ void CDataQuotaAppView::LoadSettingsL()
 	{
 	iDataQuota = KDataQuota;
 	iBillingDay = 0;
-	iQuotaType = EDaily;
+	iQuotaType = EMonthly;
 	
 	// First check if there's a new settings file that uses megabytes
 	RFile newFile;

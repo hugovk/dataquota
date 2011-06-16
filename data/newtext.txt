@@ -1,0 +1,3 @@
+Insert text here you want adding to the dataquota.l* files and then run newtext.bat. 
+
+Careful with .l01 and .loc!

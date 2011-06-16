@@ -1,7 +1,7 @@
 /*
-Data Quota for S60 phones.
+Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2010  Hugo van Kemenade
+Copyright (C) 2010, 2011  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -46,7 +46,11 @@ permission notice:
 #include <ecom/implementationproxy.h>
 #include "dataquotatouchfeedback.h"
 
+#ifdef __OVI_SIGNED__
+const TInt KImplementationUid = {0x200427F9};
+#else
 const TInt KImplementationUid = {0xA89FD5B4};
+#endif
 
 
 const TImplementationProxy ImplementationTable[] =

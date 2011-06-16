@@ -1,6 +1,6 @@
 /*
 Data Quota for Symbian phones.
-http://code.google.com/p/podoclock/
+http://code.google.com/p/dataquota/
 Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 
 This file is part of Data Quota.
@@ -31,12 +31,18 @@ enum TDataQuotaIds
 	EDataQuotaEditDailyQuota,
 	EDataQuotaEditMonthlyQuota,
 //	EDataQuotaEditBillingPeriod,
+	EDataQuotaResetQuota,
 	EDataQuotaHelp,
 	EDataQuotaAbout,
 	EDataQuotaMoreApps,
 	EDataQuotaMoreAppsPodOClock,
 	EDataQuotaMoreAppsMobbler,
 	EDataQuotaMoreAppsSugarSync
+	};
+
+enum TEDataQuotaControls
+	{
+	EDataQuotaQuery = 0x7000
 	};
 
 #endif // __DATAQUOTA_HRH__
