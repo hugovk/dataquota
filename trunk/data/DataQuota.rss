@@ -51,6 +51,10 @@ RESOURCE EIK_APP_INFO
 	cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
 	}
 
+RESOURCE AVKON_VIEW r_dataquota_view
+	{
+	}
+
 RESOURCE MENU_BAR r_dataquota_menubar
 	{
 	titles =

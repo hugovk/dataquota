@@ -19,35 +19,41 @@ You should have received a copy of the GNU General Public License
 along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __DATAQUOTAAPPVIEW_H__
-#define __DATAQUOTAAPPVIEW_H__
+#ifndef __DATAQUOTACONTAINER_H__
+#define __DATAQUOTACONTAINER_H__
 
-// CONSTANTS
-_LIT(KVersion, "1.37");
+// INCLUDES
+#include <CoeCntrl.h>
 
 // FORWARD DECLARATIONS
 class CAknNavigationControlContainer;
 class CAknNavigationDecorator;
+class CAknsBasicBackgroundControlContext;
 class CDataQuotaTouchFeedbackInterface;
+class CDataQuotaView;
 class CRepository;
 
+// CONSTANTS
+_LIT(KVersion, "1.40");
+
 // CLASS DECLARATION
-class CDataQuotaAppView : public CCoeControl
+
+/**
+* CDataQuotaContainer container control class.
+*/
+class CDataQuotaContainer : public CCoeControl
 	{
-	public:
+	public: // Enumerations
 		enum TQuotaType
 			{
 			EDaily,
 			EMonthly
 			};
 
-	public: // New methods
-		static CDataQuotaAppView* NewL(const TRect& aRect);
-		static CDataQuotaAppView* NewLC(const TRect& aRect);
-		virtual ~CDataQuotaAppView();
-
-	public:  // Functions from base classes
-		void Draw(const TRect& aRect) const;
+	public: // Constructors and destructor
+		CDataQuotaContainer(CDataQuotaView* aView);
+		void ConstructL(const TRect& aRect);
+		virtual ~CDataQuotaContainer();
 
 	public: // New methods
 		void UpdateValuesL();
@@ -56,22 +62,10 @@ class CDataQuotaAppView : public CCoeControl
 		void SetDataQuotaL(TInt aDataQuota);
 		TInt BillingDay();
 		void SetBillingDayL(TInt aBillingDay);
+		TBool IsDailyQuotaType();
 		void SetQuotaTypeL(TQuotaType aQuotaType);
 
-	private: // from CCoeControl
-		virtual void SizeChanged();
-		TTypeUid::Ptr MopSupplyObject(TTypeUid aId);
-		TKeyResponse OfferKeyEventL(const TKeyEvent& aKeyEvent, 
-									TEventCode aType);
-		void HandlePointerEventL(const TPointerEvent& aPointerEvent);
-
-	// private: // from CAknView
-		// void DynInitMenuPaneL(TInt aResourceId, CEikMenuPane* aMenuPane);
-	
-	private: // Constructors
-		void ConstructL(const TRect& aRect);
-		CDataQuotaAppView();
-
+	private: // New methods
 		// Drawing helper methods
 		void DrawText(const TDesC& aText, 
 					  const TInt& aY, 
@@ -87,7 +81,16 @@ class CDataQuotaAppView : public CCoeControl
 
 		void DoChangePaneTextL() const;
 
-	private:
+	private: // From CCoeControl
+		TKeyResponse OfferKeyEventL(const TKeyEvent& aKeyEvent, 
+									TEventCode aType);
+		void SizeChanged();
+		void HandlePointerEventL(const TPointerEvent& aPointerEvent);
+		void Draw(const TRect& aRect) const;
+		TTypeUid::Ptr MopSupplyObject(TTypeUid aId);
+
+	private: // Data
+		CDataQuotaView* iView;
 		// text from resource files
 		HBufC* iSentText;
 		HBufC* iRcvdText;
@@ -101,10 +104,9 @@ class CDataQuotaAppView : public CCoeControl
 		CRepository*  iRepository;
 		const CFont* iFont;
 
-		MAknsControlContext* iBackground; // for skins support 
+		CAknsBasicBackgroundControlContext* iBackground; // for skins support 
 
 		TInt iDataQuota;
-
 		TInt iSentData;
 		TInt iRcvdData;
 
@@ -124,11 +126,12 @@ class CDataQuotaAppView : public CCoeControl
 
 		CAknNavigationControlContainer *iNaviContainer;
 		CAknNavigationDecorator* iNaviLabelDecorator;
+
 		TPoint iLastTouchPosition;
 		CDataQuotaTouchFeedbackInterface* iFeedback;
 		TUid iDtorIdKey;
 	};
 
-#endif // __DATAQUOTAAPPVIEW_H__
+#endif  // __DATAQUOTACONTAINER_H__
 
 // End of file

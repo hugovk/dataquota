@@ -32,17 +32,13 @@ Unprotected - Ovi Signed - Purpose
 */
 
 #ifdef OVI_SIGNED
-
 TARGET			DataQuota_0x200427F6.exe
 TARGETTYPE		exe
 UID				0x100039CE 0x200427F6
-
 #else
-
 TARGET			DataQuota.exe
 TARGETTYPE		exe
 UID				0x100039CE 0xA000B6EF
-
 #endif
 
 EPOCSTACKSIZE	0x5000
@@ -54,11 +50,11 @@ LANG 01 02 03 04 05 06 09 14 16 17 18 25 26 27 31 49 54 57 65 67 68 76 78 79 93 
 #endif
 
 SOURCEPATH		..\src
-SOURCE			DataQuota.cpp
 SOURCE			DataQuotaApplication.cpp
 SOURCE			DataQuotaAppUi.cpp
-SOURCE			DataQuotaAppView.cpp
+SOURCE			DataQuotaContainer.cpp
 SOURCE			DataQuotaDocument.cpp
+SOURCE			DataQuotaView.cpp
 
 START RESOURCE	..\data\DataQuota.rss
 HEADER

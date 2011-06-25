@@ -1,47 +1,45 @@
 /*
-DataQuotaDocument.h
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2011  Hugo van Kemenade
 
-Data Quota for S60 phones.
+This file is part of Data Quota.
 
-This program is free software; you can redistribute it and/or
+Data Quota is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
 as published by the Free Software Foundation; either version 2
 of the License, or (at your option) any later version.
 
-This program is distributed in the hope that it will be useful,
+Data Quota is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
 MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #ifndef __DATAQUOTADOCUMENT_H__
 #define __DATAQUOTADOCUMENT_H__
 
 // INCLUDES
-#include <akndoc.h>
+#include <EikDoc.h>
 
 // FORWARD DECLARATIONS
-class CDataQuotaAppUi;
-class CEikApplication;
+class  CEikAppUi;
 
 // CLASS DECLARATION
-class CDataQuotaDocument : public CAknDocument
+class CDataQuotaDocument : public CEikDocument
 	{
 	public: // Constructors and destructor
 		static CDataQuotaDocument* NewL(CEikApplication& aApp);
-		static CDataQuotaDocument* NewLC(CEikApplication& aApp);
 		virtual ~CDataQuotaDocument();
 
-	public: // Functions from base class
-		CEikAppUi* CreateAppUiL();
-
 	private: // Constructors
-		void ConstructL();
 		CDataQuotaDocument(CEikApplication& aApp);
+
+	private: // From CEikDocument
+		CEikAppUi* CreateAppUiL();
 	};
 
 #endif // __DATAQUOTADOCUMENT_H__

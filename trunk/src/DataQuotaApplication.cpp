@@ -19,8 +19,13 @@ You should have received a copy of the GNU General Public License
 along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// INCLUDE FILES
+// OWN INCLUDE
 #include "DataQuotaApplication.h"
+
+// SYSTEM INCLUDES
+#include <EikStart.h>
+
+// USER INCLUDES
 #include "DataQuotaDocument.h"
 
 
@@ -31,11 +36,11 @@ const TUid KUidDataQuotaApp = {0x200427F6};
 const TUid KUidDataQuotaApp = {0xA000B6EF};
 #endif
 
+
 CApaDocument* CDataQuotaApplication::CreateDocumentL()
 	{
 	// Create a Data Quota document, and return a pointer to it
-	return (static_cast<CApaDocument*>
-					(CDataQuotaDocument::NewL(*this)));
+	return CDataQuotaDocument::NewL( *this );
 	}
 
 
@@ -43,6 +48,21 @@ TUid CDataQuotaApplication::AppDllUid() const
 	{
 	// Return the UID for the Data Quota application
 	return KUidDataQuotaApp;
+	}
+
+
+EXPORT_C CApaApplication* NewApplication()
+	{
+	// Create an application, and return a pointer to it
+	return new CDataQuotaApplication;
+	}
+
+
+GLDEF_C TInt E32Main()
+	{
+	// Entry point function for EPOC Apps.
+	// Returns: TInt:   Error if starting the app through framework wasn't succesful
+	return EikStart::RunApplication(NewApplication);
 	}
 
 // End of file
