@@ -40,7 +40,7 @@ enum TDataQuotaIds
 	EDataQuotaMoreAppsSugarSync
 	};
 
-enum TEDataQuotaControls
+enum TDataQuotaControls
 	{
 	EDataQuotaQuery = 0x7000
 	};

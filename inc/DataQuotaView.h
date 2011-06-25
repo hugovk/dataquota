@@ -1,7 +1,7 @@
 /*
 Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2008, 2011  Hugo van Kemenade
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -19,35 +19,51 @@ You should have received a copy of the GNU General Public License
 along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef __DATAQUOTAAPPUI_H__
-#define __DATAQUOTAAPPUI_H__
+#ifndef __DATAQUOTAVIEW_H__
+#define __DATAQUOTAVIEW_H__
 
 // INCLUDES
-#include <aknviewappui.h>
+#include <AknView.h>
 
 // FORWARD DECLARATIONS
-class CDataQuotaView;
+class CBrowserLauncher;
+class CDataQuotaContainer;
+
+// CONSTANTS
+const TUid KViewId = {1}; // UID of view
 
 // CLASS DECLARATION
-class CDataQuotaAppUi : public CAknViewAppUi
+class CDataQuotaView : public CAknView
 	{
 	public: // Constructors and destructor
-		CDataQuotaAppUi();
+		CDataQuotaView();
+		static CDataQuotaView* NewL();
+		virtual ~CDataQuotaView();
 		void ConstructL();
-		virtual ~CDataQuotaAppUi();
 
-	private: // From CEikAppUi
+	public: // New functions
+		TBool IsDailyQuotaType();
+
+	public: // From CAknView
+		TUid Id() const;
 		void HandleCommandL(TInt aCommand);
-		void HandleForegroundEventL(TBool aForeground);
-		void HandleResourceChangeL(TInt aType);
+		void HandleViewRectChange();
+
+	private: // New functions
+	// ... go here
 
 	private: // From CAknView
-		void DynInitMenuPaneL(TInt aResourceId, CEikMenuPane* aMenuPane);
+		void DoActivateL(const TVwsViewId& aPrevViewId,
+						 TUid aCustomMessageId,
+						 const TDesC8& aCustomMessage);
+		void DoDeactivate();
 
 	private: // Data
-		CDataQuotaView* iView;
+		CDataQuotaContainer* iContainer;
+		CBrowserLauncher* iBrowserLauncher;
+
 	};
 
-#endif // __DATAQUOTAAPPUI_H__
+#endif  //__DATAQUOTAVIEW_H__
 
 // End of file

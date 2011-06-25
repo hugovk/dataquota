@@ -19,14 +19,16 @@ You should have received a copy of the GNU General Public License
 along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-// INCLUDE FILES
-#include <AknAppUi.h>
+// OWN INCLUDE
+#include "DataQuotaContainer.h"
+
+// SYSTEM INCLUDES
 #include <AknNaviDe.h>
 #include <AknNaviLabel.h>
-#include <AknUtils.h>
 #include <AknsBasicBackgroundControlContext.h>
 #include <AknsDrawUtils.h>
-#include <centralrepository.h>
+#include <avkon.hrh>
+#include <CentralRepository.h>
 #include <DclCRKeys.h>
 #include <EikSPane.h>
 #include <s32file.h>
@@ -37,10 +39,12 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include <touchfeedback.h>
 #endif
 
+// USER INCLUDES
 #include "DataQuota.hrh"
 #include "DataQuota.rsg.h"
-#include "DataQuotaAppView.h"
+#include "DataQuotaView.h"
 
+// CONSTANTS
 const TInt KKilobyte(1024);
 const TInt KDataQuota(20 * KKilobyte);
 const TInt KBarHeight(20);
@@ -64,24 +68,15 @@ const TUid KTouchFeedbackImplUid = {0xA89FD5B4};
 _LIT(KOldSettingsFile, "c:settings.dat");
 _LIT(KNewSettingsFile, "c:settings2.dat");
 
-CDataQuotaAppView* CDataQuotaAppView::NewL(const TRect& aRect)
+
+CDataQuotaContainer::CDataQuotaContainer(CDataQuotaView* aView)
+	: iView(aView)
 	{
-	CDataQuotaAppView* self(CDataQuotaAppView::NewLC(aRect));
-	CleanupStack::Pop(self);
-	return self;
+	// No implementation required
 	}
 
 
-CDataQuotaAppView* CDataQuotaAppView::NewLC(const TRect& aRect)
-	{
-	CDataQuotaAppView* self(new (ELeave) CDataQuotaAppView);
-	CleanupStack::PushL(self);
-	self->ConstructL(aRect);
-	return self;
-	}
-
-
-void CDataQuotaAppView::ConstructL(const TRect& aRect)
+void CDataQuotaContainer::ConstructL(const TRect& aRect)
 	{
 #ifdef __S60_50__
 	TRAP_IGNORE(iFeedback = 
@@ -89,31 +84,31 @@ void CDataQuotaAppView::ConstructL(const TRect& aRect)
 			REComSession::CreateImplementationL(
 				KTouchFeedbackImplUid, iDtorIdKey)));
 #endif
-
+	
 	LoadSettingsL();
 	LoadResourceFileTextL();
 	
-	// Create a window for this application view
+	// Create window for this view
 	CreateWindowL();
-
-	// set the font
-	iFont = iEikonEnv->AnnotationFont();
-
-	// Set the windows size
+	
+	// Set the font
+	iFont = CEikonEnv::Static()->AnnotationFont();
+	
+	// Set rectangle of frame
 	SetRect(aRect);
-
+	
 	iBackground = CAknsBasicBackgroundControlContext::NewL(
-					KAknsIIDQsnBgAreaMain, Rect(), EFalse);// new a background
-
+					KAknsIIDQsnBgAreaMain, Rect(), EFalse);
+	
 	iRepository = CRepository::NewL(KCRUidDCLLogs);
-
+	
 	iNaviContainer = static_cast<CAknNavigationControlContainer*>(iEikonEnv
 							->AppUiFactory()->StatusPane()
 							->ControlL(TUid::Uid(EEikStatusPaneUidNavi)));
 	iNaviLabelDecorator = iNaviContainer->CreateNavigationLabelL();
 	iNaviContainer->PushL(*iNaviLabelDecorator);
 	
-	DoChangePaneTextL();
+	DoChangePaneTextL(); // TODO update on refresh
 	
 	// Activate the window, which makes it ready to be drawn
 	ActivateL();
@@ -121,13 +116,7 @@ void CDataQuotaAppView::ConstructL(const TRect& aRect)
 	}
 
 
-CDataQuotaAppView::CDataQuotaAppView()
-	{
-	// No implementation required
-	}
-
-
-CDataQuotaAppView::~CDataQuotaAppView()
+CDataQuotaContainer::~CDataQuotaContainer()
 	{
 	delete iBackground;
 	delete iRepository;
@@ -150,19 +139,20 @@ CDataQuotaAppView::~CDataQuotaAppView()
 #endif
 	}
 
-void CDataQuotaAppView::LoadResourceFileTextL()
+
+void CDataQuotaContainer::LoadResourceFileTextL()
 	{
-	iSentText 		= StringLoader::LoadL(R_DATAQUOTA_SENT);
-	iRcvdText 		= StringLoader::LoadL(R_DATAQUOTA_RCVD);
-	iUsedText 		= StringLoader::LoadL(R_DATAQUOTA_USED);
-	iHourText 		= StringLoader::LoadL(R_DATAQUOTA_HOUR);
-	iDayText 		= StringLoader::LoadL(R_DATAQUOTA_DAY);
+	iSentText		= StringLoader::LoadL(R_DATAQUOTA_SENT);
+	iRcvdText		= StringLoader::LoadL(R_DATAQUOTA_RCVD);
+	iUsedText		= StringLoader::LoadL(R_DATAQUOTA_USED);
+	iHourText		= StringLoader::LoadL(R_DATAQUOTA_HOUR);
+	iDayText		= StringLoader::LoadL(R_DATAQUOTA_DAY);
 	iSeperatorText	= StringLoader::LoadL(R_DATAQUOTA_SEPERATOR);
 	iMegabyteText	= StringLoader::LoadL(R_DATAQUOTA_MEGABYTE);
 	}
 
 
-void CDataQuotaAppView::DrawText(const TDesC& aText, const TInt& aY, 
+void CDataQuotaContainer::DrawText(const TDesC& aText, const TInt& aY, 
 								 const TRgb& aPenColor) const
 	{
 	CWindowGc& gc(SystemGc());
@@ -176,7 +166,7 @@ void CDataQuotaAppView::DrawText(const TDesC& aText, const TInt& aY,
 	}
 
 
-void CDataQuotaAppView::DrawRect(const TRect& aRect, const TRgb& aPenColor, 
+void CDataQuotaContainer::DrawRect(const TRect& aRect, const TRgb& aPenColor,
 								 const TRgb& aBrushColor) const
 	{
 	CWindowGc& gc(SystemGc());
@@ -189,19 +179,19 @@ void CDataQuotaAppView::DrawRect(const TRect& aRect, const TRgb& aPenColor,
 	}
 
 
-void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
+void CDataQuotaContainer::Draw(const TRect& /* aRect */) const
 	{
 	// Note that the whole screen is drawn everytime, 
 	// so aRect-parameter is ignored
-
+	
 	// Get the standard graphics context
 	CWindowGc& gc(SystemGc());
-
-	 // draw background
+	
+	// Draw background
 	MAknsSkinInstance* skin(AknsUtils::SkinInstance());
 	MAknsControlContext* cc(AknsDrawUtils::ControlContext(this));
 	AknsDrawUtils::Background(skin, cc, this, gc, Rect());
-
+	
 	gc.UseFont(iFont);
 
 	// Data
@@ -243,7 +233,8 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 	usedBuf.Append(*iMegabyteText);
 	
 	TRgb textColour;
-	AknsUtils::GetCachedColor(skin, textColour, KAknsIIDQsnTextColors, EAknsCIQsnTextColorsCG6);
+	AknsUtils::GetCachedColor(
+		skin, textColour, KAknsIIDQsnTextColors, EAknsCIQsnTextColorsCG6);
 
 	if (iSentData + iRcvdData < iDataQuota)
 		{
@@ -258,7 +249,7 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 		DrawText(usedBuf, iDataRect.iTl.iY + (4 * KBarHeight), KRgbOver);
 		}
 
-	// Date
+	// // Date
 
 	DrawRect(iDateRect, KRgbBlack, KRgbWhite);
 	DrawRect(iNowRect,  KRgbNow,   KRgbNow);
@@ -285,21 +276,22 @@ void CDataQuotaAppView::Draw(const TRect& /*aRect*/) const
 		nowBuf.AppendNum(iDaysThisPeriod);
 		}
 
-
 	DrawText(nowBuf, iDateRect.iTl.iY + (2 * KBarHeight), textColour);
 
 	gc.DiscardFont();
 	}
 
 
-void CDataQuotaAppView::SizeChanged()
+void CDataQuotaContainer::SizeChanged()
 	{
 	UpdateValuesL();
 	}
 
 
-void CDataQuotaAppView::UpdateValuesL()
+void CDataQuotaContainer::UpdateValuesL()
 	{
+	CEikonEnv::Static()->InfoMsg(_L("Refresh")); // TODO TEMP
+
 	const TInt KDataBarY(Size().iHeight*1/4 - KBarHeight);
 	const TInt KDateBarY(Size().iHeight*3/4 - KBarHeight);
 	iRectWidth = Size().iWidth - (2 * KMargin);
@@ -377,7 +369,7 @@ void CDataQuotaAppView::UpdateValuesL()
 	}
 
 
-void CDataQuotaAppView::ResetQuota()
+void CDataQuotaContainer::ResetQuota()
 	{
 	TBuf<KBufSize> zeroBytes;
 	zeroBytes.AppendNum(0);
@@ -386,7 +378,7 @@ void CDataQuotaAppView::ResetQuota()
 	}
 
 
-TTypeUid::Ptr CDataQuotaAppView::MopSupplyObject(TTypeUid aId)
+TTypeUid::Ptr CDataQuotaContainer::MopSupplyObject(TTypeUid aId)
 	{
 	if (aId.iUid == MAknsControlContext::ETypeId && iBackground)
 		{
@@ -396,8 +388,8 @@ TTypeUid::Ptr CDataQuotaAppView::MopSupplyObject(TTypeUid aId)
 	}
 
 
-TKeyResponse CDataQuotaAppView::OfferKeyEventL(const TKeyEvent& /*aKeyEvent*/, 
-												TEventCode /*aType*/)
+TKeyResponse CDataQuotaContainer::OfferKeyEventL(
+	const TKeyEvent& /*aKeyEvent*/, TEventCode /*aType*/)
 	{
 	UpdateValuesL();
 	DrawDeferred();
@@ -405,40 +397,46 @@ TKeyResponse CDataQuotaAppView::OfferKeyEventL(const TKeyEvent& /*aKeyEvent*/,
 	}
 
 
-TInt CDataQuotaAppView::DataQuota()
+TInt CDataQuotaContainer::DataQuota()
 	{
 	return iDataQuota/KKilobyte;
 	}
 
 
-void CDataQuotaAppView::SetDataQuotaL(TInt aDataQuota)
+void CDataQuotaContainer::SetDataQuotaL(TInt aDataQuota)
 	{
 	iDataQuota = aDataQuota * KKilobyte;
 	SaveSettingsL();
 	}
 
 
-TInt CDataQuotaAppView::BillingDay()
+TInt CDataQuotaContainer::BillingDay()
 	{
 	return iBillingDay;
 	}
 
 
-void CDataQuotaAppView::SetBillingDayL(TInt aBillingDay)
+void CDataQuotaContainer::SetBillingDayL(TInt aBillingDay)
 	{
 	iBillingDay = aBillingDay;
 	SaveSettingsL();
 	}
 
 
-void CDataQuotaAppView::SetQuotaTypeL(TQuotaType aQuotaType)
+TBool CDataQuotaContainer::IsDailyQuotaType()
+	{
+	return iQuotaType == EDaily;
+	}
+
+
+void CDataQuotaContainer::SetQuotaTypeL(TQuotaType aQuotaType)
 	{
 	iQuotaType = aQuotaType;
 	SaveSettingsL();
 	}
 
 
-void CDataQuotaAppView::LoadSettingsL()
+void CDataQuotaContainer::LoadSettingsL()
 	{
 	iDataQuota = KDataQuota;
 	iBillingDay = 0;
@@ -504,7 +502,7 @@ void CDataQuotaAppView::LoadSettingsL()
 	}
 
 
-void CDataQuotaAppView::SaveSettingsL()
+void CDataQuotaContainer::SaveSettingsL()
 	{
 	CCoeEnv::Static()->FsSession().MkDirAll(KNewSettingsFile);
 	
@@ -529,7 +527,7 @@ void CDataQuotaAppView::SaveSettingsL()
 	}
 
 
-void CDataQuotaAppView::DoChangePaneTextL() const
+void CDataQuotaContainer::DoChangePaneTextL() const
 	{
 	TBuf<KMaxChars> dateText;
 	
@@ -549,11 +547,10 @@ void CDataQuotaAppView::DoChangePaneTextL() const
 	iNaviContainer->PushL(*iNaviLabelDecorator);
 	}
 
-void CDataQuotaAppView::HandlePointerEventL(const TPointerEvent& aPointerEvent)
+void CDataQuotaContainer::HandlePointerEventL(const TPointerEvent& aPointerEvent)
 	{
 	// Check if they have touched any of the buttons.
 	// If so, issue a command.
-	
 	TInt command(EDataQuotaRefresh);
 
 	if (aPointerEvent.iType == TPointerEvent::EButton1Down ||
@@ -586,7 +583,7 @@ void CDataQuotaAppView::HandlePointerEventL(const TPointerEvent& aPointerEvent)
 
 	if (aPointerEvent.iType == TPointerEvent::EButton1Up)
 		{
-		iAvkonAppUi->HandleCommandL(command);
+		iView->HandleCommandL(command);
 		}
 	
 	CCoeControl::HandlePointerEventL(aPointerEvent);
@@ -594,20 +591,5 @@ void CDataQuotaAppView::HandlePointerEventL(const TPointerEvent& aPointerEvent)
 	DrawDeferred();
 	}
 
-/* void CDataQuotaAppView::DynInitMenuPaneL(TInt aResourceId, CEikMenuPane* aMenuPane)
-	{
-	if (R_DATAQUOTA_EDIT_MENU_PANE == aResourceId)
-		{
-		TBool dailyQuota(EDaily == iQuotaType);
-		// Hide if daily:
-		aMenuPane->SetItemDimmed(EDataQuotaEditDailyQuota, dailyQuota);
-		// Hide if monthly:
-		aMenuPane->SetItemDimmed(EDataQuotaEditMonthlyQuota, !dailyQuota);
-		aMenuPane->SetItemDimmed(EDataQuotaEditBillingDay, !dailyQuota);
-		}
-	
-	// Third edition only due to an S60 5th edition bug (issue 364)
-//	aMenuPane->EnableMarqueeL(!iMobblerStatusControl->IsFifthEdition());
-	} */
 
 // End of file
