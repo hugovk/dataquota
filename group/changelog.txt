@@ -1,5 +1,11 @@
 Change log
 ==========
+1.50 (26th June 2011)
+ -Allow for self-signed/Ovi-signed builds. This is self-signed.
+ -Add menu option to reset the phone's log of sent and received data. Only supported when Ovi-signed with WriteDeviceData.
+ -Ran the icon through Nokia's new SVG Converter.
+ -Switched from CAknAppUi/CCoeControl views to CAknViewAppUi/CAknView/CCoeControl.
+
 1.36 (6th June 2011)
  - Choose daily or monthly quota. 
  - Show this changelog during installation.
