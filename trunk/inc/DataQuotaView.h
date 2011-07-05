@@ -26,7 +26,9 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include <AknView.h>
 
 // FORWARD DECLARATIONS
+#ifndef __OVI_SIGNED__
 class CBrowserLauncher;
+#endif
 class CDataQuotaContainer;
 
 // CONSTANTS
@@ -50,8 +52,8 @@ class CDataQuotaView : public CAknView
 		void HandleViewRectChange();
 
 	private: // New functions
-	// ... go here
-
+		void OpenWebBrowserL(const TDesC& aUrl);
+	
 	private: // From CAknView
 		void DoActivateL(const TVwsViewId& aPrevViewId,
 						 TUid aCustomMessageId,
@@ -60,7 +62,9 @@ class CDataQuotaView : public CAknView
 
 	private: // Data
 		CDataQuotaContainer* iContainer;
+#ifndef __OVI_SIGNED__
 		CBrowserLauncher* iBrowserLauncher;
+#endif
 
 	};
 

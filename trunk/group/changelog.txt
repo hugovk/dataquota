@@ -1,7 +1,9 @@
-Change log
-==========
-1.50 (26th June 2011)
+Data Quota change log
+=====================
+1.37 (5th July 2011)
+ -Fixed an arithmetic overflow error that meant bars aren't drawn (e.g. landscape with 6/9GB used: 340*5777014).
  -Allow for self-signed/Ovi-signed builds. This is self-signed.
+ -Use the default web browser (for example Opera Mobile or Nokia browser). Only supported when Ovi-signed with SwEvent.
  -Add menu option to reset the phone's log of sent and received data. Only supported when Ovi-signed with WriteDeviceData.
  -Ran the icon through Nokia's new SVG Converter.
  -Switched from CAknAppUi/CCoeControl views to CAknViewAppUi/CAknView/CCoeControl.

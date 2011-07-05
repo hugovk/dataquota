@@ -34,7 +34,7 @@ class CDataQuotaView;
 class CRepository;
 
 // CONSTANTS
-_LIT(KVersion, "1.40");
+_LIT(KVersion, "1.37");
 
 // CLASS DECLARATION
 
@@ -86,6 +86,7 @@ class CDataQuotaContainer : public CCoeControl
 									TEventCode aType);
 		void SizeChanged();
 		void HandlePointerEventL(const TPointerEvent& aPointerEvent);
+		void HandleResourceChange(TInt aType);
 		void Draw(const TRect& aRect) const;
 		TTypeUid::Ptr MopSupplyObject(TTypeUid aId);
 
