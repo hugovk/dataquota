@@ -1,6 +1,10 @@
 #summary A summary of changes to Data Quota.
 #labels Phase-Deploy
 
+[http://dataquota.googlecode.com/svn/trunk/group/changelog.txt Change log]
+
+----
+
 1.36 (6th June 2011) -
  * Choose daily or monthly quota. 
  * Show this changelog during installation.
