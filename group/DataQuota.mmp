@@ -86,7 +86,6 @@ SYSTEMINCLUDE	\epoc32\include
 LIBRARY			aknskins.lib
 LIBRARY			apparc.lib
 LIBRARY			avkon.lib
-LIBRARY			browserlauncher.lib
 LIBRARY			centralrepository.lib
 LIBRARY			commonengine.lib
 LIBRARY			cone.lib
@@ -99,9 +98,20 @@ LIBRARY			estor.lib
 LIBRARY			euser.lib
 LIBRARY			gdi.lib
 
-VENDORID	0
 #ifdef OVI_SIGNED
-CAPABILITY	WriteDeviceData
+LIBRARY			apgrfx.lib
+LIBRARY			apmime.lib
+#else
+#ifndef WINS
+LIBRARY			browserlauncher.lib
+#endif
+#endif
+
+VENDORID	0
+
+#ifdef OVI_SIGNED
+CAPABILITY	SwEvent 		// for TApaTask::SendMessage()
+CAPABILITY	WriteDeviceData // for CRepository::Set()
 #else
 CAPABILITY	NONE
 #endif

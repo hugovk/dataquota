@@ -25,7 +25,11 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 // SYSTEM INCLUDES
 #include <AknMessageQueryDialog.h>
 #include <AknViewAppUi.h>
+#ifdef __OVI_SIGNED__
+#include <apgcli.h>
+#else
 #include <BrowserLauncher.h>
+#endif
 
 // USER INCLUDES
 #include "DataQuotaContainer.h"
@@ -42,7 +46,9 @@ CDataQuotaView::CDataQuotaView()
 
 CDataQuotaView::~CDataQuotaView()
 	{
+#ifndef __OVI_SIGNED__
 	delete iBrowserLauncher;
+#endif
 	delete iContainer;
 	}
 
@@ -112,10 +118,10 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 			dlg->PrepareLC(R_AVKON_DIALOG_QUERY_VALUE_NUMBER);
 			dlg->SetMinimumAndMaximum(KMinBillingDay, KMaxBillingDay);
 			if (dlg->RunLD())
-					{
-					iContainer->SetBillingDayL(number - 1);
-					HandleCommandL(EDataQuotaRefresh);
-					}
+				{
+				iContainer->SetBillingDayL(number - 1);
+				HandleCommandL(EDataQuotaRefresh);
+				}
 			}
 			break;
 
@@ -201,7 +207,7 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 			// Initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
-			_LIT(KMessage, "(c) 2008-2011 Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
+			_LIT(KMessage, "(C) 2008-2011 Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
 			dlg->SetMessageTextL(KMessage);
 			
 			dlg->RunLD();
@@ -239,11 +245,7 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 					break;
 				}
 			
-			if (!iBrowserLauncher)
-				{
-				iBrowserLauncher = CBrowserLauncher::NewL();
-				}
-			iBrowserLauncher->LaunchBrowserEmbeddedL(url);
+			OpenWebBrowserL(url);
 			}
 			break;
 		
@@ -259,6 +261,58 @@ void CDataQuotaView::HandleViewRectChange()
 		{
 		iContainer->SetRect(ClientRect());
 		}
+	}
+
+
+void CDataQuotaView::OpenWebBrowserL(const TDesC& 
+#ifndef __WINS__
+									aUrl
+#endif
+									)
+	{
+#ifndef __WINS__
+#ifdef __OVI_SIGNED__
+	// Find the default browser, on S^1/S^3 it may be a 3rd party browser
+	RApaLsSession lsSession;
+	User::LeaveIfError(lsSession.Connect());
+	CleanupClosePushL(lsSession); 
+	_LIT8(KMimeDataType, "application/x-web-browse");
+	TDataType mimeDataType(KMimeDataType);
+	TUid handlerUid;
+	// Get the default application UID for "application/x-web-browse"
+	lsSession.AppForDataType(mimeDataType, handlerUid);
+	
+	if (handlerUid.iUid == 0)
+		{
+		// For S60 3.x
+		const TUid KBrowserUid = {0x10008D39};
+		handlerUid = KBrowserUid;
+		}
+	
+	TApaTaskList taskList(CEikonEnv::Static()->WsSession());
+	TApaTask task(taskList.FindApp(handlerUid));
+	if(task.Exists())
+		{
+		task.BringToForeground();
+		HBufC8* param8(HBufC8::NewLC(aUrl.Length()));
+		param8->Des().Append(aUrl);
+		task.SendMessage(TUid::Uid(0), *param8); // UID not used
+		CleanupStack::PopAndDestroy(param8);
+		}
+	else
+		{
+		TThreadId thread;
+		User::LeaveIfError(lsSession.StartDocument(aUrl, handlerUid, thread));
+		}
+	CleanupStack::PopAndDestroy(&lsSession);
+#else // !__OVI_SIGNED__
+	if (!iBrowserLauncher)
+		{
+		iBrowserLauncher = CBrowserLauncher::NewL();
+		}
+	iBrowserLauncher->LaunchBrowserEmbeddedL(aUrl);
+#endif // __OVI_SIGNED__
+#endif // __WINS__
 	}
 
 

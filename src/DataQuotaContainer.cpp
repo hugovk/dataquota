@@ -23,6 +23,7 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include "DataQuotaContainer.h"
 
 // SYSTEM INCLUDES
+#include <AknUtils.h>
 #include <AknNaviDe.h>
 #include <AknNaviLabel.h>
 #include <AknsBasicBackgroundControlContext.h>
@@ -284,13 +285,22 @@ void CDataQuotaContainer::Draw(const TRect& /* aRect */) const
 
 void CDataQuotaContainer::SizeChanged()
 	{
+	if (iBackground)
+		{
+		iBackground->SetRect(Rect());
+		
+		if (&Window())
+			{
+			iBackground->SetParentPos(PositionRelativeToScreen());
+			}
+		}
 	UpdateValuesL();
 	}
 
 
 void CDataQuotaContainer::UpdateValuesL()
 	{
-	CEikonEnv::Static()->InfoMsg(_L("Refresh")); // TODO TEMP
+	// CEikonEnv::Static()->InfoMsg(_L("Refresh")); // TODO TEMP
 
 	const TInt KDataBarY(Size().iHeight*1/4 - KBarHeight);
 	const TInt KDateBarY(Size().iHeight*3/4 - KBarHeight);
@@ -321,9 +331,10 @@ void CDataQuotaContainer::UpdateValuesL()
 #endif
 
 	// MB are too small, bytes are too big, KB are just right
+	const TReal KFactor((TReal)iRectWidth / (TReal)iDataQuota);
 	iDataRect = TRect(TPoint(KMargin, KDataBarY),			TSize(iRectWidth, KBarHeight));
-	iSentRect = TRect(TPoint(KMargin, KDataBarY),			TSize(iRectWidth * iSentData/iDataQuota, KBarHeight));
-	iRcvdRect = TRect(TPoint(iSentRect.iBr.iX, KDataBarY),	TSize(iRectWidth * iRcvdData/iDataQuota, KBarHeight));
+	iSentRect = TRect(TPoint(KMargin, KDataBarY),			TSize(TInt(iSentData * KFactor), KBarHeight));
+	iRcvdRect = TRect(TPoint(iSentRect.iBr.iX, KDataBarY),	TSize(TInt(iRcvdData * KFactor), KBarHeight));
 
 	// Date
 
@@ -547,6 +558,7 @@ void CDataQuotaContainer::DoChangePaneTextL() const
 	iNaviContainer->PushL(*iNaviLabelDecorator);
 	}
 
+
 void CDataQuotaContainer::HandlePointerEventL(const TPointerEvent& aPointerEvent)
 	{
 	// Check if they have touched any of the buttons.
@@ -589,6 +601,18 @@ void CDataQuotaContainer::HandlePointerEventL(const TPointerEvent& aPointerEvent
 	CCoeControl::HandlePointerEventL(aPointerEvent);
 	UpdateValuesL();
 	DrawDeferred();
+	}
+
+
+void CDataQuotaContainer::HandleResourceChange(TInt aType)
+	{
+	if (aType == KEikDynamicLayoutVariantSwitch)
+		{
+		TRect rect;
+		AknLayoutUtils::LayoutMetricsRect(AknLayoutUtils::EMainPane, rect);
+		SetRect(rect);
+		}
+	CCoeControl::HandleResourceChange(aType);
 	}
 
 

@@ -63,6 +63,7 @@ void CDataQuotaAppUi::HandleCommandL(TInt aCommand)
 	switch (aCommand)
 		{
 		case EEikCmdExit:
+		case EAknSoftkeyExit:
 			Exit();
 			break;
 
@@ -110,7 +111,7 @@ void CDataQuotaAppUi::DynInitMenuPaneL(
 		aMenuPane->SetItemDimmed(EDataQuotaEditMonthlyQuota, !dailyQuota);
 		}
 	
-	iView->HandleCommandL(EDataQuotaRefresh);
+	// iView->HandleCommandL(EDataQuotaRefresh);
 	}
 
 
