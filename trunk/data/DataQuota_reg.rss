@@ -23,14 +23,15 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include <appinfo.rh>
 #include "DataQuota.loc"
 #include "DataQuota.rsg.h"
+#include "DataQuotaUids.h"
 
 CHARACTER_SET UTF8
 
 UID2 KUidAppRegistrationResourceFile
 #ifdef __OVI_SIGNED__
-UID3 0x200427F6
+UID3 KUidOviSigned
 #else
-UID3 0xA000B6EF
+UID3 KUidSelfSigned
 #endif
 
 RESOURCE APP_REGISTRATION_INFO

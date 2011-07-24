@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!-- Converted with SVG Converter - Version 0.9.5 (Compiled Mon May 30 09:08:51 2011) - Copyright (C) 2011 Nokia -->
+<svg xmlns="http://www.w3.org/2000/svg" width="80" version="1.1" height="80" baseProfile="tiny" xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <linearGradient id="hicg_overlay_grad" y1="5.1816" x1="39.9995" y2="58.8019" gradientUnits="userSpaceOnUse" x2="39.9995">
+   <stop offset="0" style="stop-color:#FFFFFF"/>
+   <stop offset="1" style="stop-color:#000000"/>
+  </linearGradient>
+ </defs>
+ <g>
+  <path fill="#0066ff" id="hicg_background" d="M79,40c0,28.893-10.105,39-39,39S1,68.893,1,40C1,11.106,11.105,1,40,1S79,11.106,79,40z"/>
+  <path stroke-opacity="0.25" fill="#fff" fill-opacity="0.25" id="hicg_highlight" d="M39.999,1C11.105,1,1,11.106,1,40c0,28.893,10.105,39,38.999,39   C68.896,79,79,68.893,79,40C79,11.106,68.896,1,39.999,1z M39.999,78.025C11.57,78.025,1.976,68.43,1.976,40   c0-28.429,9.595-38.024,38.023-38.024c28.43,0,38.024,9.596,38.024,38.024C78.023,68.43,68.429,78.025,39.999,78.025z"/>
+  <path stroke-opacity="0.4" fill="url(#hicg_overlay_grad)" fill-opacity="0.4" id="hicg_overlay" d="M78.977,40c0,28.893-10.1,39-38.977,39S1.023,68.893,1.023,40c0-28.894,10.1-39,38.977-39S78.977,11.106,78.977,40z"/>
+ </g>
+ <g transform="translate(12, 12) scale(1.1666666666667)">
+  <defs id="defs3"/>
+  <path style="fill:#0066ff;fill-opacity:1;fill-rule:evenodd;stroke:#80b3ff;stroke-width:1.00000036;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" id="path8643" d="M 8.1122458,18.642014 L 8.0238574,22.700661 L 41.939777,21.852268 L 30.951274,12.74329 L 31.159066,18.439526 L 8.1122458,18.642014 z"/>
+  <path style="fill:#217821;fill-opacity:1;fill-rule:evenodd;stroke:#5fd35f;stroke-width:1.00000036;stroke-linecap:round;stroke-linejoin:round;marker:none;marker-start:none;marker-mid:none;marker-end:none;stroke-miterlimit:10;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;visibility:visible;display:inline;overflow:visible" id="path2396" d="M 41.70074,28.066975 L 41.789128,24.008328 L 7.873209,24.856721 L 18.861712,33.965699 L 18.65392,28.269463 L 41.70074,28.066975 z"/>
+ </g>
+</svg>
