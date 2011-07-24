@@ -25,8 +25,10 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 // SYSTEM INCLUDES
 #include <AknMessageQueryDialog.h>
 #include <AknViewAppUi.h>
-#ifdef __OVI_SIGNED__
 #include <apgcli.h>
+#ifdef __OVI_SIGNED__
+#include <SWInstApi.h>
+#include <SWInstDefs.h>
 #else
 #include <BrowserLauncher.h>
 #endif
@@ -35,10 +37,14 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include "DataQuotaContainer.h"
 #include "DataQuota.hrh"
 #include "DataQuota.rsg.h"
+#include "DataQuotaUids.h"
 
 
 CDataQuotaView::CDataQuotaView()
 	: iContainer(NULL)
+#ifdef __OVI_SIGNED__
+	, iUninstallAttempted(EFalse)
+#endif
 	{
 	// No implementation required
 	}
@@ -66,6 +72,9 @@ CDataQuotaView* CDataQuotaView::NewL()
 void CDataQuotaView::ConstructL()
 	{
 	BaseConstructL(R_DATAQUOTA_VIEW);
+#ifndef __OVI_SIGNED__
+	LaunchOviSignedVersionL();
+#endif
 	}
 
 
@@ -84,6 +93,9 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 			// break;
 
 		case EAknCmdExit:
+#ifdef __OVI_SIGNED__
+			UninstallSelfSignedVersionL();
+#endif
 			AppUi()->HandleCommandL(EAknCmdExit);
 			break;
 
@@ -357,6 +369,61 @@ TBool CDataQuotaView::IsDailyQuotaType()
 	{
 	return iContainer->IsDailyQuotaType();
 	}
+
+
+#ifdef __OVI_SIGNED__
+void CDataQuotaView::UninstallSelfSignedVersionL()
+	{
+	if (iUninstallAttempted)
+		{
+		return;
+		}
+	else
+		{
+		iUninstallAttempted = ETrue;
+		}
+	
+	SwiUI::RSWInstLauncher iLauncher; 
+	TInt error(iLauncher.Connect());
+	 if (KErrNone == error)
+		{
+		SwiUI::TInstallOptions options;
+		SwiUI::TInstallOptionsPckg optionsPckg;  
+		options.iKillApp = SwiUI::EPolicyAllowed;
+		optionsPckg = options;  
+		error = iLauncher.SilentUninstall(
+			TUid::Uid(KUidSelfSigned), 
+			optionsPckg,
+			SwiUI::KSisxMimeType);
+		}
+	iLauncher.Close();
+	}
+#endif // __OVI_SIGNED__
+
+
+#ifndef __OVI_SIGNED__
+void CDataQuotaView::LaunchOviSignedVersionL()
+	{
+	RApaLsSession lsSession;
+	User::LeaveIfError(lsSession.Connect());
+	CleanupClosePushL(lsSession);
+
+	TApaAppInfo appInfo;
+	TInt error(lsSession.GetAppInfo(
+		appInfo, 
+		TUid::Uid(KUidOviSigned)));
+
+	if (KErrNone == error)
+		{
+		CApaCommandLine* cmdLine(CApaCommandLine::NewLC());
+		cmdLine->SetExecutableNameL(appInfo.iFullName);
+		cmdLine->SetCommandL(EApaCommandRun);
+		User::LeaveIfError(lsSession.StartApp(*cmdLine));
+		CleanupStack::PopAndDestroy(cmdLine);
+		}
+	CleanupStack::PopAndDestroy(&lsSession);
+	}
+#endif // !__OVI_SIGNED__
 
 
 // End of file

@@ -23,7 +23,7 @@
 &EN, FR, GE, SP, IT, SW, FI, AM, TU, RU, HU, DU, CS, SK, PL, ZH, ET, EL, HE, KO, LV, LT, BP, RO, SR, UK, 106
 
 ; Standard SIS file header
-#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0x200427F6),1,37,0
+#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0x200427F6),2,38,0
 
 ; Localised Vendor name
 %{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
@@ -76,7 +76,7 @@
 
 ; The application registration file
 "..\..\..\epoc32\data\z\private\10003a3f\import\apps\DataQuota_reg_0x200427F6.r01" -"!:\private\10003a3f\import\apps\DataQuota_reg_0x200427F6.r01"
-"..\..\..\epoc32\data\z\resource\apps\dataquota_aif.mif" - "!:\resource\apps\dataquota_aif_0x200427F6.mif"
+"..\..\..\epoc32\data\z\resource\apps\dataquota_0x200427F6.mif" - "!:\resource\apps\dataquota_0x200427F6.mif"
 
 ; Symbian^X touch feedback
 "..\..\..\epoc32\release\gcce\urel\dataquotatouchfeedback_0x200427F7.dll"-"!:\sys\bin\dataquotatouchfeedback_0x200427F7.dll"

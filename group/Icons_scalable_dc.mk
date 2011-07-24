@@ -1,7 +1,7 @@
 #
 # Data Quota for Symbian phones.
 # http://code.google.com/p/dataquota/
-# Copyright (C) 2008, 2010  Hugo van Kemenade
+# Copyright (C) 2008, 2010, 2011  Hugo van Kemenade
 # 
 # This file is part of Data Quota.
 # 
@@ -25,7 +25,9 @@ ZDIR=$(EPOCROOT)epoc32\data\z
 endif
 
 TARGETDIR=$(ZDIR)\resource\apps
-ICONTARGETFILENAME=$(TARGETDIR)\dataquota_aif.mif
+
+ICONTARGETFILENAME=$(TARGETDIR)\dataquota.mif
+OSICONTARGETFILENAME=$(TARGETDIR)\dataquota_0x200427F6.mif
 
 ICONDIR=..\gfx
 
@@ -46,12 +48,16 @@ RESOURCE :
 	mifconv $(ICONTARGETFILENAME) \
 		/X /c32 $(ICONDIR)\dataquota.svg
 
+	mifconv $(OSICONTARGETFILENAME) \
+		/X /c32 $(ICONDIR)\dataquota_signed.svg
+
 FREEZE : do_nothing
 
 SAVESPACE : do_nothing
 
 RELEASABLES :
 	@echo $(ICONTARGETFILENAME)
+	@echo $(OSICONTARGETFILENAME)
 
 FINAL : do_nothing
 

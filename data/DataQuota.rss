@@ -175,9 +175,9 @@ RESOURCE LOCALISABLE_APP_INFO r_dataquota_localisable_app_info
 
 		number_of_icons = 1;
 #ifdef __OVI_SIGNED__
-		icon_file = "\\resource\\apps\\Dataquota_aif_0x200427F6.mif";
+		icon_file = "\\resource\\apps\\Dataquota_0x200427F6.mif";
 #else
-		icon_file = "\\resource\\apps\\Dataquota_aif.mif";
+		icon_file = "\\resource\\apps\\Dataquota.mif";
 #endif
 		};
 	}

@@ -53,6 +53,11 @@ class CDataQuotaView : public CAknView
 
 	private: // New functions
 		void OpenWebBrowserL(const TDesC& aUrl);
+#ifdef __OVI_SIGNED__
+		void UninstallSelfSignedVersionL();
+#else
+		void LaunchOviSignedVersionL();
+#endif
 	
 	private: // From CAknView
 		void DoActivateL(const TVwsViewId& aPrevViewId,
@@ -62,7 +67,9 @@ class CDataQuotaView : public CAknView
 
 	private: // Data
 		CDataQuotaContainer* iContainer;
-#ifndef __OVI_SIGNED__
+#ifdef __OVI_SIGNED__
+		TBool iUninstallAttempted;
+#else
 		CBrowserLauncher* iBrowserLauncher;
 #endif
 

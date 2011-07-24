@@ -34,7 +34,11 @@ class CDataQuotaView;
 class CRepository;
 
 // CONSTANTS
-_LIT(KVersion, "1.37");
+#ifdef __OVI_SIGNED__
+_LIT(KVersion, "2.38");
+#else
+_LIT(KVersion, "1.38");
+#endif
 
 // CLASS DECLARATION
 

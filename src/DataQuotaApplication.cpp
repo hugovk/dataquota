@@ -27,20 +27,21 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 
 // USER INCLUDES
 #include "DataQuotaDocument.h"
+#include "DataQuotaUids.h"
 
 
 // UID for the application should match the UID defined in the mmp file
 #ifdef __OVI_SIGNED__
-const TUid KUidDataQuotaApp = {0x200427F6};
+const TUid KUidDataQuotaApp = {KUidOviSigned};
 #else
-const TUid KUidDataQuotaApp = {0xA000B6EF};
+const TUid KUidDataQuotaApp = {KUidSelfSigned};
 #endif
 
 
 CApaDocument* CDataQuotaApplication::CreateDocumentL()
 	{
 	// Create a Data Quota document, and return a pointer to it
-	return CDataQuotaDocument::NewL( *this );
+	return CDataQuotaDocument::NewL(*this);
 	}
 
 
