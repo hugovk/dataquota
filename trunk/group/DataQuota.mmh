@@ -26,4 +26,13 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 MACRO __OVI_SIGNED__
 #endif
 
+#ifdef OVI_SIGNED
+CAPABILITY	SwEvent TrustedUI WriteDeviceData
+// SwEvent for TApaTask::SendMessage()
+// TrustedUI for RSWInstLauncher.SilentUninstall()
+// WriteDeviceData for CRepository::Set()
+#else
+CAPABILITY	NONE
+#endif
+
 // End of file

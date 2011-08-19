@@ -98,6 +98,7 @@ LIBRARY			eikdlg.lib
 LIBRARY			estor.lib
 LIBRARY			euser.lib
 LIBRARY			gdi.lib
+LIBRARY			ws32.lib
 
 #ifdef OVI_SIGNED
 LIBRARY			apmime.lib
@@ -109,14 +110,5 @@ LIBRARY			browserlauncher.lib
 #endif
 
 VENDORID	0
-
-#ifdef OVI_SIGNED
-CAPABILITY	SwEvent TrustedUI WriteDeviceData
-// SwEvent for TApaTask::SendMessage()
-// TrustedUI for RSWInstLauncher.SilentUninstall()
-// WriteDeviceData for CRepository::Set()
-#else
-CAPABILITY	NONE
-#endif
 
 // End of file

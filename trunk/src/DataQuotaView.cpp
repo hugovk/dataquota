@@ -93,16 +93,21 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 			// break;
 
 		case EAknCmdExit:
-#ifdef __OVI_SIGNED__
-			UninstallSelfSignedVersionL();
-#endif
+			{
+			TApaTask task(iEikonEnv->WsSession());
+			task.SetWgId(CEikonEnv::Static()->RootWin().Identifier());
+			task.SendToBackground();
 			AppUi()->HandleCommandL(EAknCmdExit);
+			}
 			break;
 
 		case EDataQuotaRefresh:
 			{
 			iContainer->UpdateValuesL();
 			iContainer->DrawNow();
+#ifdef __OVI_SIGNED__
+			UninstallSelfSignedVersionL();
+#endif
 			}
 			break;
 
@@ -421,7 +426,13 @@ void CDataQuotaView::LaunchOviSignedVersionL()
 		User::LeaveIfError(lsSession.StartApp(*cmdLine));
 		CleanupStack::PopAndDestroy(cmdLine);
 		}
+	
 	CleanupStack::PopAndDestroy(&lsSession);
+	
+	if (KErrNone == error)
+		{
+		HandleCommandL(EEikCmdExit);
+		}
 	}
 #endif // !__OVI_SIGNED__
 

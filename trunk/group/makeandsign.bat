@@ -1,21 +1,32 @@
 
 @echo ============== SELF-SIGNED ==========================
 
-@move    DataQuota.sis  DataQuota.bak.sis
-@move    DataQuota.sisx DataQuota.bak.sisx
-makesis DataQuota.pkg  DataQuota.sis
-signsis DataQuota.sis  DataQuota.sisx DataQuota.cer DataQuota.key password
+set sisfile=DataQuota
+set certfile=%sisfile%.cer
+set keyfile=%sisfile%.key
 
-copy DataQuota.sisx "%HOMEDRIVE%%HOMEPATH%\My Documents\Magic Briefcase"
-if exist DataQuota.sisx start DataQuota.sisx
+@if exist %sisfile%.sis  move %sisfile%.sis  %sisfile%.bak.sis
+@if exist %sisfile%.sisx move %sisfile%.sisx %sisfile%.bak.sisx
+makesis %sisfile%.pkg  %sisfile%.sis
+@if exist %sisfile%.sis signsis %sisfile%.sis  %sisfile%.sisx %certfile% %keyfile% password
 
+@if exist %sisfile%.sisx copy  %sisfile%.sisx "%HOMEDRIVE%%HOMEPATH%\My Documents\Magic Briefcase"
+@if exist %sisfile%.sisx start %sisfile%.sisx
+@if exist %sisfile%.sis  del   %sisfile%.sis
 
 @echo ============== OVI SIGNED ==========================
 
-@move    DataQuota_signed.sis  DataQuota_signed.bak.sis
-@move    DataQuota_signed.sisx DataQuota_signed.bak.sisx
-makesis DataQuota_signed.pkg  DataQuota_signed.sis
-signsis DataQuota_signed.sis  DataQuota_signed.sisx ovi_2011-05-30.crt ovi_2011-05-30.key
+set sisfile=DataQuota_signed
+set certfile=ovi_2011-05-30.crt
+set keyfile=ovi_2011-05-30.key
 
-copy DataQuota_signed.sisx "%HOMEDRIVE%%HOMEPATH%\My Documents\Magic Briefcase"
-if exist DataQuota_signed.sisx start DataQuota_signed.sisx
+@if exist %sisfile%.sis  move %sisfile%.sis  %sisfile%.bak.sis
+@if exist %sisfile%.sisx move %sisfile%.sisx %sisfile%.bak.sisx
+makesis %sisfile%.pkg  %sisfile%.sis
+@if exist %sisfile%.sis signsis %sisfile%.sis %sisfile%.sisx %certfile% %keyfile% 
+
+@if exist %sisfile%.sisx copy  %sisfile%.sisx "%HOMEDRIVE%%HOMEPATH%\My Documents\Magic Briefcase"
+@if exist %sisfile%.sisx start %sisfile%.sisx
+@if exist %sisfile%.sis  del   %sisfile%.sis
+
+@dir /b *.sisx
