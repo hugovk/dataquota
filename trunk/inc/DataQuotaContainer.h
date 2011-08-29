@@ -35,9 +35,9 @@ class CRepository;
 
 // CONSTANTS
 #ifdef __OVI_SIGNED__
-_LIT(KVersion, "2.38");
+_LIT(KVersion, "2.40");
 #else
-_LIT(KVersion, "1.38");
+_LIT(KVersion, "1.40");
 #endif
 
 // CLASS DECLARATION

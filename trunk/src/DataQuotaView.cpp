@@ -238,17 +238,28 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 		case EDataQuotaMoreAppsSugarSync:	// intentional fall-through
 			{
 			TBuf<256> url;
+			TBool forceNativeBrowser(EFalse);
 			switch (aCommand)
 				{
 				case EDataQuotaMoreAppsPodOClock:
 					{
+#ifdef __OVI_SIGNED__
+					_LIT(KUrl, "http://store.ovi.mobi/publisher/hugovk/"); // TODO replace
+					forceNativeBrowser = ETrue;
+#else
 					_LIT(KUrl, "http://code.google.com/p/podoclock/");
+#endif
 					url.Copy(KUrl);
 					}
 					break;
 				case EDataQuotaMoreAppsMobbler:
 					{
+#ifdef __OVI_SIGNED__
+					_LIT(KUrl, "http://store.ovi.mobi/content/75692");
+					forceNativeBrowser = ETrue;
+#else
 					_LIT(KUrl, "http://code.google.com/p/mobbler/");
+#endif
 					url.Copy(KUrl);
 					}
 					break;
@@ -262,7 +273,7 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 					break;
 				}
 			
-			OpenWebBrowserL(url);
+			OpenWebBrowserL(url, forceNativeBrowser);
 			}
 			break;
 		
@@ -281,29 +292,34 @@ void CDataQuotaView::HandleViewRectChange()
 	}
 
 
-void CDataQuotaView::OpenWebBrowserL(const TDesC& 
-#ifndef __WINS__
-									aUrl
-#endif
-									)
+void CDataQuotaView::OpenWebBrowserL(const TDesC& aUrl,
+									 const TBool aForceNative)
 	{
-#ifndef __WINS__
+	// To suppress compiler warnings
+	(void)aUrl;
+	(void)aForceNative;
+
 #ifdef __OVI_SIGNED__
-	// Find the default browser, on S^1/S^3 it may be a 3rd party browser
 	RApaLsSession lsSession;
 	User::LeaveIfError(lsSession.Connect());
 	CleanupClosePushL(lsSession); 
-	_LIT8(KMimeDataType, "application/x-web-browse");
-	TDataType mimeDataType(KMimeDataType);
-	TUid handlerUid;
-	// Get the default application UID for "application/x-web-browse"
-	lsSession.AppForDataType(mimeDataType, handlerUid);
-	
-	if (handlerUid.iUid == 0)
+
+	const TUid KBrowserUid = {0x10008D39};
+	TUid handlerUid = KBrowserUid;
+
+	if (!aForceNative)
 		{
-		// For S60 3.x
-		const TUid KBrowserUid = {0x10008D39};
-		handlerUid = KBrowserUid;
+		// Find the default browser, on S^1/S^3 it may be a 3rd party browser
+		_LIT8(KMimeDataType, "application/x-web-browse");
+		TDataType mimeDataType(KMimeDataType);
+		// Get the default application UID for "application/x-web-browse"
+		lsSession.AppForDataType(mimeDataType, handlerUid);
+	
+		if (handlerUid.iUid == 0)
+			{
+			// For S60 3.x
+			handlerUid = KBrowserUid;
+			}
 		}
 	
 	TApaTaskList taskList(CEikonEnv::Static()->WsSession());
@@ -322,7 +338,9 @@ void CDataQuotaView::OpenWebBrowserL(const TDesC&
 		User::LeaveIfError(lsSession.StartDocument(aUrl, handlerUid, thread));
 		}
 	CleanupStack::PopAndDestroy(&lsSession);
+
 #else // !__OVI_SIGNED__
+
 	if (!iBrowserLauncher)
 		{
 		iBrowserLauncher = CBrowserLauncher::NewL();

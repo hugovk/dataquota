@@ -46,6 +46,7 @@ class CDataQuotaAppUi : public CAknViewAppUi
 
 	private: // Data
 		CDataQuotaView* iView;
+		TBool iHideSugarSync;
 	};
 
 #endif // __DATAQUOTAAPPUI_H__

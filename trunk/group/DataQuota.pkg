@@ -23,7 +23,7 @@
 &EN, FR, GE, SP, IT, SW, FI, AM, TU, RU, HU, DU, CS, SK, PL, ZH, ET, EL, HE, KO, LV, LT, BP, RO, SR, UK, 106
 
 ; Standard SIS file header
-#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),1,38,0
+#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0xA000B6EF),1,40,0
 
 ; Localised Vendor name
 %{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
@@ -37,8 +37,11 @@
 ; Supports S60 release 5.0
 [0x1028315F], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
-; Supports Symbian^3
+; Supports Symbian^3 and Anna
 [0x20022E6D], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+
+; Supports Symbian Belle
+[0x2003A678], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Files to install
 "..\..\..\epoc32\release\gcce\urel\DataQuota.exe" - "!:\sys\bin\DataQuota.exe"

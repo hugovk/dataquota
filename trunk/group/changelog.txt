@@ -1,13 +1,21 @@
 Data Quota change log
 =====================
-1.38 (24th July 2011)
- - Upgrading: When launching self-signed, will attempt to launch Ovi-signed.
- - Upgrading: When hiding Ovi-signed, will attempt to uninstall self-signed.
+2.40 (24th August 2011, Ovi-signed)
+1.40 (24th August 2011, self-signed)
+ - Updated Italian.
+
+2.39 (23rd August 2011, Ovi-signed)
+ - Re-submission to Ovi Store
+
+2.38 (21st August 2011, Ovi-signed)
+1.38 (21st August 2011, self-signed) 
+ - Upgrading: When launching self-signed, will attempt to launch Ovi-signed (once only).
+ - Upgrading: When refreshing Ovi-signed, will attempt to uninstall self-signed (once only).
  - Ovi-signed is version 2.x, self-signed is version 1.x.
 
 1.37 (5th July 2011)
  - Fixed an arithmetic overflow error that meant bars aren't drawn (e.g. landscape with 6/9GB used: 340*5777014).
- - Allow for self-signed/Ovi-signed builds. This is self-signed.
+ - Allow for self-signed/Ovi-signed builds. 
  - Use the default web browser (for example Opera Mobile or Nokia browser). Only supported when Ovi-signed with SwEvent.
  - Add menu option to reset the phone's log of sent and received data. Only supported when Ovi-signed with WriteDeviceData.
  - Ran the icon through Nokia's new SVG Converter.
