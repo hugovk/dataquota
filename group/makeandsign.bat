@@ -27,6 +27,6 @@ makesis %sisfile%.pkg  %sisfile%.sis
 
 @if exist %sisfile%.sisx copy  %sisfile%.sisx "%HOMEDRIVE%%HOMEPATH%\My Documents\Magic Briefcase"
 @if exist %sisfile%.sisx start %sisfile%.sisx
-@if exist %sisfile%.sis  del   %sisfile%.sis
+REM @if exist %sisfile%.sis  del   %sisfile%.sis
 
 @dir /b *.sisx

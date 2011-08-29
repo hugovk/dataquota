@@ -52,7 +52,8 @@ class CDataQuotaView : public CAknView
 		void HandleViewRectChange();
 
 	private: // New functions
-		void OpenWebBrowserL(const TDesC& aUrl);
+		void OpenWebBrowserL(const TDesC& aUrl, 
+							 const TBool aForceNative = EFalse);
 #ifdef __OVI_SIGNED__
 		void UninstallSelfSignedVersionL();
 #else

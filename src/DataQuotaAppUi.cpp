@@ -21,6 +21,9 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 
 // OWN INCLUDE
 #include "DataQuotaAppUi.h"
+#ifdef __OVI_SIGNED__
+#include "log.h"
+#endif
 
 // SYSTEM INCLUDES
 #include <EikMenuP.h>
@@ -32,6 +35,11 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 
 
 CDataQuotaAppUi::CDataQuotaAppUi()
+#ifdef __OVI_SIGNED__
+	: iHideSugarSync(ETrue)
+#else
+	: iHideSugarSync(EFalse)
+#endif
 	{
 	// No implementation required
 	}
@@ -39,6 +47,10 @@ CDataQuotaAppUi::CDataQuotaAppUi()
 
 void CDataQuotaAppUi::ConstructL()
 	{
+#ifdef __OVI_SIGNED__
+	LOGSTART
+#endif
+
 	// Initialise app UI with standard value
 	BaseConstructL(EAknEnableSkin);
 	
@@ -110,9 +122,13 @@ void CDataQuotaAppUi::DynInitMenuPaneL(
 		// Hide if monthly:
 		aMenuPane->SetItemDimmed(EDataQuotaEditMonthlyQuota, !dailyQuota);
 		}
+	else if (R_DATAQUOTA_MORE_APPS_MENU_PANE == aResourceId)
+		{
+		aMenuPane->SetItemDimmed(EDataQuotaMoreAppsSugarSync, iHideSugarSync);
+		}
 	
 	// iView->HandleCommandL(EDataQuotaRefresh);
 	}
 
-
 // End of file
+

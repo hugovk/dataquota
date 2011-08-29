@@ -6,6 +6,7 @@ http://code.google.com/p/dataquota/
 Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 Copyright (C) 2009  Luca Paci
 Copyright (C) 2010  Cesco Lunghi
+Copyright (C) 2011  Andrea Inama
 
 This file is part of Data Quota.
 
@@ -36,23 +37,23 @@ rls_string STR_dataquota_megabyte " MB"
 
 rls_string STR_dataquota_refresh "Ricarica"
 rls_string STR_dataquota_edit "Edita"
-rls_string STR_dataquota_edit_quota "Quota"
+rls_string STR_dataquota_edit_quota "Quantità"
 rls_string STR_dataquota_edit_billing_day "Giorno di scadenza"
 //rls_string STR_dataquota_edit_billing_period "Periodo del contratto"
 rls_string STR_dataquota_about "Crediti"
 rls_string STR_dataquota_about_text "Data Quota "
 rls_string STR_dataquota_exit "Esci"
 
-rls_string STR_dataquota_help "Help"
-rls_string STR_dataquota_help_text "Simply shows how much of your packet data quota you've used so far this month.\n\nIf you have a pre-determined quota from your operator of how much packet data you can use in a month, it's a pain to first find the Logs application, open the packet data counter, then try and work out how much data you have left from the amount used so far.\n\nData Quota shows two simple bars: one showing how much of the data for this month you have used; and one showing how much of the month has elapsed. This lets you tell at a glance if you've been using data up too fast or two slow, so you can be more frugal or let rip!\n\nOn the first of each month (or whenever your quota resets on billing day), clear the packet data counter. For example: Tools -> Log -> Packet data -> Options -> Clear counters."
-rls_string STR_dataquota_more_apps "More apps"
+rls_string STR_dataquota_help "Guida"
+rls_string STR_dataquota_help_text "Mostra semplicemente quanti dati del pacchetto che si ha a disposizione sono stati usati in questo mese.\n\nSe si ha a disposizione una predefinita quota dati, messa a disposizione dal proprio operatore in un mese, è utile calcolare la quota residua per quel mese andando a vedere i registri di utilizzo dei dati sul proprio terminale, per poter così inserire la parte rimanente in questa applicazione.\n\nData Quota è composto da bue barre: una mostra la quantità di dati che fin'ora sono stati utilizzati; mentre l'altra mostra quanta parte del mese è trascorso. Questo consente di capire immediatamente se si sta utilizzando la quota dati a disposizione velocemente o lentamente, in modo da poter ottimizzare l'utilizzo del pachetti dati a disposizione.\n\nData Quota al primo di ogni mese (o ogni qualvolta che si raggiunge il giorno di scadenza), azzerare il contatore dei dati a pacchetto. Esempio: Strumenti -> Registro -> Dati a pachetto -> opzioni -> Azzera contatori."
+rls_string STR_dataquota_more_apps "Altre applicazioni"
 rls_string STR_dataquota_podoclock "Pod O'Clock"
 rls_string STR_dataquota_mobbler "Mobbler"
 rls_string STR_dataquota_sugarsync "SugarSync"
 
-rls_string STR_dataquota_hour "Hour: "
-rls_string STR_dataquota_edit_daily_quota "Use daily quota"
-rls_string STR_dataquota_edit_monthly_quota "Use monthly quota"
+rls_string STR_dataquota_hour "Ora: "
+rls_string STR_dataquota_edit_daily_quota "Uso a quantità giornaliera"
+rls_string STR_dataquota_edit_monthly_quota "Uso a quantità mensile"
 
-rls_string STR_dataquota_reset_quota "Reset quota"
-rls_string STR_dataquota_reset_quota_confirmation "Reset phone's log of sent and received data?"
+rls_string STR_dataquota_reset_quota "Azzera quota"
+rls_string STR_dataquota_reset_quota_confirmation "Azzera il registro di invio e ricezione dati?"
