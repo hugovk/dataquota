@@ -1,8 +1,11 @@
 Data Quota change log
 =====================
-2.40 (24th August 2011, Ovi-signed)
-1.40 (24th August 2011, self-signed)
- - Updated Italian.
+
+2.40 (19th November 2011, Ovi-signed)
+1.40 (19th November 2011, self-signed)
+ - Updated Anna icon using Nokia's new templates.
+ - Updated Ovi Store links.
+ - Updated French and Italian.
 
 2.39 (23rd August 2011, Ovi-signed)
  - Re-submission to Ovi Store

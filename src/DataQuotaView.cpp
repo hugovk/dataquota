@@ -106,7 +106,7 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 			iContainer->UpdateValuesL();
 			iContainer->DrawNow();
 #ifdef __OVI_SIGNED__
-			UninstallSelfSignedVersionL();
+			// UninstallSelfSignedVersionL();
 #endif
 			}
 			break;
@@ -244,7 +244,7 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 				case EDataQuotaMoreAppsPodOClock:
 					{
 #ifdef __OVI_SIGNED__
-					_LIT(KUrl, "http://store.ovi.mobi/publisher/hugovk/"); // TODO replace
+					_LIT(KUrl, "http://store.ovi.mobi/content/180798/");
 					forceNativeBrowser = ETrue;
 #else
 					_LIT(KUrl, "http://code.google.com/p/podoclock/");
@@ -347,7 +347,6 @@ void CDataQuotaView::OpenWebBrowserL(const TDesC& aUrl,
 		}
 	iBrowserLauncher->LaunchBrowserEmbeddedL(aUrl);
 #endif // __OVI_SIGNED__
-#endif // __WINS__
 	}
 
 
