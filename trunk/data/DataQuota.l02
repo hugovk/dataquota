@@ -6,6 +6,7 @@ http://code.google.com/p/dataquota/
 Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 Copyright (C) 2009  Thierry Destinobles
 Copyright (C) 2011  Jean Blanchard
+Copyright (C) 2011  Tru Huynh
 
 Data Quota is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License
@@ -49,9 +50,9 @@ rls_string STR_dataquota_podoclock "Pod O'Clock"
 rls_string STR_dataquota_mobbler "Mobbler"
 rls_string STR_dataquota_sugarsync "SugarSync"
 
-rls_string STR_dataquota_hour "Hour: "
-rls_string STR_dataquota_edit_daily_quota "Use daily quota"
-rls_string STR_dataquota_edit_monthly_quota "Use monthly quota"
+rls_string STR_dataquota_hour "Heure: "
+rls_string STR_dataquota_edit_daily_quota "Visualiser le quota quotidien"
+rls_string STR_dataquota_edit_monthly_quota "Visualiser le quota mensuel"
 
-rls_string STR_dataquota_reset_quota "Reset quota"
-rls_string STR_dataquota_reset_quota_confirmation "Reset phone's log of sent and received data?"
+rls_string STR_dataquota_reset_quota "Remise à zéro du quota"
+rls_string STR_dataquota_reset_quota_confirmation "Confirmez la remise à zéro des compteurs d'envois et de réceptions du téléphone?"
