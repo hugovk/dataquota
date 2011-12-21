@@ -93,6 +93,7 @@ CDataQuotaTouchFeedback::~CDataQuotaTouchFeedback()
 
 void CDataQuotaTouchFeedback::InstantFeedback(TInt aType)
 	{
+	(void)aType;
 #ifdef  __S60_50__
 	iTouchFeedback->InstantFeedback(static_cast<TTouchLogicalFeedback>(aType));
 #endif
