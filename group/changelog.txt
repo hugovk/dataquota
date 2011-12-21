@@ -1,6 +1,10 @@
 Data Quota change log
 =====================
 
+2.41 (XXth XXX 201X, Ovi-signed)
+1.41 (XXth XXX 201X, self-signed)
+ - Updated Spanish.
+
 2.40 (19th November 2011, Ovi-signed)
 1.40 (19th November 2011, self-signed)
  - Updated Anna icon using Nokia's new templates.
