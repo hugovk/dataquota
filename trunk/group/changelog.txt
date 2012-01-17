@@ -1,9 +1,9 @@
 Data Quota change log
 =====================
 
-2.41 (XXth XXX 201X, Ovi-signed)
-1.41 (XXth XXX 201X, self-signed)
- - Updated Spanish.
+2.41 (17th January 2012, Ovi-signed)
+1.41 (17th January 2012, self-signed)
+ - Updated French and Spanish.
 
 2.40 (19th November 2011, Ovi-signed)
 1.40 (19th November 2011, self-signed)

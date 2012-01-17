@@ -1,7 +1,7 @@
 /*
 Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+Copyright (C) 2008, 2009, 2010, 2011, 2012  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -224,7 +224,7 @@ void CDataQuotaView::HandleCommandL(TInt aCommand)
 			// Initialise the dialog
 			dlg->PrepareLC(R_DATAQUOTA_ABOUT_BOX);
 			dlg->QueryHeading()->SetTextL(*title);
-			_LIT(KMessage, "(C) 2008-2011 Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
+			_LIT(KMessage, "(C) 2008-2012 Hugo van Kemenade\ncode.google.com/p/dataquota\ntwitter.com/DataQuota");
 			dlg->SetMessageTextL(KMessage);
 			
 			dlg->RunLD();
@@ -405,20 +405,20 @@ void CDataQuotaView::UninstallSelfSignedVersionL()
 		iUninstallAttempted = ETrue;
 		}
 	
-	SwiUI::RSWInstLauncher iLauncher; 
-	TInt error(iLauncher.Connect());
+	SwiUI::RSWInstLauncher launcher; 
+	TInt error(launcher.Connect());
 	 if (KErrNone == error)
 		{
 		SwiUI::TInstallOptions options;
 		SwiUI::TInstallOptionsPckg optionsPckg;  
 		options.iKillApp = SwiUI::EPolicyAllowed;
 		optionsPckg = options;  
-		error = iLauncher.SilentUninstall(
+		error = launcher.SilentUninstall(
 			TUid::Uid(KUidSelfSigned), 
 			optionsPckg,
 			SwiUI::KSisxMimeType);
 		}
-	iLauncher.Close();
+	launcher.Close();
 	}
 #endif // __OVI_SIGNED__
 
