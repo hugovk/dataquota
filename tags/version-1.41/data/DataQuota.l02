@@ -1,0 +1,60 @@
+/*
+DataQuota.l02 - French
+
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+Copyright (C) 2009  Thierry Destinobles
+Copyright (C) 2011  Jean Blanchard
+Copyright (C) 2011  Tru Huynh
+Copyright (C) 2012  François Rygaert
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+//  LOCALISATION STRINGS
+
+rls_string STR_dataquota_caption_string "Data Quota"
+
+rls_string STR_dataquota_sent "Envoyé : "
+rls_string STR_dataquota_rcvd "Reçu : "
+rls_string STR_dataquota_used "Total : "
+rls_string STR_dataquota_day "Jour : "
+rls_string STR_dataquota_seperator " / "
+rls_string STR_dataquota_megabyte " Mo"
+
+rls_string STR_dataquota_refresh "Mettre à jour"
+rls_string STR_dataquota_edit "Modifier"
+rls_string STR_dataquota_edit_quota "Quota"
+rls_string STR_dataquota_edit_billing_day "Jour de facture"
+//rls_string STR_dataquota_edit_billing_period "Période de facturation"
+rls_string STR_dataquota_about "À propos de"
+rls_string STR_dataquota_about_text "Data Quota "
+rls_string STR_dataquota_exit "Quitter"
+
+rls_string STR_dataquota_help "Aide"
+rls_string STR_dataquota_help_text "Montre quelle part de votre quota de données vous avez consommée dans le courant du mois.\n\nSi votre opérateur limite le volume de données à consommer dans le mois, c'est fastidieux de trouver l'application Journal, ouvrir le compteur de données, et essayer de calculer le volume de données restantes à partir du volume consommé.\n\nData Quota affiche deux barres : l'une représente la part de votre quota que vous avez utilisée dans le mois ; l'autre montre l'avancement dans le mois. Cela permet de voir d'un coup d'œil si vous avez consommé vos données trop vite ou trop lentement, pour savoir s'il faut vous serrer la ceinture ou vous laisser aller !\n\nLe premier de chaque mois (ou le jour de facturation), réinitialisez le compteur de données. Par exemple :\nOvi-signed: Options -> Reset Quota\n Applications -> Journal -> Données Paquets -> Options -> Mettre compteurs à zéro."
+rls_string STR_dataquota_more_apps "Plus d'applications"
+rls_string STR_dataquota_podoclock "Pod O'Clock"
+rls_string STR_dataquota_mobbler "Mobbler"
+rls_string STR_dataquota_sugarsync "SugarSync"
+
+rls_string STR_dataquota_hour "Heure: "
+rls_string STR_dataquota_edit_daily_quota "Voir quota quotidien"
+rls_string STR_dataquota_edit_monthly_quota "Voir quota mensuel"
+
+rls_string STR_dataquota_reset_quota "Remise à zéro du quota"
+rls_string STR_dataquota_reset_quota_confirmation "Confirmez la remise à zéro des compteurs d'envois et de réceptions du téléphone?"
+
+// End of file

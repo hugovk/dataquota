@@ -1,0 +1,115 @@
+/*
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+#include "DataQuota.mmh" 
+
+/* Data Quota UIDs
+
+Unprotected - Ovi Signed - Purpose
+
+ 0xA000B6EF - 0x200427F6 - DataQuota.exe
+ 0xA89FD5B2 - 0x200427F7 - touch feedback dll
+ 0xA89FD5B3 - 0x200427F8 - touch feedback interface
+ 0xA89FD5B4 - 0x200427F9 - touch feedback implementation
+*/
+
+#ifdef OVI_SIGNED
+TARGET			DataQuota_0x200427F6.exe
+TARGETTYPE		exe
+UID				0x100039CE 0x200427F6
+#else
+TARGET			DataQuota.exe
+TARGETTYPE		exe
+UID				0x100039CE 0xA000B6EF
+#endif
+
+EPOCSTACKSIZE	0x5000
+
+#ifdef WINS
+LANG 01
+#else
+LANG 01 02 03 04 05 06 09 14 16 17 18 25 26 27 31 49 54 57 65 67 68 76 78 79 93 106
+#endif
+
+SOURCEPATH		..\src
+SOURCE			DataQuotaApplication.cpp
+SOURCE			DataQuotaAppUi.cpp
+SOURCE			DataQuotaContainer.cpp
+SOURCE			DataQuotaDocument.cpp
+SOURCE			DataQuotaView.cpp
+
+START RESOURCE	..\data\DataQuota.rss
+HEADER
+#ifdef OVI_SIGNED
+TARGET DataQuota_0x200427F6
+#else
+TARGET DataQuota
+#endif
+TARGETPATH		resource\apps
+END //RESOURCE
+
+START RESOURCE	..\data\DataQuota_reg.rss
+#ifdef OVI_SIGNED
+TARGET DataQuota_reg_0x200427F6
+#else
+TARGET DataQuota_reg
+#endif
+#ifdef WINSCW
+TARGETPATH		\private\10003a3f\apps
+#else
+TARGETPATH		\private\10003a3f\import\apps
+#endif
+END //RESOURCE
+
+USERINCLUDE		..\inc
+USERINCLUDE		..\..\inc
+
+SYSTEMINCLUDE	\epoc32\include
+
+LIBRARY			aknskins.lib
+LIBRARY			apgrfx.lib
+LIBRARY			apparc.lib
+LIBRARY			avkon.lib
+LIBRARY			centralrepository.lib
+LIBRARY			commonengine.lib
+LIBRARY			cone.lib
+LIBRARY			ecom.lib
+LIBRARY			efsrv.lib
+LIBRARY			eikcoctl.lib
+LIBRARY			eikcore.lib
+LIBRARY			eikdlg.lib
+LIBRARY			estor.lib
+LIBRARY			euser.lib
+LIBRARY			gdi.lib
+LIBRARY			ws32.lib
+
+#ifdef OVI_SIGNED
+LIBRARY			apmime.lib
+LIBRARY			swinstcli.lib // RSWInstLauncher
+#else
+#ifndef WINS
+LIBRARY			browserlauncher.lib
+#endif
+#endif
+
+VENDORID	0
+
+// End of file

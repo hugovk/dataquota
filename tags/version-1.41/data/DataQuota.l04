@@ -1,0 +1,58 @@
+/*
+DataQuota.l04 - Spanish
+
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+Copyright (C) 2009  Abel Castosa
+Copyright (C) 2011  Francisco Chirinos
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+//  LOCALISATION STRINGS
+
+rls_string STR_dataquota_caption_string "Data Quota"
+
+rls_string STR_dataquota_sent "Enviado: "
+rls_string STR_dataquota_rcvd "Recibido: "
+rls_string STR_dataquota_used "Uso total: "
+rls_string STR_dataquota_day "Día: "
+rls_string STR_dataquota_seperator " / "
+rls_string STR_dataquota_megabyte " MB"
+
+rls_string STR_dataquota_refresh "Actualizar"
+rls_string STR_dataquota_edit "Editar"
+rls_string STR_dataquota_edit_quota "Límite"
+rls_string STR_dataquota_edit_billing_day "Día de facturación"
+//rls_string STR_dataquota_edit_billing_period "Período de facturación"
+rls_string STR_dataquota_about "Acerca de"
+rls_string STR_dataquota_about_text "Data Quota "
+rls_string STR_dataquota_exit "Salir"
+
+rls_string STR_dataquota_help "Ayuda"
+rls_string STR_dataquota_help_text "Data Quota muestra los datos que ha consumido en el mes.\n\nSi usted no posee un plan ilimitado esta es una solucion para saber cuantos MB de consumo le quedan a partir de la fecha de cobro\n\nData Quota muestra dos barras, la parte superior los MB consumidos hasta ahora, y la inferior los dias transcurridos.\nEsto le permite saber si consume datos demasiado rapido\n\nRecuerde reiniciar los primeros de mes o el dia de facturacion el contador. Herramientas > Registro > Datos > Opciones > Borrar Contador"
+rls_string STR_dataquota_more_apps "Mas apps"
+rls_string STR_dataquota_podoclock "Pod O'Clock"
+rls_string STR_dataquota_mobbler "Mobbler"
+rls_string STR_dataquota_sugarsync "SugarSync"
+
+rls_string STR_dataquota_hour "Hora: "
+rls_string STR_dataquota_edit_daily_quota "Cuota diaria"
+rls_string STR_dataquota_edit_monthly_quota "Cuota por mes"
+
+rls_string STR_dataquota_reset_quota "Resetear cuota"
+rls_string STR_dataquota_reset_quota_confirmation "¿Resetear los registros de datos recibidos y evniados?"

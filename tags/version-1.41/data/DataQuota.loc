@@ -1,0 +1,162 @@
+/*
+Data Quota for S60 phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010  Hugo van Kemenade
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+// default UK English
+#ifdef LANGUAGE_SC
+#include "DataQuota.l01"
+#endif
+
+// UK English
+#ifdef LANGUAGE_01
+#include "DataQuota.l01"
+#endif
+
+// French
+#ifdef LANGUAGE_02
+#include "DataQuota.l02"
+#endif
+
+// German
+#ifdef LANGUAGE_03
+#include "DataQuota.l03"
+#endif
+
+// Spanish
+#ifdef LANGUAGE_04
+#include "DataQuota.l04"
+#endif
+
+// Italian
+#ifdef LANGUAGE_05
+#include "DataQuota.l05"
+#endif
+
+// Swedish
+#ifdef LANGUAGE_06
+#include "DataQuota.l06"
+#endif
+
+// Finnish
+#ifdef LANGUAGE_09
+#include "DataQuota.l09"
+#endif
+
+// Turkish
+#ifdef LANGUAGE_14
+#include "DataQuota.l14"
+#endif
+
+// Russian
+#ifdef LANGUAGE_16
+#include "DataQuota.l16"
+#endif
+
+// Hungarian
+#ifdef LANGUAGE_17
+#include "DataQuota.l17"
+#endif
+
+// Dutch
+#ifdef LANGUAGE_18
+#include "DataQuota.l18"
+#endif
+
+// Czech
+#ifdef LANGUAGE_25
+#include "DataQuota.l25"
+#endif
+
+// Slovak
+#ifdef LANGUAGE_26
+#include "DataQuota.l26"
+#endif
+
+// Polish
+#ifdef LANGUAGE_27
+#include "DataQuota.l27"
+#endif
+
+// Chinese (People's Republic of China)
+#ifdef LANGUAGE_31
+#include "DataQuota.l31"
+#endif
+
+// Estonian
+#ifdef LANGUAGE_49
+#include "DataQuota.l49"
+#endif
+
+// Greek
+#ifdef LANGUAGE_54
+#include "DataQuota.l54"
+#endif
+
+// Hebrew
+#ifdef LANGUAGE_57
+#include "DataQuota.l57"
+#endif
+
+// Korean
+#ifdef LANGUAGE_65
+#include "DataQuota.l65"
+#endif
+
+// Latvian
+#ifdef LANGUAGE_67
+#include "DataQuota.l67"
+#endif
+
+// Lithuanian
+#ifdef LANGUAGE_68
+#include "DataQuota.l68"
+#endif
+
+// Brazilian Portuguese
+#ifdef LANGUAGE_76
+#include "DataQuota.l76"
+#endif
+
+// Romanian
+#ifdef LANGUAGE_78
+#include "DataQuota.l78"
+#endif
+
+// Serbian
+#ifdef LANGUAGE_79
+#include "DataQuota.l79"
+#endif
+
+// Ukrainian
+#ifdef LANGUAGE_93
+#include "DataQuota.l93"
+#endif
+
+// Azerbaijani (Latin alphabet)
+#ifdef LANGUAGE_106
+#include "DataQuota.l106"
+#endif
+
+// German Saxonian accent
+#ifdef LANGUAGE_952
+#include "DataQuota.l952"
+#endif
+
+// End of file

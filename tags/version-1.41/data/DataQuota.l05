@@ -1,0 +1,59 @@
+/*
+DataQuota.l05 - Italiano
+
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+Copyright (C) 2009  Luca Paci
+Copyright (C) 2010  Cesco Lunghi
+Copyright (C) 2011  Andrea Inama
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+//  LOCALISATION STRINGS
+
+rls_string STR_dataquota_caption_string "Data Quota"
+
+rls_string STR_dataquota_sent "Inviati: "
+rls_string STR_dataquota_rcvd "Ricevuti: "
+rls_string STR_dataquota_used "Totali usati: "
+rls_string STR_dataquota_day "Giorno: "
+rls_string STR_dataquota_seperator " / "
+rls_string STR_dataquota_megabyte " MB"
+
+rls_string STR_dataquota_refresh "Ricarica"
+rls_string STR_dataquota_edit "Edita"
+rls_string STR_dataquota_edit_quota "Quantità"
+rls_string STR_dataquota_edit_billing_day "Giorno di scadenza"
+//rls_string STR_dataquota_edit_billing_period "Periodo del contratto"
+rls_string STR_dataquota_about "Crediti"
+rls_string STR_dataquota_about_text "Data Quota "
+rls_string STR_dataquota_exit "Esci"
+
+rls_string STR_dataquota_help "Guida"
+rls_string STR_dataquota_help_text "Mostra semplicemente quanti dati del pacchetto che si ha a disposizione sono stati usati in questo mese.\n\nSe si ha a disposizione una predefinita quota dati, messa a disposizione dal proprio operatore in un mese, è utile calcolare la quota residua per quel mese andando a vedere i registri di utilizzo dei dati sul proprio terminale, per poter così inserire la parte rimanente in questa applicazione.\n\nData Quota è composto da bue barre: una mostra la quantità di dati che fin'ora sono stati utilizzati; mentre l'altra mostra quanta parte del mese è trascorso. Questo consente di capire immediatamente se si sta utilizzando la quota dati a disposizione velocemente o lentamente, in modo da poter ottimizzare l'utilizzo del pachetti dati a disposizione.\n\nData Quota al primo di ogni mese (o ogni qualvolta che si raggiunge il giorno di scadenza), azzerare il contatore dei dati a pacchetto. Esempio: Strumenti -> Registro -> Dati a pachetto -> opzioni -> Azzera contatori."
+rls_string STR_dataquota_more_apps "Altre applicazioni"
+rls_string STR_dataquota_podoclock "Pod O'Clock"
+rls_string STR_dataquota_mobbler "Mobbler"
+rls_string STR_dataquota_sugarsync "SugarSync"
+
+rls_string STR_dataquota_hour "Ora: "
+rls_string STR_dataquota_edit_daily_quota "Uso a quantità giornaliera"
+rls_string STR_dataquota_edit_monthly_quota "Uso a quantità mensile"
+
+rls_string STR_dataquota_reset_quota "Azzera quota"
+rls_string STR_dataquota_reset_quota_confirmation "Azzera il registro di invio e ricezione dati?"

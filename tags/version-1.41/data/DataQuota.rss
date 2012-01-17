@@ -1,0 +1,250 @@
+/*
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+//  RESOURCE IDENTIFIER
+NAME DAQO    // 4 letter ID
+
+
+//  INCLUDES
+#include <appinfo.rh>
+#include <avkon.rh>
+#include <avkon.rsg>
+#include <eikon.rh>
+#include "DataQuota.hrh"
+#include "Dataquota.loc"
+
+CHARACTER_SET UTF8
+
+//  RESOURCE DEFINITIONS
+
+// Define the resource file signature, should be empty
+RESOURCE RSS_SIGNATURE
+	{
+	}
+
+RESOURCE TBUF r_default_document_name
+	{
+	buf="DAQO";
+	}
+
+RESOURCE EIK_APP_INFO
+	{
+	menubar = r_dataquota_menubar;
+	cba = R_AVKON_SOFTKEYS_OPTIONS_EXIT;
+	}
+
+RESOURCE AVKON_VIEW r_dataquota_view
+	{
+	}
+
+RESOURCE MENU_BAR r_dataquota_menubar
+	{
+	titles =
+		{
+		MENU_TITLE { menu_pane = r_dataquota_menu_pane; }
+		};
+	}
+
+// Options menu
+RESOURCE MENU_PANE r_dataquota_menu_pane
+	{
+	items =
+		{
+		MENU_ITEM
+			{
+			command = EDataQuotaEdit;
+			txt = STR_dataquota_edit;
+			cascade = r_dataquota_edit_menu_pane;
+			},
+#ifdef __OVI_SIGNED__
+		// Resetting the phone's logs only supported with WriteDeviceData
+		MENU_ITEM
+			{
+			command = EDataQuotaResetQuota;
+			txt = STR_dataquota_reset_quota;
+			},
+#endif
+		MENU_ITEM
+			{
+			command = EDataQuotaHelp;
+			txt = STR_dataquota_help;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaAbout;
+			txt = STR_dataquota_about;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaMoreApps;
+			txt = STR_dataquota_more_apps;
+			cascade = r_dataquota_more_apps_menu_pane;
+			},
+		MENU_ITEM
+			{
+			command = EAknSoftkeyExit;
+			txt = STR_dataquota_exit;
+			}
+		};
+	}
+
+// Edit submenu
+RESOURCE MENU_PANE r_dataquota_edit_menu_pane
+	{
+	items =
+		{
+		MENU_ITEM
+			{
+			command = EDataQuotaEditQuota;
+			txt = STR_dataquota_edit_quota;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaEditBillingDay;
+			txt = STR_dataquota_edit_billing_day;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaEditDailyQuota;
+			txt = STR_dataquota_edit_daily_quota;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaEditMonthlyQuota;
+			txt = STR_dataquota_edit_monthly_quota;
+/*			},
+		MENU_ITEM
+			{
+			command = EDataQuotaEditBillingPeriod;
+			txt = STR_dataquota_edit_billing_period;
+*/			}
+		};
+	}
+
+// More apps submenu
+RESOURCE MENU_PANE r_dataquota_more_apps_menu_pane
+	{
+	items =
+		{
+		MENU_ITEM
+			{
+			command = EDataQuotaMoreAppsPodOClock;
+			txt = STR_dataquota_podoclock;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaMoreAppsMobbler;
+			txt = STR_dataquota_mobbler;
+			},
+		MENU_ITEM
+			{
+			command = EDataQuotaMoreAppsSugarSync;
+			txt = STR_dataquota_sugarsync;
+			}
+		};
+	}
+
+// Resources for messages
+RESOURCE TBUF32 r_dataquota_caption_string { buf=STR_dataquota_caption_string; }
+
+RESOURCE LOCALISABLE_APP_INFO r_dataquota_localisable_app_info
+	{
+	short_caption = STR_dataquota_caption_string;
+	caption_and_icon =
+	CAPTION_AND_ICON_INFO
+		{
+		caption = STR_dataquota_caption_string;
+
+		number_of_icons = 1;
+#ifdef __OVI_SIGNED__
+		icon_file = "\\resource\\apps\\Dataquota_0x200427F6.mif";
+#else
+		icon_file = "\\resource\\apps\\Dataquota.mif";
+#endif
+		};
+	}
+
+RESOURCE DIALOG r_dataquota_about_box
+	{
+	flags = EEikDialogFlagNoDrag | EEikDialogFlagCbaButtons | EEikDialogFlagWait;
+	buttons = R_AVKON_SOFTKEYS_OK_EMPTY;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtPopupHeadingPane;
+			id = EAknMessageQueryHeaderId;
+			control = AVKON_HEADING
+				{
+				headinglayout = R_AVKON_LIST_HEADING_PANE_POPUPS;
+				};
+			},
+		DLG_LINE
+			{
+			type = EAknCtMessageQuery;
+			id = EAknMessageQueryContentId;
+			control = AVKON_MESSAGE_QUERY
+				{
+				message = "";
+				};
+			}
+		};
+	}
+
+
+RESOURCE DIALOG r_dataquota_yes_no_query_dialog
+	{
+	flags = EGeneralQueryFlags;
+	buttons = R_AVKON_SOFTKEYS_YES_NO;
+	items =
+		{
+		DLG_LINE
+			{
+			type = EAknCtQuery;
+			id = EDataQuotaQuery;
+
+			control = AVKON_CONFIRMATION_QUERY
+				{
+				layout = EConfirmationQueryLayout;
+				animation = R_QGN_NOTE_QUERY_ANIM;
+				};
+			}
+		};
+	}
+
+
+RESOURCE TBUF r_dataquota_sent		{buf = STR_dataquota_sent;}
+RESOURCE TBUF r_dataquota_rcvd		{buf = STR_dataquota_rcvd;}
+RESOURCE TBUF r_dataquota_used		{buf = STR_dataquota_used;}
+RESOURCE TBUF r_dataquota_hour		{buf = STR_dataquota_hour;}
+RESOURCE TBUF r_dataquota_day		{buf = STR_dataquota_day;}
+RESOURCE TBUF r_dataquota_seperator	{buf = STR_dataquota_seperator;}
+RESOURCE TBUF r_dataquota_megabyte	{buf = STR_dataquota_megabyte;}
+
+RESOURCE TBUF r_dataquota_help			{buf = STR_dataquota_help;}
+RESOURCE TBUF r_dataquota_help_text		{buf = STR_dataquota_help_text;}
+//RESOURCE TBUF r_dataquota_about		{buf = STR_dataquota_about;}
+RESOURCE TBUF r_dataquota_about_text	{buf = STR_dataquota_about_text;}
+RESOURCE TBUF r_dataquota_refresh		{buf = STR_dataquota_refresh;}
+
+RESOURCE TBUF r_dataquota_reset_quota_confirmation	{buf = STR_dataquota_reset_quota_confirmation;}
+
+// End of file

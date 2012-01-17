@@ -1,0 +1,57 @@
+/*
+DataQuota.l54 - Greek (Ελληνικά)
+
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+Copyright (C) 2009  jpapad2003
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+//  LOCALISATION STRINGS
+
+rls_string STR_dataquota_caption_string "Πακέτο Δεδομένων"
+
+rls_string STR_dataquota_sent "Απεσταλμένα: "
+rls_string STR_dataquota_rcvd "Ληφθέντα: "
+rls_string STR_dataquota_used "Σύνολο: "
+rls_string STR_dataquota_day "Ημέρα: "
+rls_string STR_dataquota_seperator " / "
+rls_string STR_dataquota_megabyte " MB"
+
+rls_string STR_dataquota_refresh "Ανανέωση"
+rls_string STR_dataquota_edit "Επεξεργασία"
+rls_string STR_dataquota_edit_quota "Πακέτο Δεδομένων"
+rls_string STR_dataquota_edit_billing_day "Ημέρα Χρέωσης"
+//rls_string STR_dataquota_edit_billing_period "Περίοδος Χρέωσης"
+rls_string STR_dataquota_about "Περί"
+rls_string STR_dataquota_about_text "Σύνολο δεδομένων "
+rls_string STR_dataquota_exit "Έξοδος"
+
+rls_string STR_dataquota_help "Help"
+rls_string STR_dataquota_help_text "Simply shows how much of your packet data quota you've used so far this month.\n\nIf you have a pre-determined quota from your operator of how much packet data you can use in a month, it's a pain to first find the Logs application, open the packet data counter, then try and work out how much data you have left from the amount used so far.\n\nData Quota shows two simple bars: one showing how much of the data for this month you have used; and one showing how much of the month has elapsed. This lets you tell at a glance if you've been using data up too fast or two slow, so you can be more frugal or let rip!\n\nOn the first of each month (or whenever your quota resets on billing day), clear the packet data counter. For example: Tools -> Log -> Packet data -> Options -> Clear counters."
+rls_string STR_dataquota_more_apps "More apps"
+rls_string STR_dataquota_podoclock "Pod O'Clock"
+rls_string STR_dataquota_mobbler "Mobbler"
+rls_string STR_dataquota_sugarsync "SugarSync"
+
+rls_string STR_dataquota_hour "Hour: "
+rls_string STR_dataquota_edit_daily_quota "Use daily quota"
+rls_string STR_dataquota_edit_monthly_quota "Use monthly quota"
+
+rls_string STR_dataquota_reset_quota "Reset quota"
+rls_string STR_dataquota_reset_quota_confirmation "Reset phone's log of sent and received data?"

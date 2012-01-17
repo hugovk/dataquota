@@ -1,0 +1,54 @@
+/*
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2011  Hugo van Kemenade
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
+#include <appinfo.rh>
+#include "DataQuota.loc"
+#include "DataQuota.rsg.h"
+#include "DataQuotaUids.h"
+
+CHARACTER_SET UTF8
+
+UID2 KUidAppRegistrationResourceFile
+#ifdef __OVI_SIGNED__
+UID3 KUidOviSigned
+#else
+UID3 KUidSelfSigned
+#endif
+
+RESOURCE APP_REGISTRATION_INFO
+	{
+#ifdef __OVI_SIGNED__
+	// filename of application binary (minus extension):
+	app_file="DataQuota_0x200427F6";
+	localisable_resource_file = "\\resource\\apps\\DataQuota_0x200427F6";
+#else
+	// filename of application binary (minus extension):
+	app_file="DataQuota";
+	localisable_resource_file = "\\resource\\apps\\DataQuota";
+#endif
+	localisable_resource_id = R_DATAQUOTA_LOCALISABLE_APP_INFO;
+
+	embeddability=KAppNotEmbeddable;
+	newfile=KAppDoesNotSupportNewFile;
+	}
+
+// End of file
