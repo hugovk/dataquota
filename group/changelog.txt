@@ -1,6 +1,10 @@
 Data Quota change log
 =====================
 
+2.42 (13th March 2012, Ovi-signed)
+1.42 (13th March 2012, self-signed)
+ - Updated Slovak.
+
 2.41 (17th January 2012, Ovi-signed)
 1.41 (17th January 2012, self-signed)
  - Updated French and Spanish.
