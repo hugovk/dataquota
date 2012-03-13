@@ -5,6 +5,7 @@ Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
 Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
 Copyright (C) 2009  Kovac Rudolf
+Copyright (C) 2012  Benecore (DevPDA)
 
 This file is part of Data Quota.
 
@@ -40,18 +41,18 @@ rls_string STR_dataquota_edit_billing_day "Fakturačný deň"
 //rls_string STR_dataquota_edit_billing_period "Fakturačné obdobie"
 rls_string STR_dataquota_about "O aplikácii"
 rls_string STR_dataquota_about_text "Data Quota "
-rls_string STR_dataquota_exit "Koniec"
+rls_string STR_dataquota_exit "Ukončiť"
 
-rls_string STR_dataquota_help "Help"
-rls_string STR_dataquota_help_text "Simply shows how much of your packet data quota you've used so far this month.\n\nIf you have a pre-determined quota from your operator of how much packet data you can use in a month, it's a pain to first find the Logs application, open the packet data counter, then try and work out how much data you have left from the amount used so far.\n\nData Quota shows two simple bars: one showing how much of the data for this month you have used; and one showing how much of the month has elapsed. This lets you tell at a glance if you've been using data up too fast or two slow, so you can be more frugal or let rip!\n\nOn the first of each month (or whenever your quota resets on billing day), clear the packet data counter. For example: Tools -> Log -> Packet data -> Options -> Clear counters."
-rls_string STR_dataquota_more_apps "More apps"
+rls_string STR_dataquota_help "Pomocník"
+rls_string STR_dataquota_help_text "Aplikácia zobrazuje koľko paketových dát ste v tomto mesiaci preniesli.\n\nPokiaľ máte od operátora stanovený limit dát na mesiac, pomocou tejto aplikácie si ich môžte jednoducho kontrolovať.\n\nMôžte si nastaviť limit v MB na mesiac ako aj fakturačný deň. Po uplynutí starého fakturačného obdobia si môžte počítadlá restovať aby ste mali znovu prehľad o prenesených dátach."
+rls_string STR_dataquota_more_apps "Viac aplikácii"
 rls_string STR_dataquota_podoclock "Pod O'Clock"
 rls_string STR_dataquota_mobbler "Mobbler"
 rls_string STR_dataquota_sugarsync "SugarSync"
 
-rls_string STR_dataquota_hour "Hour: "
-rls_string STR_dataquota_edit_daily_quota "Use daily quota"
-rls_string STR_dataquota_edit_monthly_quota "Use monthly quota"
+rls_string STR_dataquota_hour "Hodina: "
+rls_string STR_dataquota_edit_daily_quota "Denná kvôta"
+rls_string STR_dataquota_edit_monthly_quota "Mesačná kvôta"
 
-rls_string STR_dataquota_reset_quota "Reset quota"
-rls_string STR_dataquota_reset_quota_confirmation "Reset phone's log of sent and received data?"
+rls_string STR_dataquota_reset_quota "Resetovať počítadlá"
+rls_string STR_dataquota_reset_quota_confirmation "Resetovať odoslané a prijaté dáta v protokole telefónu?"

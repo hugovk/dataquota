@@ -1,7 +1,7 @@
 /*
 Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+Copyright (C) 2008, 2009, 2010, 2011, 2012  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -35,9 +35,9 @@ class CRepository;
 
 // CONSTANTS
 #ifdef __OVI_SIGNED__
-_LIT(KVersion, "2.41");
+_LIT(KVersion, "2.42");
 #else
-_LIT(KVersion, "1.41");
+_LIT(KVersion, "1.42");
 #endif
 
 // CLASS DECLARATION
