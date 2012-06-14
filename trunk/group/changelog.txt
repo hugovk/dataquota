@@ -1,6 +1,9 @@
 Data Quota change log
 =====================
 
+2.43 (14th June 2012, Nokia-signed)
+ - Added Macedonian.
+
 2.42 (13th March 2012, Ovi-signed)
 1.42 (13th March 2012, self-signed)
  - Updated Slovak.

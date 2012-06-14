@@ -20,28 +20,28 @@
 ; 
 
 ; Language - standard language definitions
-&EN, FR, GE, SP, IT, SW, FI, AM, TU, RU, HU, DU, CS, SK, PL, ZH, ET, EL, HE, KO, LV, LT, BP, RO, SR, UK, 106
+&EN, FR, GE, SP, IT, SW, FI, AM, TU, RU, HU, DU, CS, SK, PL, ZH, ET, EL, HE, KO, LV, LT, MK, BP, RO, SR, UK, 106
 
 ; Standard SIS file header
-#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0x200427F6),2,42,0
+#{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}, (0x200427F6),2,43,0
 
 ; Localised Vendor name
-%{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
+%{"Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota", "Data Quota"}
 
 ; Unique Vendor name
 :"Data Quota"
 
 ; Supports S60 v 3.0
-[0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+[0x101F7961], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Supports S60 release 5.0
-[0x1028315F], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+[0x1028315F], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Supports Symbian^3 and Anna
-[0x20022E6D], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+[0x20022E6D], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Supports Symbian Belle
-[0x2003A678], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
+[0x2003A678], 0, 0, 0, {"S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID", "S60ProductID"}
 
 ; Files to install
 "..\..\..\epoc32\release\gcce\urel\DataQuota_0x200427F6.exe" - "!:\sys\bin\DataQuota_0x200427F6.exe"
@@ -70,6 +70,7 @@
 "..\..\..\epoc32\data\z\resource\apps\DataQuota_0x200427F6.r65"
 "..\..\..\epoc32\data\z\resource\apps\DataQuota_0x200427F6.r67"
 "..\..\..\epoc32\data\z\resource\apps\DataQuota_0x200427F6.r68"
+"..\..\..\epoc32\data\z\resource\apps\DataQuota_0x200427F6.r69"
 "..\..\..\epoc32\data\z\resource\apps\DataQuota_0x200427F6.r76"
 "..\..\..\epoc32\data\z\resource\apps\DataQuota_0x200427F6.r78"
 "..\..\..\epoc32\data\z\resource\apps\DataQuota_0x200427F6.r79"

@@ -1,7 +1,7 @@
 /*
 Data Quota for Symbian phones.
 http://code.google.com/p/dataquota/
-Copyright (C) 2008, 2009, 2010, 2011  Hugo van Kemenade
+Copyright (C) 2008, 2009, 2010, 2011, 2012  Hugo van Kemenade
 
 This file is part of Data Quota.
 
@@ -46,7 +46,7 @@ EPOCSTACKSIZE	0x5000
 #ifdef WINS
 LANG 01
 #else
-LANG 01 02 03 04 05 06 09 14 16 17 18 25 26 27 31 49 54 57 65 67 68 76 78 79 93 106
+LANG 01 02 03 04 05 06 09 14 16 17 18 25 26 27 31 49 54 57 65 67 68 69 76 78 79 93 106
 #endif
 
 SOURCEPATH		..\src
