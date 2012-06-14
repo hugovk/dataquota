@@ -1,0 +1,59 @@
+/*
+DataQuota.l69 - Macedonian (Македонски)
+
+Data Quota for Symbian phones.
+http://code.google.com/p/dataquota/
+Copyright (C) 2008, 2009, 2010, 2011, 2012  Hugo van Kemenade
+Copyright (C) 2012  Toshe X Chuchanov
+
+This file is part of Data Quota.
+
+Data Quota is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+Data Quota is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+//  LOCALISATION STRINGS
+
+rls_string STR_dataquota_caption_string "Data Quota"
+
+rls_string STR_dataquota_sent "Испратено: "
+rls_string STR_dataquota_rcvd "Примено: "
+rls_string STR_dataquota_used "Вкупно искористено: "
+rls_string STR_dataquota_day "Ден: "
+rls_string STR_dataquota_seperator " / "
+rls_string STR_dataquota_megabyte " MB"
+
+rls_string STR_dataquota_refresh "Освежи"
+rls_string STR_dataquota_edit "Промени"
+rls_string STR_dataquota_edit_quota "Квота"
+rls_string STR_dataquota_edit_billing_day "Ден за наплата"
+//rls_string STR_dataquota_edit_billing_period "Период на наплата"
+rls_string STR_dataquota_about "За апликацијата"
+rls_string STR_dataquota_about_text "Data Quota "
+rls_string STR_dataquota_exit "Излези"
+
+rls_string STR_dataquota_help "Помош"
+rls_string STR_dataquota_help_text "Data Quota ви прикажува две едноставни ленти: една која покажува колку интернет имате потрошено; а друга колку од месецот има изминато. Ова ви омозможува со еден поглед да видите дали го трошите интернетот пребрзо или можеби пребавно, па според тоа да се воздржувате или да се опуштите!\n\nНа први од секој месец (или кога и да е Денот за наплата), ресетирајте го бројачот. На пример:\nOvi-потпишани: Options -> Reset Quota\nСебе-потпишани: Tools -> Log -> Packet data -> Options -> Clear counters."
+rls_string STR_dataquota_more_apps "Други апликации"
+rls_string STR_dataquota_podoclock "Pod O'Clock"
+rls_string STR_dataquota_mobbler "Mobbler"
+rls_string STR_dataquota_sugarsync "SugarSync"
+
+rls_string STR_dataquota_hour "Час: "
+rls_string STR_dataquota_edit_daily_quota "Користи дневна квота"
+rls_string STR_dataquota_edit_monthly_quota "Користи месечна квота"
+
+rls_string STR_dataquota_reset_quota "Ресетирај квота"
+rls_string STR_dataquota_reset_quota_confirmation "Дали сте сигурни дека сакате да ги ресетирате логовите во телефонот за испратени и примени податоци?"
+
+// End of file

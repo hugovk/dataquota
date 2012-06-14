@@ -129,6 +129,11 @@ along with Data Quota.  If not, see <http://www.gnu.org/licenses/>.
 #include "DataQuota.l68"
 #endif
 
+// Macedonian
+#ifdef LANGUAGE_69
+#include "DataQuota.l69"
+#endif
+
 // Brazilian Portuguese
 #ifdef LANGUAGE_76
 #include "DataQuota.l76"
